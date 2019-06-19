@@ -5,9 +5,7 @@ namespace Route.Generator.RouteAnalyzer
 {
     public class Router : IRouter
     {
-        public const string ControllerName = "Route";
-        public const string ActionName = "ShowAllRoutes";
-        public const string DefaultRoute = "/" + ControllerName + "/" + ActionName;
+        public const string DefaultRoute = "/routes";
         private readonly IRouter _defaultRouter;
         private readonly string _routePath;
 
@@ -28,8 +26,8 @@ namespace Route.Generator.RouteAnalyzer
             {
                 var routeData = new RouteData(context.RouteData);
                 routeData.Routers.Add(_defaultRouter);
-                routeData.Values["controller"] = ControllerName;
-                routeData.Values["action"] = ActionName;
+                routeData.Values["controller"] = "Route"; ;
+                routeData.Values["action"] = "ShowAllRoutes"; ;
                 context.RouteData = routeData;
                 await _defaultRouter.RouteAsync(context);
             }

@@ -66,7 +66,7 @@ namespace Route.Generator.RouteAnalyzer
                         info.Path += $"/{e.ControllerName}/{e.ActionName}";
                     }
 
-                    this.AddParameters(info, e);
+                    AddParameters(info, e);
                 }
 
                 // Extract HTTP Verb
@@ -98,7 +98,7 @@ namespace Route.Generator.RouteAnalyzer
                     info.Parameters.Add(new ParameterInfo
                     {
                         Name = item.Name,
-                        Type = this.ConvertType(item.ParameterType.FullName),
+                        Type = ConvertType(item.ParameterType.FullName),
                         BinderType = item.BindingInfo?.BinderType?.Name
                     });
                 }

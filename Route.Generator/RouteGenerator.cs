@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -13,6 +12,7 @@ namespace Route.Generator
     public class RouteGenerator
     {
         private static string _cacheDictionaryClass;
+        private static CommondConfig _config;
 
         public static string GenerateRoutes(string content)
         {
@@ -33,25 +33,13 @@ namespace Route.Generator
             return sb.ToString();
         }
 
-        public async Task<string> GenerateCodeAsync(string projectName)
+        public async Task<string> GenerateCodeAsync(CommondConfig config)
         {
-            Console.WriteLine($"projectName: {projectName}");
-            if (string.IsNullOrEmpty(projectName))
+            RouteGenerator._config = config;
+            var client = new HttpClient
             {
-                projectName = "*";
-            }
-
-            Console.WriteLine($"Environment.CurrentDirectory: {Environment.CurrentDirectory}");
-            var projectFile = Directory.GetFiles(Environment.CurrentDirectory, $"{projectName}.csproj", SearchOption.AllDirectories).FirstOrDefault();
-            if (projectFile == null)
-            {
-                throw new ArgumentException($"No .csproj file found under the directory: {projectName}.");
-            }
-
-            Console.WriteLine($"projectFile: {projectFile}");
-            FileInfo file = new FileInfo(projectFile);
-            Console.WriteLine($"file.Name: {file.Name}");
-            var client = new TestSite(file.Name.Replace(".csproj", string.Empty)).BuildClient();
+                BaseAddress = new Uri(config.BaseAddress)
+            };
             using (HttpResponseMessage response = await client.GetAsync(Router.DefaultRoute))
             {
                 string content = await response.Content.ReadAsStringAsync();
@@ -98,17 +86,17 @@ namespace Route.Generator
             for (int i = 0; i < group.Count(); i++)
             {
                 var item = group.ElementAt(i);
+                var renamedAction = RenameOverloadedAction(group, i);
                 sb.AppendLine("        /// <summary>");
                 sb.AppendLine($"        /// <see cref=\"{crefNamespace}.{item.ActionName}\"/>");
                 sb.AppendLine("        /// </summary>");
-                sb.AppendLine($"        public const string {item.ActionName} = \"{item.Path}\";");
+                sb.AppendLine($"        public const string {renamedAction} = \"{item.Path}\";");
 
-                // TODO
-                if (item.Namespace.Contains("Core.Api"))
+                if (_config != null && _config.GenerateMethod)
                 {
                     sb.AppendLine($"        public static async Task<T> {item.ActionName}Async<T>({GeneraParameters(item.Parameters, true, false)})");
                     sb.AppendLine("        {");
-                    sb.AppendLine($"            return await HttpClientAsync.Async2<T>({item.ActionName}{GeneraParameters(item.Parameters, false, true)});");
+                    sb.AppendLine($"            return await Core.Api.Framework.HttpClientAsync.Async2<T>({renamedAction}{GeneraParameters(item.Parameters, false, true)});");
                     sb.AppendLine("        }");
                 }
 
@@ -132,6 +120,27 @@ namespace Route.Generator
             return name.Replace("Controllers", "Routes");
         }
 
+        private static string RenameOverloadedAction(IGrouping<string, RouteInfo> group, int index)
+        {
+            var currentItem = group.ElementAt(index);
+            var sameActionNameGroup = group.GroupBy(o => o.ActionName);
+            foreach (var item in sameActionNameGroup)
+            {
+                if (item.Count() > 1)
+                {
+                    for (int i = 1; i < item.Count(); i++)
+                    {
+                        var element = item.ElementAt(i);
+                        if (element == currentItem)
+                        {
+                            return element.ActionName + i;
+                        }
+                    }
+                }
+            }
+
+            return currentItem.ActionName;
+        }
         private static string GetCrefNamespace(string cref, string @namespace)
         {
             IList<string> sameString = new List<string>();
@@ -164,7 +173,8 @@ namespace Route.Generator
             for (int i = 0; i < infos.Count(); i++)
             {
                 var item = infos.ElementAt(i);
-                sb.AppendLine($"            {{{GetConvertedNamespace(item.Namespace)}.{item.ControllerName}Route.{item.ActionName}, new {nameof(RouteInfo)}");
+                var group = infos.GroupBy(o => o.ControllerName).FirstOrDefault(o => o.Key == item.ControllerName);
+                sb.AppendLine($"            {{{GetConvertedNamespace(item.Namespace)}.{item.ControllerName}Route.{RenameOverloadedAction(group, i)}, new {nameof(RouteInfo)}");
                 sb.AppendLine("                {");
                 sb.AppendLine($"                    {nameof(item.HttpMethod)} = \"{item.HttpMethod}\",");
                 sb.Append(GenerateParameters(item.Parameters));

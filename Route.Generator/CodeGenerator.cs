@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 
 namespace Route.Generator
@@ -12,21 +13,12 @@ namespace Route.Generator
             this._modelGenerator = new RouteGenerator();
         }
 
-        public bool Generate(string projectName, string outPutFile)
+        public bool Generate(CommondConfig config)
         {
-            var context = this._modelGenerator.GenerateCodeAsync(projectName).Result;
+            var context = this._modelGenerator.GenerateCodeAsync(config).Result;
             Console.WriteLine(context);
-            if (string.IsNullOrEmpty(outPutFile))
-            {
-                outPutFile = "Routes.Generated.cs";
-            }
 
-            if (!outPutFile.EndsWith(".cs"))
-            {
-                outPutFile += ".cs";
-            }
-
-            string fullPath = Path.Combine(Environment.CurrentDirectory, outPutFile);
+            string fullPath = Path.Combine(Environment.CurrentDirectory, config.OutPutFile);
             File.WriteAllText(fullPath, context);
             return true;
         }

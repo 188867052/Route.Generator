@@ -14,6 +14,12 @@ namespace Route.Generator
         [Option("-p <project>", Description = "The project name")]
         public string ProjectName { get; set; }
 
+        [Option("-u <baseaddress>", Description = "The base address")]
+        public string BaseAddress { get; set; }
+
+        [Option("-c <configjsonpath>", Description = "The json config path.")]
+        public string ConfigJsonPath { get; set; }
+
         [Option("-f <file>", Description = "The options file name")]
         public string OptionsFile { get; set; }
 
@@ -21,5 +27,7 @@ namespace Route.Generator
         public string OutPutFile { get; set; }
 
         protected IGeneratorOptionsSerializer Serializer { get; }
+
+        public CommondConfig Config { get; set; }
     }
 }

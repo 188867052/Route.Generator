@@ -1,9 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using McMaster.Extensions.CommandLineUtils;
+﻿using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace Route.Generator
 {
@@ -17,27 +13,6 @@ namespace Route.Generator
 
         protected override int OnExecute(CommandLineApplication application)
         {
-            var workingDirectory = this.ProjectName ?? Environment.CurrentDirectory;
-            this.Logger.LogInformation($"工作目录:{workingDirectory}");
-            this.Logger.LogInformation($" Environment.CurrentDirectory:{Environment.CurrentDirectory}");
-            if (application.Arguments != null)
-            {
-                this.Logger.LogInformation(JsonConvert.SerializeObject(application.Arguments.Select(o => o.Value)));
-            }
-
-            if (!Directory.Exists(workingDirectory))
-            {
-                this.Logger.LogTrace($"Creating directory: {workingDirectory}");
-                Directory.CreateDirectory(workingDirectory);
-            }
-
-            var optionsFile = this.OptionsFile;
-
-            this.Logger.LogTrace($"optionsFile: {optionsFile}");
-            this.Logger.LogTrace($"WorkingDirectory: {this.ProjectName}");
-
-            this.Serializer.Save(workingDirectory);
-
             return 0;
         }
     }
