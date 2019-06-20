@@ -11,13 +11,11 @@ namespace Route.Generator
 {
     public class RouteGenerator
     {
-        private static string _cacheDictionaryClass;
         private static CommondConfig _config;
 
         public static string GenerateRoutes(string content)
         {
             IEnumerable<RouteInfo> infos = JsonConvert.DeserializeObject<IEnumerable<RouteInfo>>(content);
-            _cacheDictionaryClass = GenerateCacheDictionary(infos);
 
             StringBuilder sb = new StringBuilder();
             var group = infos.GroupBy(o => o.Namespace);
@@ -55,11 +53,6 @@ namespace Route.Generator
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"namespace {GetConvertedNamespace(namespaceGroup.Key)}");
             sb.AppendLine("{");
-            if (!string.IsNullOrEmpty(_cacheDictionaryClass))
-            {
-                sb.AppendLine(_cacheDictionaryClass);
-                _cacheDictionaryClass = string.Empty;
-            }
 
             var group = namespaceGroup.GroupBy(o => o.ControllerName);
             for (int i = 0; i < group.Count(); i++)
@@ -99,7 +92,13 @@ namespace Route.Generator
                 {
                     sb.AppendLine($"        public static async Task<T> {item.ActionName}Async<T>({GeneraParameters(item.Parameters, true, false)})");
                     sb.AppendLine("        {");
-                    sb.AppendLine($"            return await Core.Api.Framework.HttpClientAsync.Async2<T>({renamedAction}{GeneraParameters(item.Parameters, false, true)});");
+                    sb.AppendLine("            var routeInfo = new RouteInfo");
+                    sb.AppendLine("            {");
+                    sb.AppendLine($"                HttpMethod = \"{item.HttpMethod}\",");
+                    sb.AppendLine($"                Path = \"{item.Path}\",");
+                    sb.Append(GenerateParameters(item.Parameters));
+                    sb.AppendLine("            };");
+                    sb.AppendLine($"            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo{GeneraParameters(item.Parameters, false, true)});");
                     sb.AppendLine("        }");
                 }
 
@@ -144,6 +143,7 @@ namespace Route.Generator
 
             return currentItem.ActionName;
         }
+
         private static string GetCrefNamespace(string cref, string @namespace)
         {
             IList<string> sameString = new List<string>();
@@ -166,43 +166,19 @@ namespace Route.Generator
             return cref;
         }
 
-        private static string GenerateCacheDictionary(IEnumerable<RouteInfo> infos)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("    public class Cache");
-            sb.AppendLine("    {");
-            sb.AppendLine($"        public static Dictionary<string, {nameof(RouteInfo)}> Dictionary = new Dictionary<string, {nameof(RouteInfo)}>()");
-            sb.AppendLine("        {");
-            for (int i = 0; i < infos.Count(); i++)
-            {
-                var item = infos.ElementAt(i);
-                var group = infos.GroupBy(o => o.ControllerName).FirstOrDefault(o => o.Key == item.ControllerName);
-                sb.AppendLine($"            {{{GetConvertedNamespace(item.Namespace)}.{item.ControllerName}Route.{RenameOverloadedAction(group, i)}, new {nameof(RouteInfo)}");
-                sb.AppendLine("                {");
-                sb.AppendLine($"                    {nameof(item.HttpMethod)} = \"{item.HttpMethod}\",");
-                sb.Append(GenerateParameters(item.Parameters));
-                sb.AppendLine("                }");
-                sb.AppendLine("            },");
-            }
-
-            sb.AppendLine("        };");
-            sb.AppendLine("    }");
-            return sb.ToString();
-        }
-
         private static string GenerateParameters(IList<ParameterInfo> parameters)
         {
             StringBuilder sb = new StringBuilder();
             if (parameters != null && parameters.Count > 0)
             {
-                sb.AppendLine($"                    {nameof(RouteInfo.Parameters)} = new List<{nameof(ParameterInfo)}>");
-                sb.AppendLine("                    {");
+                sb.AppendLine($"                {nameof(RouteInfo.Parameters)} = new List<{nameof(ParameterInfo)}>");
+                sb.AppendLine("                {");
                 foreach (var item in parameters)
                 {
-                    sb.AppendLine($"                        new {nameof(ParameterInfo)}() {{{nameof(item.Name)} = \"{item.Name}\", {nameof(item.Type)} = \"{item.Type}\"}},");
+                    sb.AppendLine($"                    new {nameof(ParameterInfo)}() {{{nameof(item.Name)} = \"{item.Name}\", {nameof(item.Type)} = \"{item.Type}\"}},");
                 }
 
-                sb.AppendLine("                    }");
+                sb.AppendLine("                }");
             }
 
             return sb.ToString();
