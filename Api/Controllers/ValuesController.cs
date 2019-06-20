@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -44,6 +45,42 @@ namespace Api.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        [Route("api/Values/option/{key}/{value?}")]
+        public Dictionary<string, string> Get4(string key, string value = "test")
+        {
+            return new Dictionary<string, string>()
+            {
+                {key,value}
+            };
+        }
+
+        [Route("api/Values/option/{key}/{value=test}")]
+        public Dictionary<string, string> Get5(string key, string value)
+        {
+            return new Dictionary<string, string>()
+            {
+                {key,value}
+            };
+        }
+
+        [HttpPost]
+        public ActionResult<string> Post2([FromBody]string valueTest)
+        {
+            return valueTest;
+        }
+
+        [Route("api/Values/constraint/{id:range(1,10)}")]
+        public string GetById(int id)
+        {
+            return "value:" + id.ToString();
+        }
+
+        [Route("api/Values/many/{isOk:bool}/{*getDate:datetime}")]
+        public IActionResult Get7(bool isOk, DateTime? getDate = null)
+        {
+            return null;
         }
     }
 }

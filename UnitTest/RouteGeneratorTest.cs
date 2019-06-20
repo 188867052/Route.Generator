@@ -1,26 +1,26 @@
+using NUnit.Framework;
 using Route.Generator;
 using Route.Generator.RouteAnalyzer;
 using System;
 using System.Threading.Tasks;
-using Xunit;
 
 namespace UnitTest
 {
+    [TestFixture]
     public class RouteGeneratorTest
     {
-        [Fact]
+        [Test]
         public async Task TestMvcRouteGenerator()
         {
             try
             {
-                using (var client = new TestSite("Mvc").BuildClient())
-                {
-                    var response = await client.GetAsync(Router.DefaultRoute);
-                    var content = await response.Content.ReadAsStringAsync();
-
-                    var routesGenerated = RouteGenerator.GenerateRoutes(content);
-                    Assert.True(routesGenerated.Contains("namespace"));
-                }
+                using var client = new TestSite(nameof(Mvc)).BuildClient();
+                var response = await client.GetAsync(Router.DefaultRoute);
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(content);
+                var routesGenerated = RouteGenerator.GenerateRoutes(content);
+                Console.WriteLine(routesGenerated);
+                Assert.True(routesGenerated.Contains("namespace"));
             }
             catch (Exception ex)
             {
@@ -28,16 +28,17 @@ namespace UnitTest
             }
         }
 
-        [Fact]
+        [Test]
         public async Task TestApiRouteGenerator()
         {
             try
             {
-                var client = new TestSite("Api").BuildClient();
+                using var client = new TestSite(nameof(Api)).BuildClient();
                 var response = await client.GetAsync(Router.DefaultRoute);
                 var content = await response.Content.ReadAsStringAsync();
-
+                Console.WriteLine(content);
                 var routesGenerated = RouteGenerator.GenerateRoutes(content);
+                Console.WriteLine(routesGenerated);
                 Assert.True(routesGenerated.Contains("namespace"));
             }
             catch (Exception ex)

@@ -22,8 +22,8 @@ namespace Route.Generator.RouteAnalyzer
         {
             List<RouteInfo> list = new List<RouteInfo>();
 
-            var routes = _actionDescriptorCollectionProvider.ActionDescriptors.Items;
-            foreach (ActionDescriptor route in routes)
+            var routeCollection = _actionDescriptorCollectionProvider.ActionDescriptors.Items;
+            foreach (ActionDescriptor route in routeCollection)
             {
                 RouteInfo info = new RouteInfo();
 
@@ -72,8 +72,7 @@ namespace Route.Generator.RouteAnalyzer
                 // Extract HTTP Verb
                 if (route.ActionConstraints != null && route.ActionConstraints.Select(t => t.GetType()).Contains(typeof(HttpMethodActionConstraint)))
                 {
-                    var httpMethodAction = route.ActionConstraints.FirstOrDefault(a => a.GetType() == typeof(HttpMethodActionConstraint)) as HttpMethodActionConstraint;
-                    if (httpMethodAction != null)
+                    if (route.ActionConstraints.FirstOrDefault(a => a.GetType() == typeof(HttpMethodActionConstraint)) is HttpMethodActionConstraint httpMethodAction)
                     {
                         info.HttpMethod = string.Join(",", httpMethodAction.HttpMethods);
                     }
@@ -109,10 +108,25 @@ namespace Route.Generator.RouteAnalyzer
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>()
             {
+                { typeof(object).FullName, "object" },
+                { typeof(object[]).FullName, "object[]" },
                 { typeof(int).FullName, "int" },
+                { typeof(int[]).FullName, "int[]" },
+                { typeof(int?).FullName, "int?" },
+                { typeof(decimal).FullName, "decimal" },
+                { typeof(decimal[]).FullName, "decimal[]" },
+                { typeof(decimal?).FullName, "decimal?" },
+                { typeof(byte).FullName, "byte" },
+                { typeof(byte[]).FullName, "byte[]" },
+                { typeof(byte?).FullName, "byte?" },
+                { typeof(bool).FullName, "bool" },
+                { typeof(bool[]).FullName, "bool[]" },
+                { typeof(bool?).FullName, "bool?" },
                 { typeof(string).FullName, "string" },
                 { typeof(string[]).FullName, "string[]" },
-                { typeof(int[]).FullName, "int[]" },
+                { typeof(DateTime).FullName, "DateTime" },
+                { typeof(DateTime[]).FullName, "DateTime[]" },
+                { typeof(DateTime?).FullName, "DateTime?" },
             };
 
             if (dictionary.ContainsKey(type))

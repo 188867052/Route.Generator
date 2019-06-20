@@ -21,6 +21,7 @@ namespace Route.Generator
 
             StringBuilder sb = new StringBuilder();
             var group = infos.GroupBy(o => o.Namespace);
+            sb.AppendLine($"using {typeof(object).Namespace};");
             sb.AppendLine($"using {typeof(Dictionary<int, int>).Namespace};");
             sb.AppendLine($"using {typeof(Task).Namespace};");
             sb.AppendLine($"using {typeof(ParameterInfo).Namespace};");
@@ -36,14 +37,16 @@ namespace Route.Generator
         public async Task<string> GenerateCodeAsync(CommondConfig config)
         {
             RouteGenerator._config = config;
-            var client = new HttpClient
+            using (var client = new HttpClient
             {
                 BaseAddress = new Uri(config.BaseAddress)
-            };
-            using (HttpResponseMessage response = await client.GetAsync(Router.DefaultRoute))
+            })
             {
-                string content = await response.Content.ReadAsStringAsync();
-                return GenerateRoutes(content);
+                using (HttpResponseMessage response = await client.GetAsync(Router.DefaultRoute))
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    return GenerateRoutes(content);
+                }
             }
         }
 
