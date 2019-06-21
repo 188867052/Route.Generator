@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Route.Generator.RouteAnalyzer;
 
 namespace Api
@@ -28,6 +30,11 @@ namespace Api
                 routeOptions.LowercaseUrls = true;
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddJsonOptions(options =>
+       {
+           options.SerializerSettings.Formatting = Formatting.Indented;
+       }
+        );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

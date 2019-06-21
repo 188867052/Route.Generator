@@ -6,7 +6,7 @@ namespace Api.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class HttpGetController : ControllerBase
     {
         private Dictionary<string, string> GetResponse(string key, string value, string url)
         {
@@ -54,6 +54,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
+        [Route("~/api/Values")]
         public Dictionary<string, string> Get_0_Constraint_2_Paramerter(string key, string value)
         {
             return GetResponse(key, value, nameof(Get_0_Constraint_2_Paramerter));
@@ -89,10 +90,6 @@ namespace Api.Controllers
             return "name";
         }
 
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
@@ -104,11 +101,7 @@ namespace Api.Controllers
         {
         }
 
-        [HttpPost]
-        public ActionResult<string> Post2([FromBody]string valueTest)
-        {
-            return valueTest;
-        }
+       
 
         [Route("~/api/Values/constraint/{id:range(1,10)}")]
         public string GetById(int id)
