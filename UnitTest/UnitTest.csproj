@@ -1,18 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="2.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit.ConsoleRunner" Version="3.10.0" />
     <PackageReference Include="NUnit.Runners" Version="3.10.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.analyzers" Version="0.10.0" />
     <PackageReference Include="xunit.runner.console" Version="2.4.1">

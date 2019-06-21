@@ -233,7 +233,7 @@ namespace Api.Routes
         /// <see cref="Controllers.HttpDeleteController.Delete7"/>
         /// </summary>
         public const string Delete7 = "/api/Values/many/{isOk:bool}/{*DeleteDate:datetime}";
-        public static async Task<T> Delete7Async<T>(bool isOk, DateTime? DeleteDate)
+        public static async Task<T> Delete7Async<T>(bool isOk, DateTime? deleteDate)
         {
             var routeInfo = new RouteInfo
             {
@@ -242,10 +242,10 @@ namespace Api.Routes
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "isOk", Type = "bool"},
-                    new ParameterInfo() {Name = "DeleteDate", Type = "DateTime?"},
+                    new ParameterInfo() {Name = "deleteDate", Type = "DateTime?"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, isOk, DeleteDate);
+            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, isOk, deleteDate);
         }
 
         /// <summary>

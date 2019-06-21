@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Route.Generator.RouteAnalyzer;
-
-namespace Route.Generator
+﻿namespace Route.Generator
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using Route.Generator.RouteAnalyzer;
+
     public class RouteGenerator
     {
-        private static CommondConfig _config;
+        private static CommondConfig config;
 
         public static string GenerateRoutes(string content)
         {
@@ -34,10 +34,10 @@ namespace Route.Generator
 
         public async Task<string> GenerateCodeAsync(CommondConfig config)
         {
-            RouteGenerator._config = config;
+            RouteGenerator.config = config;
             using (var client = new HttpClient
             {
-                BaseAddress = new Uri(config.BaseAddress)
+                BaseAddress = new Uri(config.BaseAddress),
             })
             {
                 using (HttpResponseMessage response = await client.GetAsync(Router.DefaultRoute))
@@ -88,7 +88,7 @@ namespace Route.Generator
                 sb.AppendLine("        /// </summary>");
                 sb.AppendLine($"        public const string {renamedAction} = \"{item.Path}\";");
 
-                if (_config != null && _config.GenerateMethod)
+                if (config != null && config.GenerateMethod)
                 {
                     sb.AppendLine($"        public static async Task<T> {item.ActionName}Async<T>({GeneraParameters(item.Parameters, true, false)})");
                     sb.AppendLine("        {");

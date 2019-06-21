@@ -1,15 +1,15 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.Logging;
-
-namespace Route.Generator
+﻿namespace Route.Generator
 {
+    using System;
+    using System.IO;
+    using Microsoft.Extensions.Logging;
+
     /// <summary>
     /// Serialization and Deserialization for the <see cref="GeneratorOptions"/> class.
     /// </summary>
     public class GeneratorOptionsSerializer : IGeneratorOptionsSerializer
     {
-        private readonly ILogger<GeneratorOptionsSerializer> _logger;
+        private readonly ILogger<GeneratorOptionsSerializer> logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GeneratorOptionsSerializer"/> class.
@@ -17,7 +17,7 @@ namespace Route.Generator
         /// <param name="logger">The logger.</param>
         public GeneratorOptionsSerializer(ILogger<GeneratorOptionsSerializer> logger)
         {
-            this._logger = logger;
+            this.logger = logger;
         }
 
         public string Save(string directory)
@@ -29,7 +29,7 @@ namespace Route.Generator
 
             if (!Directory.Exists(directory))
             {
-                this._logger.LogTrace($"Creating Directory: {directory}");
+                this.logger.LogTrace($"Creating Directory: {directory}");
                 Directory.CreateDirectory(directory);
             }
 

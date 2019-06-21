@@ -1,12 +1,12 @@
-﻿using System;
-using System.Reflection;
-using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Serilog;
-
-namespace Route.Generator
+﻿namespace Route.Generator
 {
+    using System;
+    using System.Reflection;
+    using McMaster.Extensions.CommandLineUtils;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using Serilog;
+
     [Command("routegen", Description = "route generation tool")]
     [Subcommand(typeof(InitializeCommand))]
     [Subcommand(typeof(GenerateCommand))]

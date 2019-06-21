@@ -1,31 +1,31 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Reflection;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-
-namespace Route.Generator
+﻿namespace Route.Generator
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Reflection;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.TestHost;
+
     public class TestSite
     {
-        private readonly string _projectName;
+        private readonly string projectName;
 
         public TestSite(string projectname)
         {
-            this._projectName = projectname;
+            this.projectName = projectname;
         }
 
         public HttpClient BuildClient()
         {
-            var dllFile = Directory.GetFiles(Environment.CurrentDirectory, $"{this._projectName}.dll", SearchOption.AllDirectories).FirstOrDefault();
+            var dllFile = Directory.GetFiles(Environment.CurrentDirectory, $"{this.projectName}.dll", SearchOption.AllDirectories).FirstOrDefault();
             if (string.IsNullOrEmpty(dllFile))
             {
-                throw new ArgumentException($"No {this._projectName}.dll file found under the directory: {Environment.CurrentDirectory}.");
+                throw new ArgumentException($"No {this.projectName}.dll file found under the directory: {Environment.CurrentDirectory}.");
             }
 
-            Console.WriteLine($"this._projectName:{this._projectName}.");
+            Console.WriteLine($"this._projectName:{this.projectName}.");
 
             Console.WriteLine($"dllFile:{dllFile}.");
 

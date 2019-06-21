@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
 
   <ItemGroup>
     <Content Remove="Routes.Generated.json" />
@@ -13,10 +20,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Analyzers" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

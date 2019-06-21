@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Abstractions;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Internal;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace Route.Generator.RouteAnalyzer
+﻿namespace Route.Generator.RouteAnalyzer
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.AspNetCore.Mvc.Abstractions;
+    using Microsoft.AspNetCore.Mvc.Controllers;
+    using Microsoft.AspNetCore.Mvc.Infrastructure;
+    using Microsoft.AspNetCore.Mvc.Internal;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+
     public class RouteAnalyzer : IRouteAnalyzer
     {
-        private readonly IActionDescriptorCollectionProvider _actionDescriptorCollectionProvider;
+        private readonly IActionDescriptorCollectionProvider actionDescriptorCollectionProvider;
 
         public RouteAnalyzer(IActionDescriptorCollectionProvider actionDescriptorCollectionProvider)
         {
-            _actionDescriptorCollectionProvider = actionDescriptorCollectionProvider;
+            this.actionDescriptorCollectionProvider = actionDescriptorCollectionProvider;
         }
 
         public IEnumerable<RouteInfo> GetAllRouteInformations()
         {
             List<RouteInfo> list = new List<RouteInfo>();
 
-            var routeCollection = _actionDescriptorCollectionProvider.ActionDescriptors.Items;
+            var routeCollection = this.actionDescriptorCollectionProvider.ActionDescriptors.Items;
             foreach (ActionDescriptor route in routeCollection)
             {
                 RouteInfo info = new RouteInfo();
@@ -46,7 +46,7 @@ namespace Route.Generator.RouteAnalyzer
                 {
                     var e = route;
                     info.Path = $"/{e.AttributeRouteInfo.Template}";
-                    AddParameters(info, e);
+                    this.AddParameters(info, e);
                 }
 
                 if (route is ControllerActionDescriptor)
@@ -66,7 +66,7 @@ namespace Route.Generator.RouteAnalyzer
                         info.Path += $"/{e.ControllerName}/{e.ActionName}";
                     }
 
-                    AddParameters(info, e);
+                    this.AddParameters(info, e);
                 }
 
                 // Extract HTTP Verb
@@ -97,8 +97,8 @@ namespace Route.Generator.RouteAnalyzer
                     info.Parameters.Add(new ParameterInfo
                     {
                         Name = item.Name,
-                        Type = ConvertType(item.ParameterType.FullName),
-                        BinderType = item.BindingInfo?.BinderType?.Name
+                        Type = this.ConvertType(item.ParameterType.FullName),
+                        BinderType = item.BindingInfo?.BinderType?.Name,
                     });
                 }
             }

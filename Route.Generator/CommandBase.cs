@@ -1,8 +1,8 @@
-﻿using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.Logging;
-
-namespace Route.Generator
+﻿namespace Route.Generator
 {
+    using McMaster.Extensions.CommandLineUtils;
+    using Microsoft.Extensions.Logging;
+
     [HelpOption("--help")]
     public abstract class CommandBase
     {

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Api
+﻿namespace Api
 {
+    using System;
+
     public static class Extention
     {
         public static object GetDefaultValueByName(string typeName)
@@ -37,7 +37,7 @@ namespace Api
                     return typeof(decimal);
                 case "decimal?":
                     return typeof(decimal?);
-             
+
                 default:
                     throw new Exception("No Support Type.");
             }

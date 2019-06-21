@@ -1,8 +1,8 @@
-﻿using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.Logging;
-
-namespace Route.Generator
+﻿namespace Route.Generator
 {
+    using McMaster.Extensions.CommandLineUtils;
+    using Microsoft.Extensions.Logging;
+
     public abstract class OptionsCommandBase : CommandBase
     {
         protected OptionsCommandBase(ILoggerFactory logger, IConsole console, IGeneratorOptionsSerializer serializer)
@@ -28,6 +28,6 @@ namespace Route.Generator
 
         protected IGeneratorOptionsSerializer Serializer { get; }
 
-        public CommondConfig Config { get; set; }
+        protected CommondConfig Config { get; set; }
     }
 }

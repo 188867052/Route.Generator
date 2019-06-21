@@ -1,19 +1,19 @@
-﻿using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using System.IO;
-
-namespace Route.Generator
+﻿namespace Route.Generator
 {
+    using System.IO;
+    using McMaster.Extensions.CommandLineUtils;
+    using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
+
     [Command("generate", "gen")]
     public class GenerateCommand : OptionsCommandBase
     {
-        private readonly ICodeGenerator _codeGenerator;
+        private readonly ICodeGenerator codeGenerator;
 
         public GenerateCommand(ILoggerFactory logger, IConsole console, IGeneratorOptionsSerializer serializer, ICodeGenerator codeGenerator)
             : base(logger, console, serializer)
         {
-            this._codeGenerator = codeGenerator;
+            this.codeGenerator = codeGenerator;
         }
 
         protected override int OnExecute(CommandLineApplication application)
@@ -23,7 +23,7 @@ namespace Route.Generator
                 return 1;
             }
 
-            var result = this._codeGenerator.Generate(this.Config);
+            var result = this.codeGenerator.Generate(this.Config);
 
             return result ? 0 : 1;
         }
@@ -33,14 +33,15 @@ namespace Route.Generator
             FileInfo info = new FileInfo(this.ConfigJsonPath);
             if (!info.Exists)
             {
-                Console.WriteLine($"config json path: {this.ConfigJsonPath} can not be found.");
+                this.Console.WriteLine($"config json path: {this.ConfigJsonPath} can not be found.");
                 return 1;
             }
+
             var config = JsonConvert.DeserializeObject<CommondConfig>(File.ReadAllText(this.ConfigJsonPath));
-            Console.WriteLine(JsonConvert.SerializeObject(config, Formatting.Indented));
+            this.Console.WriteLine(JsonConvert.SerializeObject(config, Formatting.Indented));
             if (string.IsNullOrEmpty(config.BaseAddress))
             {
-                Console.WriteLine($"base address cant not be null.");
+                this.Console.WriteLine($"base address cant not be null.");
                 return 1;
             }
 
@@ -53,7 +54,6 @@ namespace Route.Generator
             {
                 config.OutPutFile += ".cs";
             }
-
 
             this.Config = config;
             return 0;

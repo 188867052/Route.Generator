@@ -1,17 +1,18 @@
-﻿using Api.Routes;
-using Core.Api.Framework;
-using System;
-using System.Threading.Tasks;
-using Xunit;
-using Xunit.Abstractions;
-
-namespace UnitTest
+﻿namespace UnitTest
 {
-    public class HttpClientDeleteAsyncTest :  UnitTestBase
+    using System;
+    using System.Threading.Tasks;
+    using Api.Routes;
+    using Core.Api.Framework;
+    using Xunit;
+    using Xunit.Abstractions;
+
+    public class HttpClientDeleteAsyncTest : UnitTestBase
     {
-        public HttpClientDeleteAsyncTest(ITestOutputHelper tempOutput) : base(tempOutput)
+        public HttpClientDeleteAsyncTest(ITestOutputHelper tempOutput)
+            : base(tempOutput)
         {
-            HttpClientAsync._output = tempOutput;
+            HttpClientAsync.Output = tempOutput;
         }
 
         [Fact]
@@ -22,7 +23,7 @@ namespace UnitTest
             dynamic data = await HttpDeleteRoute.Delete_1_Constraint_1_ParameterAsync<dynamic>(guid1, guid2);
             string dataStr = data.ToString();
 
-            this._output.WriteLine($"Response Data: {dataStr}");
+            this.Output.WriteLine($"Response Data: {dataStr}");
 
             Assert.Contains(guid1, dataStr);
             Assert.Contains(guid2, dataStr);
@@ -104,7 +105,7 @@ namespace UnitTest
                 dynamic data = await HttpDeleteRoute.Delete_1_Constraint_1_ParameterAsync<dynamic>(guid1, guid2);
 
                 string dataStr = data.ToString();
-                this._output.WriteLine($"Response Data: {dataStr}");
+                this.Output.WriteLine($"Response Data: {dataStr}");
             });
         }
 
@@ -118,7 +119,7 @@ namespace UnitTest
             dynamic data = await HttpDeleteRoute.Delete_1_Constraint_1_ParameterAsync<dynamic>(guid1, guid2);
 
             string dataStr = data.ToString();
-            this._output.WriteLine($"Response Data: {dataStr}");
+            this.Output.WriteLine($"Response Data: {dataStr}");
             Assert.DoesNotContain(guid1, dataStr);
             Assert.Contains(guid2, dataStr);
         }
@@ -141,7 +142,7 @@ namespace UnitTest
             dynamic data = await HttpDeleteRoute.Delete_0_Constraint_0_ParamerterAsync<dynamic>();
             string dataStr = data.ToString();
 
-            this._output.WriteLine(dataStr);
+            this.Output.WriteLine(dataStr);
             Assert.NotNull(dataStr);
         }
 
@@ -152,7 +153,7 @@ namespace UnitTest
             dynamic data = await HttpDeleteRoute.Delete_0_Constraint_2_ParamerterAsync<dynamic>(guid, "2");
             string dataStr = data.ToString();
 
-            this._output.WriteLine(dataStr);
+            this.Output.WriteLine(dataStr);
             Assert.Contains(guid, dataStr);
         }
 

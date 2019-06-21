@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Route.Generator.RouteAnalyzer;
-
-namespace Mvc
+﻿namespace Mvc
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Route.Generator.RouteAnalyzer;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -30,6 +30,7 @@ namespace Mvc
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {

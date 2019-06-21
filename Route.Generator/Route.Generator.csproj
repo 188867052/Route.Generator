@@ -19,11 +19,20 @@
     <Version>2.0.0.1</Version>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.4" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />
@@ -39,6 +48,10 @@
     <PackageReference Include="Serilog" Version="2.8.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.4" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

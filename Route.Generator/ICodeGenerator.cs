@@ -2,6 +2,6 @@
 {
     public interface ICodeGenerator
     {
-        bool Generate(CommondConfig Config);
+        bool Generate(CommondConfig config);
     }
 }

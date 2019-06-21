@@ -1,18 +1,19 @@
-﻿using Api.Models;
-using Api.Routes;
-using Core.Api.Framework;
-using System;
-using System.Threading.Tasks;
-using Xunit;
-using Xunit.Abstractions;
-
-namespace UnitTest
+﻿namespace UnitTest
 {
+    using System;
+    using System.Threading.Tasks;
+    using Api.Models;
+    using Api.Routes;
+    using Core.Api.Framework;
+    using Xunit;
+    using Xunit.Abstractions;
+
     public class HttpClientPostAsyncTest : UnitTestBase
     {
-        public HttpClientPostAsyncTest(ITestOutputHelper tempOutput) : base(tempOutput)
+        public HttpClientPostAsyncTest(ITestOutputHelper tempOutput)
+            : base(tempOutput)
         {
-            HttpClientAsync._output = tempOutput;
+            HttpClientAsync.Output = tempOutput;
         }
 
         [Fact]

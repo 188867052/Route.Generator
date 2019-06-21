@@ -1,33 +1,21 @@
-﻿using System.Collections.Generic;
-using Api.Models;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Api.Controllers
+﻿namespace Api.Controllers
 {
-    public class HttpPutController : ControllerBase
+    using System.Collections.Generic;
+    using Api.Models;
+    using Microsoft.AspNetCore.Mvc;
+
+    public class HttpPutController : StandardController
     {
-        private Dictionary<string, string> GetResponse(string key, string value, string url)
-        {
-            Dictionary<string, string> dictionary = new Dictionary<string, string>
-            {
-                { "key", key },
-                { "value", value },
-                { "url", url}
-            };
-
-            return dictionary;
-        }
-
         [HttpPut("{key}")]
         public Dictionary<string, string> Put_1_FromBody_1_Constraint(string key, [FromBody] string value)
         {
-            return GetResponse(key, value, nameof(Put_1_FromBody_1_Constraint));
+            return this.ResponseDictionary(key, value, nameof(this.Put_1_FromBody_1_Constraint));
         }
 
         [HttpPut("{key}/{value}")]
         public Dictionary<string, string> Put_2_Constraint(string key, string value)
         {
-            return GetResponse(key, value, nameof(Put_2_Constraint));
+            return this.ResponseDictionary(key, value, nameof(this.Put_2_Constraint));
         }
     }
 }

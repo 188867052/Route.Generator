@@ -1,50 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Api.Controllers
+﻿namespace Api.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class HttpGetController : ControllerBase
+    public class HttpGetController : StandardController
     {
-        private Dictionary<string, string> GetResponse(string key, string value, string url)
-        {
-            Dictionary<string, string> dictionary = new Dictionary<string, string>
-            {
-                { "key", key },
-                { "value", value },
-                { "url", url}
-            };
-
-            return dictionary;
-        }
-
         [HttpGet]
         [Route("~/Get_1_Constraint_1_Parameter/option/{key}")]
         public Dictionary<string, string> Get_1_Constraint_1_Parameter(string key, string value)
         {
-            return GetResponse(key, value, nameof(Get_1_Constraint_1_Parameter));
+            return this.ResponseDictionary(key, value, nameof(this.Get_1_Constraint_1_Parameter));
         }
 
         [HttpGet]
         [Route("~/Get_1_Constraint_1_Parameter_Desc/{value}/{key}")]
         public Dictionary<string, string> Get_1_Constraint_1_Parameter_Desc(string key, string value)
         {
-            return GetResponse(key, value, nameof(Get_1_Constraint_1_Parameter_Desc));
+            return this.ResponseDictionary(key, value, nameof(this.Get_1_Constraint_1_Parameter_Desc));
         }
 
         [Route("~/api/Values/option/{key}/{value?}")]
         public Dictionary<string, string> Get4(string key, string value = "test")
         {
-            return GetResponse(key, value, nameof(Get4));
+            return this.ResponseDictionary(key, value, nameof(this.Get4));
         }
 
         [HttpGet]
         [Route("~/Get_2_Constraints_0_Parameter/{key}/{value=test}")]
         public Dictionary<string, string> Get_2_Constraints_0_Parameter(string key, string value)
         {
-            return GetResponse(key, value, nameof(Get_2_Constraints_0_Parameter));
+            return this.ResponseDictionary(key, value, nameof(this.Get_2_Constraints_0_Parameter));
         }
 
         [HttpGet]
@@ -57,7 +45,7 @@ namespace Api.Controllers
         [Route("~/api/Values")]
         public Dictionary<string, string> Get_0_Constraint_2_Paramerter(string key, string value)
         {
-            return GetResponse(key, value, nameof(Get_0_Constraint_2_Paramerter));
+            return this.ResponseDictionary(key, value, nameof(this.Get_0_Constraint_2_Paramerter));
         }
 
         [HttpGet("{id?}")]
@@ -65,8 +53,8 @@ namespace Api.Controllers
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>
             {
-                { "id", id.HasValue?id.ToString():null },
-                { "url",  nameof(Get_1_Nullable_Constraint)}
+                { "id", id.HasValue ? id.ToString() : null },
+                { "url",  nameof(this.Get_1_Nullable_Constraint) },
             };
 
             return dictionary;
@@ -77,8 +65,8 @@ namespace Api.Controllers
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>
             {
-                { "id", id.HasValue?id.ToString():null },
-                { "url",  nameof(Get_1_Nullable_Constraint)}
+                { "id", id.HasValue ? id.ToString() : null },
+                { "url",  nameof(this.Get_1_Nullable_Constraint) },
             };
 
             return dictionary;
@@ -90,7 +78,6 @@ namespace Api.Controllers
             return "name";
         }
 
-
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
@@ -100,8 +87,6 @@ namespace Api.Controllers
         public void Delete(int id)
         {
         }
-
-       
 
         [Route("~/api/Values/constraint/{id:range(1,10)}")]
         public string GetById(int id)
@@ -119,7 +104,7 @@ namespace Api.Controllers
         [Route("~/api/posts/{email:email}")]
         public IActionResult GetPostByEmail(string email)
         {
-            return Content("Coming from GetPostByEmail");
+            return this.Content("Coming from GetPostByEmail");
         }
     }
 }

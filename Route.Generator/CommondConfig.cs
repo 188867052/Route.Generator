@@ -6,7 +6,7 @@
 
         public string BaseAddress { get; set; }
 
-        public string optionsFile { get; set; }
+        public string OptionsFile { get; set; }
 
         public string OutPutFile { get; set; }
 

@@ -1,23 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Route.Generator.RouteAnalyzer;
-
-namespace Mvc.Controllers
+﻿namespace Mvc.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Route.Generator.RouteAnalyzer;
+
     public class RouteController : Controller
     {
-        private readonly IRouteAnalyzer _routeAnalyzer;
+        private readonly IRouteAnalyzer routeAnalyzer;
 
         public RouteController(IRouteAnalyzer routeAnalyzer)
         {
-            _routeAnalyzer = routeAnalyzer;
+            this.routeAnalyzer = routeAnalyzer;
         }
 
         [HttpGet]
         [Route(Router.DefaultRoute)]
         public JsonResult ShowAllRoutes()
         {
-            var infos = _routeAnalyzer.GetAllRouteInformations();
-            return Json(infos);
+            var infos = this.routeAnalyzer.GetAllRouteInformations();
+            return this.Json(infos);
         }
     }
 }

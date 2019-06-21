@@ -1,20 +1,20 @@
-﻿using Api.RouteConstraint;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Route.Generator.RouteAnalyzer;
-
-namespace Api
+﻿namespace Api
 {
+    using Api.RouteConstraint;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Routing;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Newtonsoft.Json;
+    using Route.Generator.RouteAnalyzer;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -32,8 +32,7 @@ namespace Api
             services.AddMvc().AddJsonOptions(options =>
        {
            options.SerializerSettings.Formatting = Formatting.Indented;
-       }
-        );
+       });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

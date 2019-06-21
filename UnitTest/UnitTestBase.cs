@@ -1,15 +1,14 @@
-﻿using Xunit.Abstractions;
-
-namespace UnitTest
+﻿namespace UnitTest
 {
+    using Xunit.Abstractions;
+
     public class UnitTestBase
     {
-        protected readonly ITestOutputHelper _output;
-
         public UnitTestBase(ITestOutputHelper tempOutput)
         {
-            this._output = tempOutput;
+            this.Output = tempOutput;
         }
 
+        protected ITestOutputHelper Output { get; set; }
     }
 }

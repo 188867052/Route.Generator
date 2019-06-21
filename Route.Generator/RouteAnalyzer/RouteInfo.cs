@@ -1,13 +1,13 @@
-using System.Collections.Generic;
-
 namespace Route.Generator.RouteAnalyzer
 {
+    using System.Collections.Generic;
+
     public class RouteInfo
     {
         public RouteInfo()
         {
-            Parameters = new List<ParameterInfo>();
-            HttpMethod = "GET";
+            this.Parameters = new List<ParameterInfo>();
+            this.HttpMethod = "GET";
         }
 
         public string HttpMethod { get; set; }
