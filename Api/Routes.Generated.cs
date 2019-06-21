@@ -731,41 +731,5 @@ namespace Api.Routes
             };
             return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
         }
-
-        /// <summary>
-        /// <see cref="Controllers.HttpPutController.Put_1_FromBody"/>
-        /// </summary>
-        public const string Put_1_FromBody = "/HttpPut/Put_1_FromBody";
-        public static async Task<T> Put_1_FromBodyAsync<T>(string key)
-        {
-            var routeInfo = new RouteInfo
-            {
-                HttpMethod = "PUT",
-                Path = "/HttpPut/Put_1_FromBody",
-                Parameters = new List<ParameterInfo>
-                {
-                    new ParameterInfo() {Name = "key", Type = "string"},
-                }
-            };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key);
-        }
-
-        /// <summary>
-        /// <see cref="Controllers.HttpPutController.Put_Model"/>
-        /// </summary>
-        public const string Put_Model = "/HttpPut/Put_Model";
-        public static async Task<T> Put_ModelAsync<T>(Api.Models.PointModel point)
-        {
-            var routeInfo = new RouteInfo
-            {
-                HttpMethod = "PUT",
-                Path = "/HttpPut/Put_Model",
-                Parameters = new List<ParameterInfo>
-                {
-                    new ParameterInfo() {Name = "point", Type = "Api.Models.PointModel"},
-                }
-            };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, point);
-        }
     }
 }

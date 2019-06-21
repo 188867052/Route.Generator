@@ -29,17 +29,5 @@ namespace Api.Controllers
         {
             return GetResponse(key, value, nameof(Put_2_Constraint));
         }
-
-        [HttpPut]
-        public Dictionary<string, string> Put_1_FromBody([FromBody]string key)
-        {
-            return GetResponse(key, "", nameof(Put_1_FromBody));
-        }
-
-        [HttpPut]
-        public JsonResult Put_Model(PointModel point)
-        {
-            return new JsonResult(point);
-        }
     }
 }

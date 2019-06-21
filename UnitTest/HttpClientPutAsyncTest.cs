@@ -42,30 +42,5 @@ namespace UnitTest
             Assert.Equal(guid1, key);
             Assert.Equal(guid2, value);
         }
-
-        [Fact]
-        public async Task Put_1_FromBody()
-        {
-            string guid1 = Guid.NewGuid().ToString();
-            dynamic data = await HttpPutRoute.Put_1_FromBodyAsync<dynamic>(guid1);
-
-            string key = data.key;
-
-            Assert.Equal(guid1, key);
-        }
-
-        [Theory]
-        [InlineData(66, 88)]
-        public async Task Put_Model(int x, int y)
-        {
-            PointModel point = new PointModel { X = x, Y = y };
-            dynamic data = await HttpPutRoute.Put_ModelAsync<dynamic>(point);
-
-            int xResponse = data.x;
-            int yResponse = data.y;
-
-            Assert.Equal(x, xResponse);
-            Assert.Equal(y, yResponse);
-        }
     }
 }

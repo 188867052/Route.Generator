@@ -5,38 +5,6 @@ using Route.Generator.RouteAnalyzer;
 
 namespace Mvc.Routes
 {
-    public class Cache
-    {
-        public static Dictionary<string, RouteInfo> Dictionary = new Dictionary<string, RouteInfo>()
-        {
-            {Mvc.Routes.HomeRoute.Index, new RouteInfo
-                {
-                    HttpMethod = "GET",
-                }
-            },
-            {Mvc.Routes.HomeRoute.About, new RouteInfo
-                {
-                    HttpMethod = "GET",
-                }
-            },
-            {Mvc.Routes.HomeRoute.Contact, new RouteInfo
-                {
-                    HttpMethod = "GET",
-                }
-            },
-            {Mvc.Routes.HomeRoute.Privacy, new RouteInfo
-                {
-                    HttpMethod = "GET",
-                }
-            },
-            {Mvc.Routes.HomeRoute.Error, new RouteInfo
-                {
-                    HttpMethod = "GET",
-                }
-            },
-        };
-    }
-
     /// <summary>
     /// <see cref="Controllers.HomeController"/>
     /// </summary>

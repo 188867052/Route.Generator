@@ -28,7 +28,6 @@ namespace Core.Api.Framework
             using (HttpClient httpClient = CreateInstance())
             {
                 string json = await ExcuteAsync(httpClient, routeInfo, data);
-                _output.WriteLine($"Response Data: {json}");
                 T model = JsonConvert.DeserializeObject<T>(json);
 
                 return model;
@@ -160,7 +159,7 @@ namespace Core.Api.Framework
             }
         }
 
-        private static void PreAttributeConstraintParameters(RouteInfo routeInfo, out string Constrainturl, out MatchCollection matches, params object[] data)
+        private static void PreAttributeConstraintParameters(RouteInfo routeInfo, out string constraintUrl, out MatchCollection matches, params object[] data)
         {
             string url = routeInfo.Path;
             IList<ParameterInfo> parameterInfos = routeInfo.Parameters;
@@ -193,7 +192,7 @@ namespace Core.Api.Framework
                 }
             }
 
-            Constrainturl = url;
+            constraintUrl = url;
         }
 
         private static void PreNoneAttributeConstraintParameters(RouteInfo routeInfo, MatchCollection matches, string url, out string constraintUrl, params object[] data)
