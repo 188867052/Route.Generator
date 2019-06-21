@@ -1,7 +1,6 @@
 ﻿namespace Api.Controllers
 {
     using System.Collections.Generic;
-    using Api.Models;
     using Microsoft.AspNetCore.Mvc;
 
     public class HttpPutController : StandardController

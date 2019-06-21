@@ -1,6 +1,7 @@
 ﻿namespace Route.Generator
 {
     using System.IO;
+    using System.Linq;
     using McMaster.Extensions.CommandLineUtils;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
@@ -30,32 +31,42 @@
 
         private int Initialize()
         {
-            FileInfo info = new FileInfo(this.ConfigJsonPath);
-            if (!info.Exists)
+            try
             {
-                this.Console.WriteLine($"config json path: {this.ConfigJsonPath} can not be found.");
+                this.ConfigJsonPath = Directory.GetFiles(".", "appsettings.json", SearchOption.AllDirectories).FirstOrDefault();
+                if (string.IsNullOrEmpty(this.ConfigJsonPath))
+                {
+                    this.Console.WriteLine("No appsettings.json file found, will generate code with default setting.");
+                }
+
+                string appSettings = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(this.ConfigJsonPath)).RouteGenerator.ToString();
+                CommondConfig config = JsonConvert.DeserializeObject<CommondConfig>(appSettings);
+                this.Config = config;
+                this.Console.WriteLine(JsonConvert.SerializeObject(config, Formatting.Indented));
+                if (string.IsNullOrEmpty(this.Config.BaseAddress))
+                {
+                    this.Console.WriteLine($"base address cant not be null.");
+                    return 1;
+                }
+
+                if (string.IsNullOrEmpty(this.Config.OutPutFile))
+                {
+                    this.Config.OutPutFile = "Routes.Generated.cs";
+                }
+
+                if (!this.Config.OutPutFile.EndsWith(".cs"))
+                {
+                    this.Config.OutPutFile += ".cs";
+                }
+            }
+            catch (System.Exception ex)
+            {
+                this.Console.WriteLine("Read config file error.");
+                this.Console.WriteLine(ex.Message);
+                this.Console.WriteLine(ex.StackTrace);
                 return 1;
             }
 
-            var config = JsonConvert.DeserializeObject<CommondConfig>(File.ReadAllText(this.ConfigJsonPath));
-            this.Console.WriteLine(JsonConvert.SerializeObject(config, Formatting.Indented));
-            if (string.IsNullOrEmpty(config.BaseAddress))
-            {
-                this.Console.WriteLine($"base address cant not be null.");
-                return 1;
-            }
-
-            if (string.IsNullOrEmpty(config.OutPutFile))
-            {
-                config.OutPutFile = "Routes.Generated.cs";
-            }
-
-            if (!config.OutPutFile.EndsWith(".cs"))
-            {
-                config.OutPutFile += ".cs";
-            }
-
-            this.Config = config;
             return 0;
         }
     }

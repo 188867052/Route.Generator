@@ -1,7 +1,6 @@
 ﻿namespace Route.Generator.RouteAnalyzer
 {
     using Microsoft.AspNetCore.Routing;
-    using Microsoft.Extensions.DependencyInjection;
 
     public static class RouteAnalyzerRouteBuilderExtensions
     {

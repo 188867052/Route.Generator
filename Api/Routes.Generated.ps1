@@ -12,5 +12,5 @@ else
 	dotnet tool update --global Routes.Generator --add-source .\
 }
 del .\*.nupkg
-routegen gen -c .\routes.generated.json
+routegen gen
 dotnet tool uninstall --global Route.Generator

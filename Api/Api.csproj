@@ -13,15 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Routes.Generated.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Routes.Generated.json" />
   </ItemGroup>
 
   <ItemGroup>

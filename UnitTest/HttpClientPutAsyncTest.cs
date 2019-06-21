@@ -2,7 +2,6 @@
 {
     using System;
     using System.Threading.Tasks;
-    using Api.Models;
     using Api.Routes;
     using Core.Api.Framework;
     using Xunit;

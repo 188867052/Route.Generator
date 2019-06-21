@@ -1,11 +1,26 @@
 ﻿namespace UnitTest
 {
     using System;
+    using System.IO;
     using System.Threading.Tasks;
     using Api.Routes;
     using Core.Api.Framework;
+    using Newtonsoft.Json;
     using Xunit;
     using Xunit.Abstractions;
+
+    public class CommondConfig
+    {
+        public string ProjectName { get; set; }
+
+        public string BaseAddress { get; set; }
+
+        public string OptionsFile { get; set; }
+
+        public string OutPutFile { get; set; }
+
+        public bool GenerateMethod { get; set; }
+    }
 
     public class HttpClientGetAsyncTest : UnitTestBase
     {
