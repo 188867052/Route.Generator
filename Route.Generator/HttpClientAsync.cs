@@ -1,4 +1,4 @@
-﻿namespace Core.Api.Framework
+﻿namespace Route.Generator
 {
     using System;
     using System.Collections.Generic;
@@ -8,10 +8,8 @@
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using System.Web;
-    using global::Api;
     using Newtonsoft.Json;
     using Route.Generator.RouteAnalyzer;
-    using Xunit.Abstractions;
     using HttpMethod = Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpMethod;
 
     public static class HttpClientAsync
@@ -22,8 +20,6 @@
         {
             BaseAddress = "http://localhost:27634/";
         }
-
-        public static ITestOutputHelper Output { get; set; }
 
         public static HttpClient CreateInstance()
         {

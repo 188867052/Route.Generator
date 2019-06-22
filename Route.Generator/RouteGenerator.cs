@@ -22,7 +22,9 @@
             sb.AppendLine($"using {typeof(object).Namespace};");
             sb.AppendLine($"using {typeof(Dictionary<int, int>).Namespace};");
             sb.AppendLine($"using {typeof(Task).Namespace};");
+            sb.AppendLine($"using {typeof(HttpClientAsync).Namespace};");
             sb.AppendLine($"using {typeof(ParameterInfo).Namespace};");
+
             sb.AppendLine();
             for (int i = 0; i < group.Count(); i++)
             {
@@ -92,13 +94,13 @@
                 {
                     sb.AppendLine($"        public static async Task<T> {item.ActionName}Async<T>({GeneraParameters(item.Parameters, true, false)})");
                     sb.AppendLine("        {");
-                    sb.AppendLine("            var routeInfo = new RouteInfo");
+                    sb.AppendLine($"            var routeInfo = new {nameof(RouteInfo)}");
                     sb.AppendLine("            {");
-                    sb.AppendLine($"                HttpMethod = \"{item.HttpMethod}\",");
-                    sb.AppendLine($"                Path = \"{item.Path}\",");
+                    sb.AppendLine($"                {nameof(RouteInfo.HttpMethod)} = \"{item.HttpMethod}\",");
+                    sb.AppendLine($"                {nameof(RouteInfo.Path)} = {renamedAction},");
                     sb.Append(GenerateParameters(item.Parameters));
                     sb.AppendLine("            };");
-                    sb.AppendLine($"            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo{GeneraParameters(item.Parameters, false, true)});");
+                    sb.AppendLine($"            return await {nameof(HttpClientAsync)}.{nameof(HttpClientAsync.Async)}<T>(routeInfo{GeneraParameters(item.Parameters, false, true)});");
                     sb.AppendLine("        }");
                 }
 

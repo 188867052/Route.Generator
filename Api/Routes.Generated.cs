@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Route.Generator;
 using Route.Generator.RouteAnalyzer;
 
 namespace Api.Routes
@@ -19,14 +20,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/Delete_1_Constraint_1_Parameter/option/{key}",
+                Path = Delete_1_Constraint_1_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -38,14 +39,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/Delete_1_Constraint_1_Parameter_Desc/{value}/{key}",
+                Path = Delete_1_Constraint_1_Parameter_Desc,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -57,14 +58,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/Values/option/{key}/{value?}",
+                Path = Delete4,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -76,14 +77,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/Delete_2_Constraints_0_Parameter/{key}/{value=test}",
+                Path = Delete_2_Constraints_0_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -95,9 +96,9 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/HttpDelete/Delete_0_Constraint_0_Paramerter",
+                Path = Delete_0_Constraint_0_Paramerter,
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo);
+            return await HttpClientAsync.Async<T>(routeInfo);
         }
 
         /// <summary>
@@ -109,14 +110,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/Values",
+                Path = Delete_0_Constraint_2_Paramerter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -128,13 +129,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/HttpDelete/Delete_1_Nullable_Constraint/{id?}",
+                Path = Delete_1_Nullable_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int?"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -146,13 +147,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/HttpDelete/Delete_1_Nullable_Parameter",
+                Path = Delete_1_Nullable_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int?"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -164,14 +165,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/HttpDelete/DeleteName",
+                Path = DeleteName,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                     new ParameterInfo() {Name = "name", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id, name);
+            return await HttpClientAsync.Async<T>(routeInfo, id, name);
         }
 
         /// <summary>
@@ -183,14 +184,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PUT",
-                Path = "/api/HttpDelete/Put/{id}",
+                Path = Put,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id, value);
+            return await HttpClientAsync.Async<T>(routeInfo, id, value);
         }
 
         /// <summary>
@@ -202,13 +203,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/HttpDelete/Delete/{id}",
+                Path = Delete,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -220,13 +221,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/Values/constraint/{id:range(1,10)}",
+                Path = DeleteById,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -238,14 +239,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/Values/many/{isOk:bool}/{*DeleteDate:datetime}",
+                Path = Delete7,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "isOk", Type = "bool"},
                     new ParameterInfo() {Name = "deleteDate", Type = "DateTime?"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, isOk, deleteDate);
+            return await HttpClientAsync.Async<T>(routeInfo, isOk, deleteDate);
         }
 
         /// <summary>
@@ -257,13 +258,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/posts/{email:email}",
+                Path = DeletePostByEmail,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "email", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, email);
+            return await HttpClientAsync.Async<T>(routeInfo, email);
         }
     }
 
@@ -281,14 +282,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/Get_1_Constraint_1_Parameter/option/{key}",
+                Path = Get_1_Constraint_1_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -300,7 +301,7 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/Get_5_Constraint_5_Parameter_None_Order/{constraint2}/{constraint1}/{constraint3}/{constraint5}/{constraint4}",
+                Path = Get_5_Constraint_5_Parameter_None_Order,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "constraint4", Type = "string"},
@@ -315,7 +316,7 @@ namespace Api.Routes
                     new ParameterInfo() {Name = "parameter4", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, constraint4, parameter5, parameter3, constraint1, constraint5, constraint2, parameter1, parameter2, constraint3, parameter4);
+            return await HttpClientAsync.Async<T>(routeInfo, constraint4, parameter5, parameter3, constraint1, constraint5, constraint2, parameter1, parameter2, constraint3, parameter4);
         }
 
         /// <summary>
@@ -327,14 +328,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/Get_1_Constraint_1_Parameter_Desc/{value}/{key}",
+                Path = Get_1_Constraint_1_Parameter_Desc,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -346,14 +347,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/Values/option/{key}/{value?}",
+                Path = Get4,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -365,14 +366,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/Get_2_Constraints_0_Parameter/{key}/{value=test}",
+                Path = Get_2_Constraints_0_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -384,9 +385,9 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/HttpGet/Get_0_Constraint_0_Paramerter",
+                Path = Get_0_Constraint_0_Paramerter,
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo);
+            return await HttpClientAsync.Async<T>(routeInfo);
         }
 
         /// <summary>
@@ -398,14 +399,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/Values",
+                Path = Get_0_Constraint_2_Paramerter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -417,13 +418,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/HttpGet/Get_1_Nullable_Constraint/{id?}",
+                Path = Get_1_Nullable_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int?"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -435,13 +436,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/HttpGet/Get_1_Nullable_Parameter",
+                Path = Get_1_Nullable_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int?"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -453,14 +454,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/HttpGet/GetName",
+                Path = GetName,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                     new ParameterInfo() {Name = "name", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id, name);
+            return await HttpClientAsync.Async<T>(routeInfo, id, name);
         }
 
         /// <summary>
@@ -472,14 +473,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PUT",
-                Path = "/api/HttpGet/Put/{id}",
+                Path = Put,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id, value);
+            return await HttpClientAsync.Async<T>(routeInfo, id, value);
         }
 
         /// <summary>
@@ -491,13 +492,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "DELETE",
-                Path = "/api/HttpGet/Delete/{id}",
+                Path = Delete,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -509,13 +510,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/Values/constraint/{id:range(1,10)}",
+                Path = GetById,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "id", Type = "int"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, id);
+            return await HttpClientAsync.Async<T>(routeInfo, id);
         }
 
         /// <summary>
@@ -527,14 +528,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/Values/many/{isOk:bool}/{*getDate:datetime}",
+                Path = Get7,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "isOk", Type = "bool"},
                     new ParameterInfo() {Name = "getDate", Type = "DateTime?"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, isOk, getDate);
+            return await HttpClientAsync.Async<T>(routeInfo, isOk, getDate);
         }
 
         /// <summary>
@@ -546,13 +547,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "GET",
-                Path = "/api/posts/{email:email}",
+                Path = GetPostByEmail,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "email", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, email);
+            return await HttpClientAsync.Async<T>(routeInfo, email);
         }
     }
 
@@ -570,14 +571,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PATCH",
-                Path = "/api/HttpPatch/Patch_1_FromBody_1_Constraint/{key}",
+                Path = Patch_1_FromBody_1_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -589,14 +590,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PATCH",
-                Path = "/api/HttpPatch/Patch_2_Constraint/{key}/{value}",
+                Path = Patch_2_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -608,13 +609,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PATCH",
-                Path = "/api/HttpPatch/Patch_1_FromBody",
+                Path = Patch_1_FromBody,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key);
+            return await HttpClientAsync.Async<T>(routeInfo, key);
         }
 
         /// <summary>
@@ -626,13 +627,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PATCH",
-                Path = "/api/HttpPatch/Patch_Model",
+                Path = Patch_Model,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "point", Type = "Api.Models.PointModel"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, point);
+            return await HttpClientAsync.Async<T>(routeInfo, point);
         }
     }
 
@@ -650,14 +651,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "POST",
-                Path = "/api/HttpPost/Post_1_FromBody_1_Constraint/{key}",
+                Path = Post_1_FromBody_1_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -669,14 +670,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "POST",
-                Path = "/api/HttpPost/Post_2_Constraint/{key}/{value}",
+                Path = Post_2_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -688,13 +689,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "POST",
-                Path = "/api/HttpPost/Post_1_FromBody",
+                Path = Post_1_FromBody,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key);
+            return await HttpClientAsync.Async<T>(routeInfo, key);
         }
 
         /// <summary>
@@ -706,13 +707,13 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "POST",
-                Path = "/api/HttpPost/Post_Model",
+                Path = Post_Model,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "point", Type = "Api.Models.PointModel"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, point);
+            return await HttpClientAsync.Async<T>(routeInfo, point);
         }
     }
 
@@ -730,14 +731,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PUT",
-                Path = "/{key}",
+                Path = Put_1_FromBody_1_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
 
         /// <summary>
@@ -749,14 +750,14 @@ namespace Api.Routes
             var routeInfo = new RouteInfo
             {
                 HttpMethod = "PUT",
-                Path = "/{key}/{value}",
+                Path = Put_2_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
                     new ParameterInfo() {Name = "key", Type = "string"},
                     new ParameterInfo() {Name = "value", Type = "string"},
                 }
             };
-            return await Core.Api.Framework.HttpClientAsync.Async<T>(routeInfo, key, value);
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Api
+﻿namespace Route.Generator
 {
     using System;
 

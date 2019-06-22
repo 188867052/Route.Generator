@@ -3,7 +3,6 @@
     using System;
     using System.Threading.Tasks;
     using Api.Routes;
-    using Core.Api.Framework;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -12,7 +11,6 @@
         public HttpClientGetAsyncTest(ITestOutputHelper tempOutput)
             : base(tempOutput)
         {
-            HttpClientAsync.Output = tempOutput;
         }
 
         [Fact]
