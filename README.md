@@ -22,7 +22,7 @@
 * [Post]
 * [Put]
 
-## Generated Filse
+## Generated Files
 
 * [Mvc-Generated Routes](https://github.com/188867052/Route.Generator/blob/master/Mvc/Routes.Generated.cs)
 * [Api-Generated Routes and Async Methods](https://github.com/188867052/Route.Generator/blob/master/Api/Routes.Generated.cs)
