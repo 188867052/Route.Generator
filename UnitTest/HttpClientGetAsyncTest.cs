@@ -1,26 +1,11 @@
 ﻿namespace UnitTest
 {
     using System;
-    using System.IO;
     using System.Threading.Tasks;
     using Api.Routes;
     using Core.Api.Framework;
-    using Newtonsoft.Json;
     using Xunit;
     using Xunit.Abstractions;
-
-    public class CommondConfig
-    {
-        public string ProjectName { get; set; }
-
-        public string BaseAddress { get; set; }
-
-        public string OptionsFile { get; set; }
-
-        public string OutPutFile { get; set; }
-
-        public bool GenerateMethod { get; set; }
-    }
 
     public class HttpClientGetAsyncTest : UnitTestBase
     {
@@ -28,6 +13,55 @@
             : base(tempOutput)
         {
             HttpClientAsync.Output = tempOutput;
+        }
+
+        [Fact]
+        public async Task Get_5_Constraint_5_Parameter_None_OrderAsync()
+        {
+            string constraint4;
+            string parameter5;
+            string parameter3;
+            string constraint1;
+            string constraint5;
+            string constraint2;
+            string parameter1;
+            string parameter2;
+            string constraint3;
+            string parameter4;
+
+            dynamic data = await HttpGetRoute.Get_5_Constraint_5_Parameter_None_OrderAsync<dynamic>(
+                nameof(constraint4),
+                nameof(parameter5),
+                nameof(parameter3),
+                nameof(constraint1),
+                nameof(constraint5),
+                nameof(constraint2),
+                nameof(parameter1),
+                nameof(parameter2),
+                nameof(constraint3),
+                nameof(parameter4));
+
+            string constraint1Response = data.constraint1;
+            string constraint2Response = data.constraint2;
+            string constraint3Response = data.constraint3;
+            string constraint4Response = data.constraint4;
+            string constraint5Response = data.constraint5;
+            string parameter1Response = data.parameter1;
+            string parameter2Response = data.parameter2;
+            string parameter3Response = data.parameter3;
+            string parameter4Response = data.parameter4;
+            string parameter5Response = data.parameter5;
+
+            Assert.Equal(nameof(constraint1), constraint1Response);
+            Assert.Equal(nameof(constraint2), constraint2Response);
+            Assert.Equal(nameof(constraint3), constraint3Response);
+            Assert.Equal(nameof(constraint4), constraint4Response);
+            Assert.Equal(nameof(constraint5), constraint5Response);
+            Assert.Equal(nameof(parameter1), parameter1Response);
+            Assert.Equal(nameof(parameter2), parameter2Response);
+            Assert.Equal(nameof(parameter3), parameter3Response);
+            Assert.Equal(nameof(parameter4), parameter4Response);
+            Assert.Equal(nameof(parameter5), parameter5Response);
         }
 
         [Fact]
@@ -126,7 +160,7 @@
 
         [InlineData("\\")]
         [InlineData("/")]
-        [Theory(DisplayName = "Test Double Escape Sequence ")]
+        [Theory(DisplayName = "Test Double Escape Sequence")]
         public async Task Get_1_Constraint_1_Paramer_Specima_Double_Escape_Sequence_Async(string chars)
         {
             string guid1 = Guid.NewGuid().ToString() + chars;

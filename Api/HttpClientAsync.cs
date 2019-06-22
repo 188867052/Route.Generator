@@ -38,21 +38,17 @@
 
         private static async Task<string> PostAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
         {
-            string url = GenerateUrl(routeInfo, out MatchCollection constraintMatches, data);
+            string url = GenerateUrl(routeInfo, out IList<string> constraintNameList, data);
             object postContent = new object();
-            if (constraintMatches.Count == 0)
+            if (constraintNameList.Count == 0)
             {
                 postContent = data[0];
             }
             else
             {
-                for (int i = 0; i < constraintMatches.Count; i++)
+                for (int i = 0; i < constraintNameList.Count; i++)
                 {
-                    var constraint = constraintMatches[i].Value;
-                    string name = constraint.Trim('{', '}');
-                    Match match = Regex.Match(name, "[^{=?]+");
-                    name = match.Value;
-                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != name));
+                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != constraintNameList[i]));
                     postContent = data[index];
                 }
             }
@@ -73,21 +69,17 @@
 
         private static async Task<string> PatchAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
         {
-            string url = GenerateUrl(routeInfo, out MatchCollection constraintMatches, data);
+            string url = GenerateUrl(routeInfo, out IList<string> constraintNameList, data);
             object postContent = new object();
-            if (constraintMatches.Count == 0)
+            if (constraintNameList.Count == 0)
             {
                 postContent = data[0];
             }
             else
             {
-                for (int i = 0; i < constraintMatches.Count; i++)
+                for (int i = 0; i < constraintNameList.Count; i++)
                 {
-                    var constraint = constraintMatches[i].Value;
-                    string name = constraint.Trim('{', '}');
-                    Match match = Regex.Match(name, "[^{=?]+");
-                    name = match.Value;
-                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != name));
+                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != constraintNameList[i]));
                     postContent = data[index];
                 }
             }
@@ -108,21 +100,17 @@
 
         private static async Task<string> PutAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
         {
-            string url = GenerateUrl(routeInfo, out MatchCollection constraintMatches, data);
+            string url = GenerateUrl(routeInfo, out IList<string> constraintNameList, data);
             object postContent = new object();
-            if (constraintMatches.Count == 0)
+            if (constraintNameList.Count == 0)
             {
                 postContent = data[0];
             }
             else
             {
-                for (int i = 0; i < constraintMatches.Count; i++)
+                for (int i = 0; i < constraintNameList.Count; i++)
                 {
-                    var constraint = constraintMatches[i].Value;
-                    string name = constraint.Trim('{', '}');
-                    Match match = Regex.Match(name, "[^{=?]+");
-                    name = match.Value;
-                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != name));
+                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != constraintNameList[i]));
                     postContent = data[index];
                 }
             }
@@ -161,13 +149,14 @@
             }
         }
 
-        private static void PreAttributeConstraintParameters(RouteInfo routeInfo, out string constraintUrl, out MatchCollection matches, params object[] data)
+        private static void PreAttributeConstraintParameters(RouteInfo routeInfo, out string constraintUrl, out IList<string> constraintNameList, params object[] data)
         {
             string url = routeInfo.Path;
             IList<ParameterInfo> parameterInfos = routeInfo.Parameters;
+            constraintNameList = new List<string>();
 
             // Attribute Constraint Route.
-            matches = Regex.Matches(routeInfo.Path, "[^/]+[{}]");
+            var matches = Regex.Matches(routeInfo.Path, "[^/]+[{}]");
             int constraintCount = matches.Count;
             if (matches != null && constraintCount > 0)
             {
@@ -177,6 +166,7 @@
                     string name = constraint.Trim('{', '}');
                     Match match = Regex.Match(name, "[^{=?]+");
                     name = match.Value;
+                    constraintNameList.Add(name);
                     var parameterInfo = parameterInfos.FirstOrDefault(o => o.Name == name);
                     int dataIndex = parameterInfos.IndexOf(parameterInfo);
                     object value = data.ElementAt(dataIndex);
@@ -197,12 +187,11 @@
             constraintUrl = url;
         }
 
-        private static void PreNoneAttributeConstraintParameters(RouteInfo routeInfo, MatchCollection matches, string url, out string constraintUrl, params object[] data)
+        private static void PreNoneAttributeConstraintParameters(RouteInfo routeInfo, IList<string> constraintNameList, string url, out string constraintUrl, params object[] data)
         {
-            int constraintCount = matches.Count;
-            if (data != null && data.Length - constraintCount > 0)
+            if (data != null && data.Length > 0)
             {
-                for (int i = constraintCount; i < data.Length; i++)
+                for (int i = 0; i < data.Length; i++)
                 {
                     var value = data[i];
                     if (value == default)
@@ -212,6 +201,7 @@
                     }
                     else
                     {
+                        // Support dynamic object;
                         var valueStr = value.ToString();
                         if (valueStr.Contains("{") && valueStr.Contains("}") && valueStr.Contains("="))
                         {
@@ -232,21 +222,21 @@
                 }
             }
 
-            var noConstraintParameterInfos = routeInfo.Parameters.Skip(constraintCount);
+            var noConstraintParameterInfos = routeInfo.Parameters.Where(o => !constraintNameList.Contains(o.Name));
             constraintUrl = url
                 + (noConstraintParameterInfos.Count() > 0 ? "?" : string.Empty)
                 + string.Join("&", noConstraintParameterInfos.Select(o => $"{o.Name}={HttpUtility.UrlEncode(o.Value)}"));
         }
 
-        private static string GenerateUrl(RouteInfo routeInfo, out MatchCollection matches, params object[] data)
+        private static string GenerateUrl(RouteInfo routeInfo, out IList<string> constraintNameList, params object[] data)
         {
-            PreAttributeConstraintParameters(routeInfo, out string url, out matches, data);
+            PreAttributeConstraintParameters(routeInfo, out string url, out constraintNameList, data);
             if (routeInfo.HttpMethod.ToUpper() != "GET" && routeInfo.HttpMethod.ToUpper() != "DELETE")
             {
                 return url;
             }
 
-            PreNoneAttributeConstraintParameters(routeInfo, matches, url, out url, data);
+            PreNoneAttributeConstraintParameters(routeInfo, constraintNameList, url, out url, data);
 
             return url;
         }
