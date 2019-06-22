@@ -15,8 +15,19 @@
 * [Route Generator Unit Test](https://github.com/188867052/Route.Generator/blob/master/UnitTest/RouteGeneratorTest.cs)
 
 ## Supported Http Methods
-* [Http Get]
-* [Http Post]
-* [Http Delete]
-* [Http Post]
-* [Http Put]
+
+* [Get]
+* [Post]
+* [Delete]
+* [Post]
+* [Put]
+
+## Generated Filse
+
+* [Mvc-Generated Routes](https://github.com/188867052/Route.Generator/blob/master/Mvc/Routes.Generated.cs)
+* [Api-Generated Routes and Async Methods](https://github.com/188867052/Route.Generator/blob/master/Api/Routes.Generated.cs)
+
+## Route Generator Project
+
+* [See Code](https://github.com/188867052/Route.Generator/tree/master/Route.Generator)
+
