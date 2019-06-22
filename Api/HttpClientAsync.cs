@@ -16,7 +16,12 @@
 
     public static class HttpClientAsync
     {
-        private static readonly string BaseAddress = "http://localhost:27634/";
+        private static readonly string BaseAddress;
+
+        static HttpClientAsync()
+        {
+            BaseAddress = "http://localhost:27634/";
+        }
 
         public static ITestOutputHelper Output { get; set; }
 
@@ -29,146 +34,92 @@
         {
             using (HttpClient httpClient = CreateInstance())
             {
-                string json = await ExcuteAsync(httpClient, routeInfo, data);
+                string json = await GetResponseMessageAsync(httpClient, routeInfo, data);
                 T model = JsonConvert.DeserializeObject<T>(json);
 
                 return model;
             }
         }
 
-        private static async Task<string> PostAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
+        private static void PrepareStringContent(out StringContent httpContent, IList<string> constraintNameList, RouteInfo routeInfo, params object[] data)
         {
-            string url = GenerateUrl(routeInfo, out IList<string> constraintNameList, data);
-            object postContent = new object();
+            object stringContent = new object();
             if (constraintNameList.Count == 0)
             {
-                postContent = data[0];
+                stringContent = data[0];
             }
             else
             {
                 for (int i = 0; i < constraintNameList.Count; i++)
                 {
                     var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != constraintNameList[i]));
-                    postContent = data[index];
+                    stringContent = data[index];
                 }
             }
 
-            // TODO
-            string content = JsonConvert.SerializeObject(postContent);
-            Output.WriteLine($"Request Url: {url}");
-            Output.WriteLine($"Request Data: {JsonConvert.SerializeObject(postContent, Formatting.Indented)}");
-            using (StringContent httpContent = new StringContent(content))
-            {
-                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                using (HttpResponseMessage httpResponse = await httpClient.PostAsync(url, httpContent))
-                {
-                    return await httpResponse.Content.ReadAsStringAsync();
-                }
-            }
+            string content = JsonConvert.SerializeObject(stringContent);
+            httpContent = new StringContent(content);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
         }
 
-        private static async Task<string> PatchAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
+        private static async Task<string> GetResponseMessageAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
         {
-            string url = GenerateUrl(routeInfo, out IList<string> constraintNameList, data);
-            object postContent = new object();
-            if (constraintNameList.Count == 0)
+            HttpResponseMessage httpResponseMessage;
+            StringContent httpContent;
+            PrepareConstraintParameters(out string url, out IList<string> constraintNameList, routeInfo, data);
+            var httpMethod = (HttpMethod)Enum.Parse(typeof(HttpMethod), routeInfo.HttpMethod, true);
+            switch (httpMethod)
             {
-                postContent = data[0];
-            }
-            else
-            {
-                for (int i = 0; i < constraintNameList.Count; i++)
-                {
-                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != constraintNameList[i]));
-                    postContent = data[index];
-                }
+                case HttpMethod.Get:
+                    PrepareNoneConstraintParameters(out url, routeInfo, constraintNameList, url, data);
+                    httpResponseMessage = await httpClient.GetAsync(url);
+                    break;
+                case HttpMethod.Post:
+                    PrepareStringContent(out httpContent, constraintNameList, routeInfo, data);
+                    httpResponseMessage = await httpClient.PostAsync(url, httpContent);
+                    httpContent.Dispose();
+                    break;
+                case HttpMethod.Patch:
+                    PrepareStringContent(out httpContent, constraintNameList, routeInfo, data);
+                    httpResponseMessage = await httpClient.PatchAsync(url, httpContent);
+                    httpContent.Dispose();
+                    break;
+                case HttpMethod.Delete:
+                    PrepareNoneConstraintParameters(out url, routeInfo, constraintNameList, url, data);
+                    httpResponseMessage = await httpClient.DeleteAsync(url);
+                    break;
+                case HttpMethod.Put:
+                    PrepareStringContent(out httpContent, constraintNameList, routeInfo, data);
+                    httpResponseMessage = await httpClient.PutAsync(url, httpContent);
+                    httpContent.Dispose();
+                    break;
+                default:
+                    throw new HttpRequestException($"Waiting for Support! Http Method: {httpMethod}.");
             }
 
-            // TODO
-            string content = JsonConvert.SerializeObject(postContent);
-            Output.WriteLine($"Request Url: {url}");
-            Output.WriteLine($"Request Data: {JsonConvert.SerializeObject(postContent, Formatting.Indented)}");
-            using (StringContent httpContent = new StringContent(content))
-            {
-                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                using (HttpResponseMessage httpResponse = await httpClient.PatchAsync(url, httpContent))
-                {
-                    return await httpResponse.Content.ReadAsStringAsync();
-                }
-            }
+            var message = await httpResponseMessage.Content.ReadAsStringAsync();
+            httpResponseMessage.Dispose();
+            return message;
         }
 
-        private static async Task<string> PutAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
-        {
-            string url = GenerateUrl(routeInfo, out IList<string> constraintNameList, data);
-            object postContent = new object();
-            if (constraintNameList.Count == 0)
-            {
-                postContent = data[0];
-            }
-            else
-            {
-                for (int i = 0; i < constraintNameList.Count; i++)
-                {
-                    var index = routeInfo.Parameters.IndexOf(routeInfo.Parameters.FirstOrDefault(o => o.Name != constraintNameList[i]));
-                    postContent = data[index];
-                }
-            }
-
-            // TODO
-            string content = JsonConvert.SerializeObject(postContent);
-            Output.WriteLine($"Request Url: {url}");
-            Output.WriteLine($"Request Data: {JsonConvert.SerializeObject(postContent, Formatting.Indented)}");
-            using (StringContent httpContent = new StringContent(content))
-            {
-                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                using (HttpResponseMessage httpResponse = await httpClient.PutAsync(url, httpContent))
-                {
-                    return await httpResponse.Content.ReadAsStringAsync();
-                }
-            }
-        }
-
-        private static async Task<string> DeleteAsync(HttpClient httpClient, string url, params object[] data)
-        {
-            Output.WriteLine($"Request Url: {url}");
-            Output.WriteLine($"Request Data: {JsonConvert.SerializeObject(data, Formatting.Indented)}");
-            using (HttpResponseMessage httpResponse = await httpClient.DeleteAsync(url))
-            {
-                return await httpResponse.Content.ReadAsStringAsync();
-            }
-        }
-
-        private static async Task<string> GetAsync(HttpClient httpClient, string url, params object[] data)
-        {
-            Output.WriteLine($"Request Url: {url}");
-            Output.WriteLine($"Request Data: {JsonConvert.SerializeObject(data, Formatting.Indented)}");
-            using (HttpResponseMessage httpResponse = await httpClient.GetAsync(url))
-            {
-                return await httpResponse.Content.ReadAsStringAsync();
-            }
-        }
-
-        private static void PreAttributeConstraintParameters(RouteInfo routeInfo, out string constraintUrl, out IList<string> constraintNameList, params object[] data)
+        private static void PrepareConstraintParameters(out string constraintUrl, out IList<string> constraintNameList, RouteInfo routeInfo, params object[] data)
         {
             string url = routeInfo.Path;
-            IList<ParameterInfo> parameterInfos = routeInfo.Parameters;
             constraintNameList = new List<string>();
 
             // Attribute Constraint Route.
             var matches = Regex.Matches(routeInfo.Path, "[^/]+[{}]");
-            int constraintCount = matches.Count;
-            if (matches != null && constraintCount > 0)
+            if (matches != null && matches.Count > 0)
             {
-                for (int i = 0; i < constraintCount; i++)
+                for (int i = 0; i < matches.Count; i++)
                 {
                     var constraint = matches[i].Value;
                     string name = constraint.Trim('{', '}');
                     Match match = Regex.Match(name, "[^{=?]+");
                     name = match.Value;
                     constraintNameList.Add(name);
-                    var parameterInfo = parameterInfos.FirstOrDefault(o => o.Name == name);
-                    int dataIndex = parameterInfos.IndexOf(parameterInfo);
+                    var parameterInfo = routeInfo.Parameters.FirstOrDefault(o => o.Name == name);
+                    int dataIndex = routeInfo.Parameters.IndexOf(parameterInfo);
                     object value = data.ElementAt(dataIndex);
                     if (value == default)
                     {
@@ -179,7 +130,7 @@
                         value = HttpUtility.UrlEncode(value.ToString());
                     }
 
-                    var replaced = constraint.Replace(parameterInfos.ElementAt(i).Name, (string)value);
+                    var replaced = constraint.Replace(routeInfo.Parameters.ElementAt(i).Name, (string)value);
                     url = url.Replace(constraint, (string)value);
                 }
             }
@@ -187,7 +138,7 @@
             constraintUrl = url;
         }
 
-        private static void PreNoneAttributeConstraintParameters(RouteInfo routeInfo, IList<string> constraintNameList, string url, out string constraintUrl, params object[] data)
+        private static void PrepareNoneConstraintParameters(out string constraintUrl, RouteInfo routeInfo, IList<string> constraintNameList, string url, params object[] data)
         {
             if (data != null && data.Length > 0)
             {
@@ -226,64 +177,6 @@
             constraintUrl = url
                 + (noConstraintParameterInfos.Count() > 0 ? "?" : string.Empty)
                 + string.Join("&", noConstraintParameterInfos.Select(o => $"{o.Name}={HttpUtility.UrlEncode(o.Value)}"));
-        }
-
-        private static string GenerateUrl(RouteInfo routeInfo, out IList<string> constraintNameList, params object[] data)
-        {
-            PreAttributeConstraintParameters(routeInfo, out string url, out constraintNameList, data);
-            if (routeInfo.HttpMethod.ToUpper() != "GET" && routeInfo.HttpMethod.ToUpper() != "DELETE")
-            {
-                return url;
-            }
-
-            PreNoneAttributeConstraintParameters(routeInfo, constraintNameList, url, out url, data);
-
-            return url;
-        }
-
-        private static Task<string> ExcuteAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
-        {
-            Task<string> json;
-            var httpMethod = (HttpMethod)Enum.Parse(typeof(HttpMethod), routeInfo.HttpMethod, true);
-            switch (httpMethod)
-            {
-                case HttpMethod.Get:
-                    {
-                        string url = GenerateUrl(routeInfo, out _, data);
-                        json = GetAsync(httpClient, url, data);
-                        break;
-                    }
-
-                case HttpMethod.Post:
-                    {
-                        json = PostAsync(httpClient, routeInfo, data);
-                        break;
-                    }
-
-                case HttpMethod.Patch:
-                    {
-                        json = PatchAsync(httpClient, routeInfo, data);
-                        break;
-                    }
-
-                case HttpMethod.Delete:
-                    {
-                        string url = GenerateUrl(routeInfo, out _, data);
-                        json = DeleteAsync(httpClient, url, data);
-                        break;
-                    }
-
-                case HttpMethod.Put:
-                    {
-                        json = PutAsync(httpClient, routeInfo, data);
-                        break;
-                    }
-
-                default:
-                    throw new HttpRequestException($"Waiting for Support! Http Method: {httpMethod}.");
-            }
-
-            return json;
         }
     }
 }
