@@ -19,7 +19,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete_1_Constraint_1_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -38,7 +38,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete_1_Constraint_1_Parameter_Desc,
                 Parameters = new List<ParameterInfo>
                 {
@@ -57,7 +57,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Delete4,
                 Parameters = new List<ParameterInfo>
                 {
@@ -76,7 +76,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete_2_Constraints_0_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -95,7 +95,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete_0_Constraint_0_Paramerter,
             };
             return await HttpClientAsync.Async<T>(routeInfo);
@@ -109,7 +109,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete_0_Constraint_2_Paramerter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -128,7 +128,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete_1_Nullable_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
@@ -146,7 +146,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete_1_Nullable_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -164,7 +164,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = DeleteName,
                 Parameters = new List<ParameterInfo>
                 {
@@ -183,7 +183,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PUT",
+                HttpMethods = "PUT",
                 Path = Put,
                 Parameters = new List<ParameterInfo>
                 {
@@ -202,7 +202,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete,
                 Parameters = new List<ParameterInfo>
                 {
@@ -220,7 +220,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = DeleteById,
                 Parameters = new List<ParameterInfo>
                 {
@@ -238,7 +238,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Delete7,
                 Parameters = new List<ParameterInfo>
                 {
@@ -257,7 +257,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = DeletePostByEmail,
                 Parameters = new List<ParameterInfo>
                 {
@@ -281,7 +281,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_1_Constraint_1_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -300,7 +300,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_5_Constraint_5_Parameter_None_Order,
                 Parameters = new List<ParameterInfo>
                 {
@@ -327,7 +327,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_1_Constraint_1_Parameter_Desc,
                 Parameters = new List<ParameterInfo>
                 {
@@ -346,7 +346,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get4,
                 Parameters = new List<ParameterInfo>
                 {
@@ -365,7 +365,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_2_Constraints_0_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -384,7 +384,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_0_Constraint_0_Paramerter,
             };
             return await HttpClientAsync.Async<T>(routeInfo);
@@ -398,7 +398,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_0_Constraint_2_Paramerter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -417,7 +417,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_1_Nullable_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
@@ -435,7 +435,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get_1_Nullable_Parameter,
                 Parameters = new List<ParameterInfo>
                 {
@@ -453,7 +453,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = GetName,
                 Parameters = new List<ParameterInfo>
                 {
@@ -472,7 +472,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PUT",
+                HttpMethods = "PUT",
                 Path = Put,
                 Parameters = new List<ParameterInfo>
                 {
@@ -491,7 +491,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "DELETE",
+                HttpMethods = "DELETE",
                 Path = Delete,
                 Parameters = new List<ParameterInfo>
                 {
@@ -509,7 +509,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = GetById,
                 Parameters = new List<ParameterInfo>
                 {
@@ -527,7 +527,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = Get7,
                 Parameters = new List<ParameterInfo>
                 {
@@ -546,7 +546,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "GET",
+                HttpMethods = "GET",
                 Path = GetPostByEmail,
                 Parameters = new List<ParameterInfo>
                 {
@@ -570,7 +570,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PATCH",
+                HttpMethods = "PATCH",
                 Path = Patch_1_FromBody_1_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
@@ -589,7 +589,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PATCH",
+                HttpMethods = "PATCH",
                 Path = Patch_2_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
@@ -608,7 +608,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PATCH",
+                HttpMethods = "PATCH",
                 Path = Patch_1_FromBody,
                 Parameters = new List<ParameterInfo>
                 {
@@ -626,7 +626,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PATCH",
+                HttpMethods = "PATCH",
                 Path = Patch_Model,
                 Parameters = new List<ParameterInfo>
                 {
@@ -650,7 +650,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "POST",
+                HttpMethods = "POST",
                 Path = Post_1_FromBody_1_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
@@ -669,7 +669,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "POST",
+                HttpMethods = "POST",
                 Path = Post_2_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
@@ -688,7 +688,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "POST",
+                HttpMethods = "POST",
                 Path = Post_1_FromBody,
                 Parameters = new List<ParameterInfo>
                 {
@@ -706,7 +706,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "POST",
+                HttpMethods = "POST",
                 Path = Post_Model,
                 Parameters = new List<ParameterInfo>
                 {
@@ -730,7 +730,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PUT",
+                HttpMethods = "PUT",
                 Path = Put_1_FromBody_1_Constraint,
                 Parameters = new List<ParameterInfo>
                 {
@@ -749,7 +749,7 @@ namespace Api.Routes
         {
             var routeInfo = new RouteInfo
             {
-                HttpMethod = "PUT",
+                HttpMethods = "PUT",
                 Path = Put_2_Constraint,
                 Parameters = new List<ParameterInfo>
                 {

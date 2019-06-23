@@ -96,7 +96,7 @@
                     sb.AppendLine("        {");
                     sb.AppendLine($"            var routeInfo = new {nameof(RouteInfo)}");
                     sb.AppendLine("            {");
-                    sb.AppendLine($"                {nameof(RouteInfo.HttpMethod)} = \"{item.HttpMethod}\",");
+                    sb.AppendLine($"                {nameof(RouteInfo.HttpMethods)} = \"{item.HttpMethods}\",");
                     sb.AppendLine($"                {nameof(RouteInfo.Path)} = {renamedAction},");
                     sb.Append(GenerateParameters(item.Parameters));
                     sb.AppendLine("            };");

@@ -7,10 +7,10 @@ namespace Route.Generator.RouteAnalyzer
         public RouteInfo()
         {
             this.Parameters = new List<ParameterInfo>();
-            this.HttpMethod = "GET";
+            this.HttpMethods = "GET";
         }
 
-        public string HttpMethod { get; set; }
+        public string HttpMethods { get; set; }
 
         public string Area { get; set; }
 

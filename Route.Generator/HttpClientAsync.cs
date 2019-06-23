@@ -63,7 +63,7 @@
             HttpResponseMessage httpResponseMessage;
             StringContent httpContent;
             PrepareConstraintParameters(out string url, out IList<string> constraintNameList, routeInfo, data);
-            var httpMethod = (HttpMethod)Enum.Parse(typeof(HttpMethod), routeInfo.HttpMethod, true);
+            var httpMethod = (HttpMethod)Enum.Parse(typeof(HttpMethod), routeInfo.HttpMethods, true);
             switch (httpMethod)
             {
                 case HttpMethod.Get:

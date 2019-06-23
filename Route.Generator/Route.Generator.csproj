@@ -8,15 +8,20 @@
     <Authors>Route.Generator</Authors>
     <Product>Route.Generator</Product>
     <Copyright>Copyright © 2019 Core</Copyright>
-    <PackageProjectUrl />
-    <RepositoryUrl />
+    <PackageProjectUrl>https://github.com/188867052/Route.Generator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/188867052/Route.Generator</RepositoryUrl>
     <PackageId>Route.Generator</PackageId>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <Company>Route.Generator</Company>
     <PackageLicenseUrl />
-    <Description>.NET Core command-line (CLI) tool to generate Route source files.</Description>
+    <Description>.Net Core Api &amp; Mvc
+.NET Core command-line (CLI) tool to generate Route source files.</Description>
     <PackageTags>Route.Generator</PackageTags>
-    <Version>2.0.0.1</Version>
+    <Version>1.0.0.0</Version>
+    <RepositoryType>github</RepositoryType>
+    <PackageReleaseNotes>Generate MVC &amp;API route automatically, and you can call API like local method.</PackageReleaseNotes>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -52,6 +57,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

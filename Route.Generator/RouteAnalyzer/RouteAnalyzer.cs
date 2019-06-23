@@ -74,7 +74,7 @@
                 {
                     if (route.ActionConstraints.FirstOrDefault(a => a.GetType() == typeof(HttpMethodActionConstraint)) is HttpMethodActionConstraint httpMethodAction)
                     {
-                        info.HttpMethod = string.Join(",", httpMethodAction.HttpMethods);
+                        info.HttpMethods = string.Join(",", httpMethodAction.HttpMethods);
                     }
                 }
 
