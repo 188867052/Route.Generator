@@ -7,6 +7,67 @@ using Route.Generator.RouteAnalyzer;
 namespace Api.Routes
 {
     /// <summary>
+    /// <see cref="Controllers.ExampleController"/>
+    /// </summary>
+    public class ExampleRoute
+    {
+        /// <summary>
+        /// <see cref="Controllers.ExampleController.GetVlues"/>
+        /// </summary>
+        public const string GetVlues = "/api/Example/GetVlues/{key}";
+        public static async Task<T> GetVluesAsync<T>(string key, string value)
+        {
+            var routeInfo = new RouteInfo
+            {
+                HttpMethods = "GET",
+                Path = GetVlues,
+                Parameters = new List<ParameterInfo>
+                {
+                    new ParameterInfo() {Name = "key", Type = "string"},
+                    new ParameterInfo() {Name = "value", Type = "string"},
+                }
+            };
+            return await HttpClientAsync.Async<T>(routeInfo, key, value);
+        }
+
+        /// <summary>
+        /// <see cref="Controllers.ExampleController.Edit"/>
+        /// </summary>
+        public const string Edit = "/api/Example/Edit";
+        public static async Task<T> EditAsync<T>(Api.Models.PointModel model)
+        {
+            var routeInfo = new RouteInfo
+            {
+                HttpMethods = "POST",
+                Path = Edit,
+                Parameters = new List<ParameterInfo>
+                {
+                    new ParameterInfo() {Name = "model", Type = "Api.Models.PointModel"},
+                }
+            };
+            return await HttpClientAsync.Async<T>(routeInfo, model);
+        }
+
+        /// <summary>
+        /// <see cref="Controllers.ExampleController.Delete"/>
+        /// </summary>
+        public const string Delete = "/api/Example/Delete";
+        public static async Task<T> DeleteAsync<T>(string id)
+        {
+            var routeInfo = new RouteInfo
+            {
+                HttpMethods = "DELETE",
+                Path = Delete,
+                Parameters = new List<ParameterInfo>
+                {
+                    new ParameterInfo() {Name = "id", Type = "string"},
+                }
+            };
+            return await HttpClientAsync.Async<T>(routeInfo, id);
+        }
+    }
+
+    /// <summary>
     /// <see cref="Controllers.HttpDeleteController"/>
     /// </summary>
     public class HttpDeleteRoute

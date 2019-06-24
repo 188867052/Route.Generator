@@ -26,6 +26,92 @@ https://www.nuget.org/packages/Route.Generator/1.0.0
 * [Post]
 * [Put]
 
+## Examples
+
+```C#
+[Route("api/[controller]/[action]")]
+[ApiController]
+public class ExampleController : StandardController
+{
+    [HttpGet("{key}")]
+    public Dictionary<string, string> GetVlues(string key, string value)
+    {
+        return this.ResponseDictionary(key, value, nameof(this.GetVlues));
+    }
+
+    [HttpPost]
+    public Dictionary<string, string> Edit(PointModel model)
+    {
+        return this.ResponseDictionary(null, null, nameof(this.Edit));
+    }
+
+    [HttpDelete]
+    public Dictionary<string, string> Delete(string id)
+    {
+        return this.ResponseDictionary(null, null, nameof(this.Delete));
+    }
+}
+```
+
+```C#
+/// <summary>
+/// <see cref="Controllers.ExampleController"/>
+/// </summary>
+public class ExampleRoute
+{
+    /// <summary>
+    /// <see cref="Controllers.ExampleController.GetVlues"/>
+    /// </summary>
+    public const string GetVlues = "/api/Example/GetVlues/{key}";
+    public static async Task<T> GetVluesAsync<T>(string key, string value)
+    {
+        var routeInfo = new RouteInfo
+        {
+            HttpMethods = "GET",
+            Path = GetVlues,
+            Parameters = new List<ParameterInfo>
+            {
+                new ParameterInfo() {Name = "key", Type = "string"},
+                new ParameterInfo() {Name = "value", Type = "string"},
+            }
+        };
+        return await HttpClientAsync.Async<T>(routeInfo, key, value);
+    }
+```
+
+```C#
+/// <summary>
+/// <see cref="Controllers.HomeController"/>
+/// </summary>
+public class HomeRoute
+{
+    /// <summary>
+    /// <see cref="Controllers.HomeController.Index"/>
+    /// </summary>
+    public const string Index = "/Admin/Home/Index";
+
+    /// <summary>
+    /// <see cref="Controllers.HomeController.About"/>
+    /// </summary>
+    public const string About = "/Admin/Home/About";
+
+    /// <summary>
+    /// <see cref="Controllers.HomeController.Contact"/>
+    /// </summary>
+    public const string Contact = "/Admin/Home/Contact";
+
+    /// <summary>
+    /// <see cref="Controllers.HomeController.Privacy"/>
+    /// </summary>
+    public const string Privacy = "/Admin/Home/Privacy";
+
+    /// <summary>
+    /// <see cref="Controllers.HomeController.Error"/>
+    /// </summary>
+    public const string Error = "/Admin/Home/Error";
+}
+```
+
 ## Generated Files
 
 * [Mvc-Generated Routes](https://github.com/188867052/Route.Generator/blob/master/Mvc/Routes.Generated.cs)
