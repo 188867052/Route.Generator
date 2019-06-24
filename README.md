@@ -1,3 +1,7 @@
+## Nuget Address
+
+https://www.nuget.org/packages/Route.Generator/1.0.0
+
 ## Technologies
 
 * [.NET Core 2.1](https://dotnet.microsoft.com/download)
