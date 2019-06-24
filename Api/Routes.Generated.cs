@@ -12,6 +12,33 @@ namespace Api.Routes
     public class HttpDeleteRoute
     {
         /// <summary>
+        /// <see cref="Controllers.HttpDeleteController.Delete_5_Constraint_5_Parameter_None_Order"/>
+        /// </summary>
+        public const string Delete_5_Constraint_5_Parameter_None_Order = "/Delete_5_Constraint_5_Parameter_None_Order/{constraint2}/{constraint1}/{constraint3}/{constraint5}/{constraint4}";
+        public static async Task<T> Delete_5_Constraint_5_Parameter_None_OrderAsync<T>(string constraint4, string parameter5, string parameter3, string constraint1, string constraint5, string constraint2, string parameter1, string parameter2, string constraint3, string parameter4)
+        {
+            var routeInfo = new RouteInfo
+            {
+                HttpMethods = "DELETE",
+                Path = Delete_5_Constraint_5_Parameter_None_Order,
+                Parameters = new List<ParameterInfo>
+                {
+                    new ParameterInfo() {Name = "constraint4", Type = "string"},
+                    new ParameterInfo() {Name = "parameter5", Type = "string"},
+                    new ParameterInfo() {Name = "parameter3", Type = "string"},
+                    new ParameterInfo() {Name = "constraint1", Type = "string"},
+                    new ParameterInfo() {Name = "constraint5", Type = "string"},
+                    new ParameterInfo() {Name = "constraint2", Type = "string"},
+                    new ParameterInfo() {Name = "parameter1", Type = "string"},
+                    new ParameterInfo() {Name = "parameter2", Type = "string"},
+                    new ParameterInfo() {Name = "constraint3", Type = "string"},
+                    new ParameterInfo() {Name = "parameter4", Type = "string"},
+                }
+            };
+            return await HttpClientAsync.Async<T>(routeInfo, constraint4, parameter5, parameter3, constraint1, constraint5, constraint2, parameter1, parameter2, constraint3, parameter4);
+        }
+
+        /// <summary>
         /// <see cref="Controllers.HttpDeleteController.Delete_1_Constraint_1_Parameter"/>
         /// </summary>
         public const string Delete_1_Constraint_1_Parameter = "/Delete_1_Constraint_1_Parameter/option/{key}";

@@ -9,6 +9,37 @@
     public class HttpDeleteController : StandardController
     {
         [HttpDelete]
+        [Route("~/Delete_5_Constraint_5_Parameter_None_Order/{constraint2}/{constraint1}/{constraint3}/{constraint5}/{constraint4}")]
+        public Dictionary<string, string> Delete_5_Constraint_5_Parameter_None_Order(
+          string constraint4,
+          string parameter5,
+          string parameter3,
+          string constraint1,
+          string constraint5,
+          string constraint2,
+          string parameter1,
+          string parameter2,
+          string constraint3,
+          string parameter4)
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>
+            {
+                { "parameter1", parameter1 },
+                { "parameter2", parameter2 },
+                { "parameter3", parameter3 },
+                { "parameter4", parameter4 },
+                { "parameter5", parameter5 },
+                { "constraint1", constraint1 },
+                { "constraint2", constraint2 },
+                { "constraint3", constraint3 },
+                { "constraint4", constraint4 },
+                { "constraint5", constraint5 },
+                { "url", nameof(this.Delete_5_Constraint_5_Parameter_None_Order) },
+            };
+            return dictionary;
+        }
+
+        [HttpDelete]
         [Route("~/Delete_1_Constraint_1_Parameter/option/{key}")]
         public Dictionary<string, string> Delete_1_Constraint_1_Parameter(string key, string value)
         {
