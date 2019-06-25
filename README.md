@@ -1,4 +1,4 @@
-## Nuget Address
+## Nuget
 
 https://www.nuget.org/packages/Route.Generator/1.0.0
 
