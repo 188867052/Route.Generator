@@ -37,7 +37,6 @@ PM>routegen gen -p <Your project name> -u <The base address>
 ```
 ### Options
 
-```
 * -p
 Your project name
 * -u
@@ -46,7 +45,6 @@ The base address
 Whether generate async method or not, 1 or true meanings will generate, otherwise will not.
 * -o
 The out put file name. Default name is Routes.Generated.cs.
-```
 
 ## Technologies
 
