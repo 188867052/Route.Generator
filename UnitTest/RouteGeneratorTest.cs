@@ -2,6 +2,7 @@ namespace UnitTest
 {
     using System;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Routing;
     using NUnit.Framework;
     using Route.Generator;
 

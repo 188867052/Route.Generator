@@ -52,7 +52,7 @@ The out put file name. Default name is Routes.Generated.cs.
 * [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp)
 * [XUnit](https://github.com/XUnit/XUnit)
 
-## Unit Test
+## Unit Tests
 
 * [Http Delete Unit Test](https://github.com/188867052/Route.Generator/blob/master/UnitTest/HttpClientDeleteAsyncTest.cs)
 * [Http Get Unit Test](https://github.com/188867052/Route.Generator/blob/master/UnitTest/HttpClientGetAsyncTest.cs)
@@ -199,4 +199,4 @@ public class HomeRoute
     /// </summary>
     public const string Error = "/Admin/Home/Error";
 }
-``
+```

@@ -5,9 +5,18 @@
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using System.Text.RegularExpressions;
+    using System.Text.Encodings.Web;
     using System.Threading.Tasks;
-    using System.Web;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Http.Features;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Abstractions;
+    using Microsoft.AspNetCore.Mvc.Routing;
+    using Microsoft.AspNetCore.Routing;
+    using Microsoft.AspNetCore.Routing.Patterns;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.DependencyInjection.Extensions;
+    using Microsoft.Extensions.ObjectPool;
     using Newtonsoft.Json;
     using HttpMethod = Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpMethod;
 
@@ -66,7 +75,6 @@
             switch (httpMethod)
             {
                 case HttpMethod.Get:
-                    PrepareNoneConstraintParameters(out url, routeInfo, constraintNameList, url, data);
                     httpResponseMessage = await httpClient.GetAsync(url);
                     break;
                 case HttpMethod.Post:
@@ -80,7 +88,6 @@
                     httpContent.Dispose();
                     break;
                 case HttpMethod.Delete:
-                    PrepareNoneConstraintParameters(out url, routeInfo, constraintNameList, url, data);
                     httpResponseMessage = await httpClient.DeleteAsync(url);
                     break;
                 case HttpMethod.Put:
@@ -97,81 +104,122 @@
             return message;
         }
 
-        private static void PrepareConstraintParameters(out string constraintUrl, out IList<string> constraintNameList, RouteInfo routeInfo, params object[] data)
+        private static RouteEndpoint CreateEndpoint(
+         string template,
+         object defaults = null,
+         object requiredValues = null,
+         int order = 0,
+         string routeName = null,
+         EndpointMetadataCollection metadataCollection = null)
         {
-            string url = routeInfo.Path;
-            constraintNameList = new List<string>();
-
-            // Attribute Constraint Route.
-            var matches = Regex.Matches(routeInfo.Path, "[^/]+[{}]");
-            if (matches != null && matches.Count > 0)
+            if (metadataCollection == null)
             {
-                for (int i = 0; i < matches.Count; i++)
-                {
-                    var constraint = matches[i].Value;
-                    string name = constraint.Trim('{', '}');
-                    Match match = Regex.Match(name, "[^{=?]+");
-                    name = match.Value;
-                    constraintNameList.Add(name);
-                    var parameterInfo = routeInfo.Parameters.FirstOrDefault(o => o.Name == name);
-                    int dataIndex = routeInfo.Parameters.IndexOf(parameterInfo);
-                    object value = data.ElementAt(dataIndex);
-                    if (value == default)
-                    {
-                        value = Extention.GetDefaultValueByName(parameterInfo.Type);
-                    }
-                    else
-                    {
-                        value = HttpUtility.UrlEncode(value.ToString());
-                    }
-
-                    var replaced = constraint.Replace(routeInfo.Parameters.ElementAt(i).Name, (string)value);
-                    url = url.Replace(constraint, (string)value);
-                }
+                metadataCollection = new EndpointMetadataCollection(
+                    new RouteValuesAddressMetadata(routeName, new RouteValueDictionary(requiredValues)));
             }
 
-            constraintUrl = url;
+            return new RouteEndpoint(
+                (httpContext) => Task.CompletedTask,
+                RoutePatternFactory.Parse(template, defaults, parameterPolicies: null),
+                order,
+                metadataCollection,
+                null);
         }
 
-        private static void PrepareNoneConstraintParameters(out string constraintUrl, RouteInfo routeInfo, IList<string> constraintNameList, string url, params object[] data)
+        private static IServiceCollection GetCommonServices()
         {
-            if (data != null && data.Length > 0)
+            var services = new ServiceCollection();
+            services.AddOptions();
+            services.AddLogging();
+            services.AddRouting();
+            services
+                .AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>()
+                .AddSingleton(UrlEncoder.Default);
+            return services;
+        }
+
+        private static HttpContext CreateHttpContext(
+          IServiceProvider services,
+          string appRoot,
+          string host,
+          string protocol)
+        {
+            appRoot = string.IsNullOrEmpty(appRoot) ? string.Empty : appRoot;
+            host = string.IsNullOrEmpty(host) ? "localhost" : host;
+
+            var context = new DefaultHttpContext();
+            context.RequestServices = services;
+            context.Request.PathBase = new PathString(appRoot);
+            context.Request.Host = new HostString(host);
+            context.Request.Scheme = protocol;
+            return context;
+        }
+
+        private static IServiceProvider CreateServices(IEnumerable<Endpoint> endpoints)
+        {
+            if (endpoints == null)
             {
-                for (int i = 0; i < data.Length; i++)
-                {
-                    var value = data[i];
-                    if (value == default)
-                    {
-                        value = Extention.GetDefaultValueByName(routeInfo.Parameters[i].Type);
-                        routeInfo.Parameters[i].Value = (string)value;
-                    }
-                    else
-                    {
-                        // Support dynamic object;
-                        var valueStr = value.ToString();
-                        if (valueStr.Contains("{") && valueStr.Contains("}") && valueStr.Contains("="))
-                        {
-                            var keyValuePair = valueStr.Split(',');
-                            foreach (var item in keyValuePair)
-                            {
-                                var array = item.Split('=');
-                                string k = array[0].Trim('{', ' ');
-                                string v = array[1].Trim('}', ' ');
-                                routeInfo.Parameters.FirstOrDefault(o => o.Name == k).Value = v;
-                            }
-                        }
-                        else
-                        {
-                            routeInfo.Parameters[i].Value = data[i].ToString();
-                        }
-                    }
-                }
+                endpoints = Enumerable.Empty<Endpoint>();
             }
 
-            var noConstraintParameterInfos = routeInfo.Parameters.Where(o => !constraintNameList.Contains(o.Name));
-            constraintUrl = url
-                + (noConstraintParameterInfos.Count() > 0 ? "?" : string.Empty)
-                + string.Join("&", noConstraintParameterInfos.Select(o => $"{o.Name}={HttpUtility.UrlEncode(o.Value)}"));
+            var services = GetCommonServices();
+            services.AddRouting();
+            services.TryAddEnumerable(
+                ServiceDescriptor.Singleton<EndpointDataSource>(new DefaultEndpointDataSource(endpoints)));
+            services.TryAddSingleton<IUrlHelperFactory, UrlHelperFactory>();
+            return services.BuildServiceProvider();
+        }
+
+        private static ActionContext CreateActionContext(HttpContext httpContext, RouteData routeData = null)
+        {
+            routeData = routeData ?? new RouteData();
+            return new ActionContext(httpContext, routeData, new ActionDescriptor());
+        }
+
+        private static IUrlHelper CreateUrlHelper(IEnumerable<RouteEndpoint> endpoints, ActionContext actionContext = null)
+        {
+            var serviceProvider = CreateServices(endpoints);
+            var httpContext = CreateHttpContext(serviceProvider, null, null, "http");
+            actionContext = actionContext ?? CreateActionContext(httpContext);
+            return CreateUrlHelper(actionContext);
+        }
+
+        private static IUrlHelper CreateUrlHelper(ActionContext actionContext)
+        {
+            var httpContext = actionContext.HttpContext;
+            httpContext.Features.Set<IEndpointFeature>(new EndpointSelectorContext()
+            {
+                Endpoint = new Endpoint(
+                    context => Task.CompletedTask,
+                    EndpointMetadataCollection.Empty,
+                    null),
+            });
+
+            var urlHelperFactory = httpContext.RequestServices.GetRequiredService<IUrlHelperFactory>();
+            var urlHelper = urlHelperFactory.GetUrlHelper(actionContext);
+            return urlHelper;
+        }
+
+        private static void PrepareConstraintParameters(out string constraintUrl, out IList<string> constraintNameList, RouteInfo routeInfo, params object[] data)
+        {
+            var endpoint = CreateEndpoint(routeInfo.Path, routeName: routeInfo.Path);
+            constraintNameList = endpoint.RoutePattern.Parameters.Select(o => o.Name).ToList();
+            var urlHelper = CreateUrlHelper(new[] { endpoint });
+
+            // Set the endpoint feature and current context just as a normal request to MVC app would be
+            var endpointFeature = new EndpointSelectorContext();
+            urlHelper.ActionContext.HttpContext.Features.Set<IEndpointFeature>(endpointFeature);
+            urlHelper.ActionContext.HttpContext.Features.Set<IRouteValuesFeature>(endpointFeature);
+            endpointFeature.Endpoint = endpoint;
+            endpointFeature.RouteValues = new RouteValueDictionary();
+            foreach (var item in routeInfo.Parameters)
+            {
+                int dataIndex = routeInfo.Parameters.IndexOf(item);
+                object value = data.ElementAt(dataIndex);
+                endpointFeature.RouteValues.TryAdd(item.Name, value);
+            }
+
+            constraintUrl = urlHelper.RouteUrl(routeName: routeInfo.Path, values: endpointFeature.RouteValues);
         }
     }
 }

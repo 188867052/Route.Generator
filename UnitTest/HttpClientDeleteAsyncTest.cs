@@ -127,6 +127,7 @@
         [InlineData("[")]
         [InlineData("]")]
         [InlineData("\"")]
+        [InlineData(" ")]
         [Theory(DisplayName = "Test Escape Sequence")]
         public async Task Delete_Escape_Sequence_Async(string chars)
         {
@@ -141,7 +142,6 @@
         }
 
         [InlineData("+")]
-        [InlineData(" ")]
         [Theory(DisplayName = "Test Double Escape Sequence Exception")]
         public async Task Delete_Escape_Sequence_Exception_Async(string chars)
         {
