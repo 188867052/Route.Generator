@@ -15,10 +15,19 @@
         public bool Generate(CommondConfig config)
         {
             var context = this.modelGenerator.GenerateCodeAsync(config).Result;
+            if (string.IsNullOrEmpty(context))
+            {
+                return false;
+            }
+
             Console.WriteLine(context);
 
-            string fullPath = Path.Combine(Environment.CurrentDirectory, config.OutPutFile);
+            string fullPath = Path.Combine(config.ProjectPath, config.OutPutFile);
+
+            Console.WriteLine($"Writing file to {fullPath}...");
             File.WriteAllText(fullPath, context);
+            Console.WriteLine("Completed.");
+
             return true;
         }
     }

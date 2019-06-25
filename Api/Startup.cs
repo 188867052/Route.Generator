@@ -8,7 +8,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Newtonsoft.Json;
-    using Route.Generator.RouteAnalyzer;
+    using Route.Generator;
 
     public class Startup
     {

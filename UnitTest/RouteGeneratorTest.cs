@@ -4,7 +4,6 @@ namespace UnitTest
     using System.Threading.Tasks;
     using NUnit.Framework;
     using Route.Generator;
-    using Route.Generator.RouteAnalyzer;
 
     [TestFixture]
     public class RouteGeneratorTest

@@ -9,7 +9,6 @@
     using System.Threading.Tasks;
     using System.Web;
     using Newtonsoft.Json;
-    using Route.Generator.RouteAnalyzer;
     using HttpMethod = Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpMethod;
 
     public static class HttpClientAsync

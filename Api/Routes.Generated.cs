@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Route.Generator;
-using Route.Generator.RouteAnalyzer;
 
 namespace Api.Routes
 {

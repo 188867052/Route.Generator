@@ -1,7 +1,7 @@
 ﻿namespace Api.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using Route.Generator.RouteAnalyzer;
+    using Route.Generator;
 
     public class RouteController : Controller
     {

@@ -5,7 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Route.Generator.RouteAnalyzer;
+    using Route.Generator;
 
     public class Startup
     {

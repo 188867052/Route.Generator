@@ -26,6 +26,9 @@
         [Option("-o <output>", Description = "The out put file name")]
         public string OutPutFile { get; set; }
 
+        [Option("-g <generatemethod>", Description = "Is generate method")]
+        public string GenerateMethod { get; set; }
+
         protected IGeneratorOptionsSerializer Serializer { get; }
 
         protected CommondConfig Config { get; set; }

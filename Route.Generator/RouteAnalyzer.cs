@@ -1,4 +1,4 @@
-﻿namespace Route.Generator.RouteAnalyzer
+﻿namespace Route.Generator
 {
     using System;
     using System.Collections.Generic;

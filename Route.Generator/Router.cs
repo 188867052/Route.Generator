@@ -1,4 +1,4 @@
-﻿namespace Route.Generator.RouteAnalyzer
+﻿namespace Route.Generator
 {
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Routing;

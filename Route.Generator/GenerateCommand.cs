@@ -1,5 +1,6 @@
 ﻿namespace Route.Generator
 {
+    using System;
     using System.IO;
     using System.Linq;
     using McMaster.Extensions.CommandLineUtils;
@@ -33,14 +34,56 @@
         {
             try
             {
-                this.ConfigJsonPath = Directory.GetFiles(".", "appsettings.json", SearchOption.AllDirectories).FirstOrDefault();
-                if (string.IsNullOrEmpty(this.ConfigJsonPath))
+                CommondConfig config = new CommondConfig();
+
+                // From console.
+                if (!string.IsNullOrEmpty(this.ProjectName))
                 {
-                    this.Console.WriteLine("No appsettings.json file found, will generate code with default setting.");
+                    string fileFullPath = Directory.GetFiles(".", $"{this.ProjectName}.csproj", SearchOption.AllDirectories).FirstOrDefault();
+                    if (string.IsNullOrEmpty(fileFullPath))
+                    {
+                        System.Console.Write($"Project {this.ProjectName} is not exist.");
+                        return 1;
+                    }
+
+                    if (string.IsNullOrEmpty(this.BaseAddress))
+                    {
+                        System.Console.Write($"base address cant not be null.");
+                        return 1;
+                    }
+
+                    config.BaseAddress = this.BaseAddress;
+                    config.ProjectPath = new FileInfo(fileFullPath).DirectoryName;
+                    config.ProjectName = this.ProjectName;
+                    config.GenerateMethod = this.GenerateMethod == "1" || this.GenerateMethod.Equals("true", StringComparison.InvariantCultureIgnoreCase);
+                }
+                else
+                {
+                    // From appsettings.json.
+                    this.ConfigJsonPath = Directory.GetFiles(".", "appsettings.json", SearchOption.AllDirectories).FirstOrDefault();
+                    if (string.IsNullOrEmpty(this.ConfigJsonPath))
+                    {
+                        this.Console.WriteLine("No appsettings.json file found, will generate code with default setting.");
+                    }
+
+                    string appSettings = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(this.ConfigJsonPath)).RouteGenerator.ToString();
+                    config = JsonConvert.DeserializeObject<CommondConfig>(appSettings);
+                    if (string.IsNullOrEmpty(config.ProjectName))
+                    {
+                        System.Console.Write($"Please provide ProjectName.");
+                        return 1;
+                    }
+
+                    string fileFullPath = Directory.GetFiles(".", $"{config.ProjectName}.csproj", SearchOption.AllDirectories).FirstOrDefault();
+                    if (string.IsNullOrEmpty(fileFullPath))
+                    {
+                        System.Console.Write($"Project {config.ProjectName} is not exist.");
+                        return 1;
+                    }
+
+                    config.ProjectPath = new FileInfo(fileFullPath).DirectoryName;
                 }
 
-                string appSettings = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(this.ConfigJsonPath)).RouteGenerator.ToString();
-                CommondConfig config = JsonConvert.DeserializeObject<CommondConfig>(appSettings);
                 this.Config = config;
                 this.Console.WriteLine(JsonConvert.SerializeObject(config, Formatting.Indented));
                 if (string.IsNullOrEmpty(this.Config.BaseAddress))
@@ -57,6 +100,12 @@
                 if (!this.Config.OutPutFile.EndsWith(".cs"))
                 {
                     this.Config.OutPutFile += ".cs";
+                }
+
+                if (string.IsNullOrEmpty(this.Config.ProjectName))
+                {
+                    this.Console.WriteLine($"Please provide ProjectName.");
+                    return 1;
                 }
             }
             catch (System.Exception ex)

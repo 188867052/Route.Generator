@@ -7,7 +7,6 @@
     using System.Text;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-    using Route.Generator.RouteAnalyzer;
 
     public class RouteGenerator
     {
@@ -23,7 +22,6 @@
             sb.AppendLine($"using {typeof(Dictionary<int, int>).Namespace};");
             sb.AppendLine($"using {typeof(Task).Namespace};");
             sb.AppendLine($"using {typeof(HttpClientAsync).Namespace};");
-            sb.AppendLine($"using {typeof(ParameterInfo).Namespace};");
 
             sb.AppendLine();
             for (int i = 0; i < group.Count(); i++)
@@ -36,17 +34,27 @@
 
         public async Task<string> GenerateCodeAsync(CommondConfig config)
         {
-            RouteGenerator.config = config;
-            using (var client = new HttpClient
+            try
             {
-                BaseAddress = new Uri(config.BaseAddress),
-            })
-            {
-                using (HttpResponseMessage response = await client.GetAsync(Router.DefaultRoute))
+                RouteGenerator.config = config;
+                using (var client = new HttpClient
                 {
-                    string content = await response.Content.ReadAsStringAsync();
-                    return GenerateRoutes(content);
+                    BaseAddress = new Uri(config.BaseAddress),
+                })
+                {
+                    using (HttpResponseMessage response = await client.GetAsync(Router.DefaultRoute))
+                    {
+                        string content = await response.Content.ReadAsStringAsync();
+                        return GenerateRoutes(content);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Uri combined = new Uri(new Uri(config.BaseAddress), Router.DefaultRoute);
+                Console.WriteLine($"Route URL: {combined}");
+                Console.WriteLine("Please provide BaseAddress, and make sure the Route URL is Right and Accessible.");
+                return string.Empty;
             }
         }
 

@@ -1,4 +1,4 @@
-﻿namespace Route.Generator.RouteAnalyzer
+﻿namespace Route.Generator
 {
     using Microsoft.Extensions.DependencyInjection;
 
