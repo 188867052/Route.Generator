@@ -1,6 +1,22 @@
-## Nuget
+### Install NuGet package
+- [NuGet Gallery | AspNetCore.RouteAnalyzer](https://www.nuget.org/packages/Route.Generator/)
 
-https://www.nuget.org/packages/Route.Generator/1.0.0
+```
+PM> Install-Package AspNetCore.RouteAnalyzer
+```
+
+### Edit Startup.cs
+Insert code ```services.AddRouteAnalyzer();``` and required ```using``` directive into Startup.cs as follows.
+
+```cs
+using Route.Generator; // Add
+....
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+    services.AddRouteAnalyzer(); // Add
+}
+```
 
 ## Technologies
 
