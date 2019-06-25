@@ -77,6 +77,43 @@ public class ExampleRoute
         };
         return await HttpClientAsync.Async<T>(routeInfo, key, value);
     }
+
+    /// <summary>
+    /// <see cref="Controllers.ExampleController.Edit"/>
+    /// </summary>
+    public const string Edit = "/api/Example/Edit";
+    public static async Task<T> EditAsync<T>(Api.Models.PointModel model)
+    {
+        var routeInfo = new RouteInfo
+        {
+            HttpMethods = "POST",
+            Path = Edit,
+            Parameters = new List<ParameterInfo>
+            {
+                new ParameterInfo() {Name = "model", Type = "Api.Models.PointModel"},
+            }
+        };
+        return await HttpClientAsync.Async<T>(routeInfo, model);
+    }
+
+    /// <summary>
+    /// <see cref="Controllers.ExampleController.Delete"/>
+    /// </summary>
+    public const string Delete = "/api/Example/Delete";
+    public static async Task<T> DeleteAsync<T>(string id)
+    {
+        var routeInfo = new RouteInfo
+        {
+            HttpMethods = "DELETE",
+            Path = Delete,
+            Parameters = new List<ParameterInfo>
+            {
+                new ParameterInfo() {Name = "id", Type = "string"},
+            }
+        };
+        return await HttpClientAsync.Async<T>(routeInfo, id);
+    }
+}
 ```
 
 ```C#
