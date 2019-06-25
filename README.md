@@ -36,14 +36,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 PM>routegen gen -p <Your project name> -u <The base address>
 ```
 ### Options
-
-* -p
+```-p```
 Your project name
-* -u
+```-u```
 The base address
-* -g
+```-g```
 Whether generate async method or not, 1 or true meanings will generate, otherwise will not.
-* -o
+```-o```
 The out put file name. Default name is Routes.Generated.cs.
 
 ## Technologies
