@@ -18,6 +18,23 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+Insert code ```routes.MapRouteAnalyzer(Router.DefaultRoute);``` into method Configure in Startup.cs as follows.
+
+```cs
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseMvc();
+    app.UseMvc(routes =>
+    {
+        routes.MapRouteAnalyzer(Router.DefaultRoute); // Add
+        routes.MapRoute(
+             name: "areaRoute",
+             template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+		....
+    });
+}
+```
+
 ## Technologies
 
 * [.NET Core 2.1](https://dotnet.microsoft.com/download)
@@ -42,9 +59,18 @@ public void ConfigureServices(IServiceCollection services)
 * [Post]
 * [Put]
 
+## Generated Files
+
+* [Mvc-Generated Routes](https://github.com/188867052/Route.Generator/blob/master/Mvc/Routes.Generated.cs)
+* [Api-Generated Routes and Async Methods](https://github.com/188867052/Route.Generator/blob/master/Api/Routes.Generated.cs)
+
+## Route Generator Project
+
+* [See Code](https://github.com/188867052/Route.Generator/tree/master/Route.Generator)
+
 ## Examples
 
-```C#
+```cs
 [Route("api/[controller]/[action]")]
 [ApiController]
 public class ExampleController : StandardController
@@ -69,7 +95,7 @@ public class ExampleController : StandardController
 }
 ```
 
-```C#
+```cs
 /// <summary>
 /// <see cref="Controllers.ExampleController"/>
 /// </summary>
@@ -132,7 +158,7 @@ public class ExampleRoute
 }
 ```
 
-```C#
+```cs
 /// <summary>
 /// <see cref="Controllers.HomeController"/>
 /// </summary>
@@ -163,14 +189,4 @@ public class HomeRoute
     /// </summary>
     public const string Error = "/Admin/Home/Error";
 }
-```
-
-## Generated Files
-
-* [Mvc-Generated Routes](https://github.com/188867052/Route.Generator/blob/master/Mvc/Routes.Generated.cs)
-* [Api-Generated Routes and Async Methods](https://github.com/188867052/Route.Generator/blob/master/Api/Routes.Generated.cs)
-
-## Route Generator Project
-
-* [See Code](https://github.com/188867052/Route.Generator/tree/master/Route.Generator)
-
+``
