@@ -1,8 +1,8 @@
 ### Install NuGet package
-- [NuGet Gallery | AspNetCore.RouteAnalyzer](https://www.nuget.org/packages/Route.Generator/)
+- [NuGet Gallery | Route.Generator](https://www.nuget.org/packages/Route.Generator/)
 
 ```
-PM> Install-Package AspNetCore.RouteAnalyzer
+PM> Install-Package Route.Generator
 ```
 
 ### Edit Startup.cs
