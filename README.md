@@ -6,7 +6,7 @@ PM> Install-Package Route.Generator
 ```
 
 ### Edit Startup.cs
-Insert code ```services.AddRouteAnalyzer();``` and required ```using``` directive into Startup.cs as follows.
+Insert code ```services.AddRouteAnalyzer();``` and ```routes.MapRouteAnalyzer(Router.DefaultRoute);``` and required ```using``` directive into Startup.cs as follows.
 
 ```cs
 using Route.Generator; // Add
@@ -16,11 +16,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddMvc();
     services.AddRouteAnalyzer(); // Add
 }
-```
-
-Insert code ```routes.MapRouteAnalyzer(Router.DefaultRoute);``` into method Configure in Startup.cs as follows.
-
-```cs
+....
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseMvc();
@@ -30,7 +26,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         routes.MapRoute(
              name: "areaRoute",
              template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-		....
+	....
     });
 }
 ```
