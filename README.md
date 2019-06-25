@@ -30,7 +30,11 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     });
 }
 ```
+### Generate Routes
 
+```
+PM>routegen gen -p <Your project name> -u <The base address>
+```
 ## Technologies
 
 * [.NET Core 2.1](https://dotnet.microsoft.com/download)
