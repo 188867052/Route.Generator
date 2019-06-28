@@ -164,8 +164,7 @@
 
             var services = GetCommonServices();
             services.AddRouting();
-            services.TryAddEnumerable(
-                ServiceDescriptor.Singleton<EndpointDataSource>(new DefaultEndpointDataSource(endpoints)));
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<EndpointDataSource>(new DefaultEndpointDataSource(endpoints)));
             services.TryAddSingleton<IUrlHelperFactory, UrlHelperFactory>();
             return services.BuildServiceProvider();
         }

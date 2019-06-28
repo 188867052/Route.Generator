@@ -1,13 +1,11 @@
-﻿namespace UnitTest
+﻿namespace Microsoft.AspNetCore.Mvc.Routing
 {
     using System;
     using System.Collections.Generic;
     using System.Text.Encodings.Web;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Http.Features;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Abstractions;
-    using Microsoft.AspNetCore.Mvc.Routing;
     using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.ObjectPool;
@@ -1018,7 +1016,7 @@
             services.AddRouting();
             services
                 .AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>()
-                .AddSingleton(UrlEncoder.Default);
+                .AddSingleton<UrlEncoder>(UrlEncoder.Default);
             return services;
         }
 
