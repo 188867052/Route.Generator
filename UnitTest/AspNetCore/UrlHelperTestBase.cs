@@ -11,9 +11,17 @@
     using Microsoft.Extensions.ObjectPool;
     using Moq;
     using Xunit;
+    using Xunit.Abstractions;
 
     public abstract class UrlHelperTestBase
     {
+        public ITestOutputHelper TempOutput { get; }
+
+        public UrlHelperTestBase(ITestOutputHelper tempOutput)
+        {
+            TempOutput = tempOutput;
+        }
+
         [Theory]
         [InlineData(null, null, null)]
         [InlineData("/myapproot", null, null)]

@@ -23,6 +23,8 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>license.txt</PackageLicenseFile>
     <FileVersion>1.0.0.1</FileVersion>
+    <ApplicationIcon />
+    <Win32Resource />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -32,7 +34,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Compile Include="..\Shared\*.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.4" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
@@ -41,6 +45,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Serilog" Version="2.8.0" />
@@ -57,6 +62,16 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="..\Shared\Check.cs" Link="Shared\Check.cs" />
+    <Compile Update="..\Shared\CodeAnnotations.cs" Link="Shared\CodeAnnotations.cs" />
+    <Compile Update="..\Shared\DictionaryExtensions.cs" Link="Shared\DictionaryExtensions.cs" />
+    <Compile Update="..\Shared\MemberInfoExtensions.cs" Link="Shared\MemberInfoExtensions.cs" />
+    <Compile Update="..\Shared\PropertyInfoExtensions.cs" Link="Shared\PropertyInfoExtensions.cs" />
+    <Compile Update="..\Shared\SharedTypeExtensions.cs" Link="Shared\SharedTypeExtensions.cs" />
+    <Compile Update="..\Shared\StringBuilderExtensions.cs" Link="Shared\StringBuilderExtensions.cs" />
   </ItemGroup>
 
 </Project>

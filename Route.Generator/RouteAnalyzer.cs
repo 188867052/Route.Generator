@@ -18,7 +18,7 @@
             this.actionDescriptorCollectionProvider = actionDescriptorCollectionProvider;
         }
 
-        public IEnumerable<RouteInfo> GetAllRouteInformations()
+        public IEnumerable<RouteInfo> GetAllRouteInfo()
         {
             List<RouteInfo> list = new List<RouteInfo>();
 

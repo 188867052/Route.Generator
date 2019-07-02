@@ -8,7 +8,6 @@ namespace Microsoft.AspNetCore.Mvc.Controllers
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc.Abstractions;
-    using Microsoft.AspNetCore.Mvc.Controllers;
     using Microsoft.AspNetCore.Mvc.Formatters;
     using Microsoft.AspNetCore.Mvc.Infrastructure;
     using Microsoft.AspNetCore.Mvc.Internal;
@@ -30,6 +29,7 @@ namespace Microsoft.AspNetCore.Mvc.Controllers
         {
             AllowValidatingTopLevelNodes = true,
         };
+
         private static readonly IOptions<MvcOptions> _optionsAccessor = Options.Create(_options);
 
         [Fact]

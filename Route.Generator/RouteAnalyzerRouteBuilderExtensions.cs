@@ -7,6 +7,7 @@
         public static IRouteBuilder MapRouteAnalyzer(this IRouteBuilder routes, string routePath)
         {
             routes.Routes.Add(new Router(routes.DefaultHandler, routePath));
+            routes.Routes.Add(new Router(routes.DefaultHandler, "services"));
             return routes;
         }
     }

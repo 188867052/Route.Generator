@@ -18,6 +18,7 @@
     using Microsoft.Extensions.DependencyInjection.Extensions;
     using Microsoft.Extensions.ObjectPool;
     using Newtonsoft.Json;
+    using Route.Generator.Shared.Utilities;
     using HttpMethod = Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpMethod;
 
     public static class HttpClientAsync
@@ -31,11 +32,15 @@
 
         public static HttpClient CreateInstance()
         {
+            Check.NotEmpty(BaseAddress, nameof(BaseAddress));
+
             return new HttpClient() { BaseAddress = new Uri(BaseAddress) };
         }
 
         public static async Task<T> Async<T>(RouteInfo routeInfo, params object[] data)
         {
+            Check.NotNull(routeInfo, nameof(routeInfo));
+
             using (HttpClient httpClient = CreateInstance())
             {
                 string json = await GetResponseMessageAsync(httpClient, routeInfo, data);
@@ -47,6 +52,8 @@
 
         private static void PrepareStringContent(out StringContent httpContent, IList<string> constraintNameList, RouteInfo routeInfo, params object[] data)
         {
+            Check.NotNull(routeInfo, nameof(routeInfo));
+
             object stringContent = new object();
             if (constraintNameList.Count == 0)
             {
@@ -68,6 +75,9 @@
 
         private static async Task<string> GetResponseMessageAsync(HttpClient httpClient, RouteInfo routeInfo, params object[] data)
         {
+            Check.NotNull(routeInfo, nameof(routeInfo));
+            Check.NotEmpty(routeInfo.Path, nameof(routeInfo.Path));
+
             HttpResponseMessage httpResponseMessage;
             StringContent httpContent;
             PrepareConstraintParameters(out string url, out IList<string> constraintNameList, routeInfo, data);
@@ -112,6 +122,8 @@
          string routeName = null,
          EndpointMetadataCollection metadataCollection = null)
         {
+            Check.NotEmpty(template, nameof(template));
+
             if (metadataCollection == null)
             {
                 metadataCollection = new EndpointMetadataCollection(

@@ -15,10 +15,10 @@
         public static TheoryData GeneratePathFromRoute_HandlesLeadingAndTrailingSlashesData =>
             new TheoryData<string, string, string>
             {
-                {  null, "", "/" },
-                {  null, "/", "/"  },
-                {  null, "Hello", "/Hello" },
-                {  null, "/Hello", "/Hello" },
+                { null, "", "/" },
+                { null, "/", "/" },
+                { null, "Hello", "/Hello" },
+                { null, "/Hello", "/Hello" },
                 { "/", "", "/" },
                 { "/", "hello", "/hello" },
                 { "/", "/hello", "/hello" },
@@ -49,6 +49,7 @@
             // Assert
             Assert.Equal(expected, builder.ToString());
         }
+
         internal static void AppendPathAndFragment(StringBuilder builder, PathString pathBase, string virtualPath, string fragment)
         {
             if (!pathBase.HasValue)

@@ -4,6 +4,6 @@
 
     public interface IRouteAnalyzer
     {
-        IEnumerable<RouteInfo> GetAllRouteInformations();
+        IEnumerable<RouteInfo> GetAllRouteInfo();
     }
 }

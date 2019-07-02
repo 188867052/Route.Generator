@@ -1,5 +1,6 @@
 ﻿namespace Mvc
 {
+    using DependencyInjection.Analyzer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,7 @@
             app.UseMvc(routes =>
             {
                 routes.MapRouteAnalyzer(Router.DefaultRoute);
+                routes.MapDependencyInjectionAnalyzer(DependencyInjectionAnalyzer.DefaultRoute);
                 routes.MapRoute(
                      name: "default",
                      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

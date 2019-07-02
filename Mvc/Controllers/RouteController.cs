@@ -16,7 +16,7 @@
         [Route(Router.DefaultRoute)]
         public JsonResult ShowAllRoutes()
         {
-            var infos = this.routeAnalyzer.GetAllRouteInformations();
+            var infos = this.routeAnalyzer.GetAllRouteInfo();
             return this.Json(infos);
         }
     }

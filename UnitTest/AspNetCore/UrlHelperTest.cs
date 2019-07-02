@@ -6,8 +6,14 @@ namespace Microsoft.AspNetCore.Mvc.Routing
     using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.DependencyInjection;
     using Moq;
+    using Xunit.Abstractions;
+
     public class UrlHelperTest : UrlHelperTestBase
     {
+        public UrlHelperTest(ITestOutputHelper tempOutput) : base(tempOutput)
+        {
+        }
+
         protected override IServiceProvider CreateServices()
         {
             var services = this.GetCommonServices();

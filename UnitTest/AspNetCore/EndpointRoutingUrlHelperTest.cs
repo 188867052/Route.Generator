@@ -13,9 +13,14 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
     using Xunit;
+    using Xunit.Abstractions;
 
     public class EndpointRoutingUrlHelperTest : UrlHelperTestBase
     {
+        public EndpointRoutingUrlHelperTest(ITestOutputHelper tempOutput) : base(tempOutput)
+        {
+        }
+
         [Fact]
         public void RouteUrl_WithRouteName_GeneratesUrl_UsingDefaults()
         {

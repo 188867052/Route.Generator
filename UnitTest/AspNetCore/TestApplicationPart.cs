@@ -1,5 +1,4 @@
-﻿
-namespace Microsoft.AspNetCore.Mvc
+﻿namespace Microsoft.AspNetCore.Mvc
 {
     using System;
     using System.Collections.Generic;

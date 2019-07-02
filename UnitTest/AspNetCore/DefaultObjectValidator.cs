@@ -3,8 +3,8 @@
 
 namespace Microsoft.AspNetCore.Mvc.ModelBinding.Validation
 {
-    using Microsoft.AspNetCore.Mvc.Internal;
     using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc.Internal;
 
     /// <summary>
     /// The default implementation of <see cref="IObjectModelValidator"/>.
