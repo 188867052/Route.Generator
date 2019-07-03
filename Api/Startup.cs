@@ -50,7 +50,7 @@
             app.UseMvc(routes =>
             {
                 routes.MapRouteAnalyzer(Router.DefaultRoute);
-                routes.MapDependencyInjectionAnalyzer(DependencyInjectionAnalyzer.DefaultRoute);
+                routes.MapDependencyInjectionAnalyzer();
                 routes.MapRoute(
                      name: "areaRoute",
                      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

@@ -14,6 +14,7 @@
     <Compile Include="..\Shared\*.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DependencyInjection.Analyzer" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Analyzers" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
@@ -28,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DependencyInjection.Analyzer\DependencyInjection.Analyzer.csproj" />
     <ProjectReference Include="..\Route.Generator\Route.Generator.csproj" />
   </ItemGroup>
 

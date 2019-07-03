@@ -17,12 +17,10 @@
     public class RouteController : Controller
     {
         private readonly IRouteAnalyzer routeAnalyzer;
-        private readonly IDependencyInjectionAnalyzer serviceAnalyzer;
 
-        public RouteController(IRouteAnalyzer routeAnalyzer, IDependencyInjectionAnalyzer serviceAnalyzer)
+        public RouteController(IRouteAnalyzer routeAnalyzer)
         {
             this.routeAnalyzer = routeAnalyzer;
-            this.serviceAnalyzer = serviceAnalyzer;
         }
 
         [HttpGet]
@@ -31,15 +29,6 @@
         {
             var value = this.routeAnalyzer.GetAllRouteInfo();
             return this.HightJson2Html(value.ToList());
-        }
-
-        [HttpGet]
-        [Route(DependencyInjectionAnalyzer.DefaultRoute)]
-        public IActionResult ShowAllServices()
-        {
-            var value = this.serviceAnalyzer.GetDependencyInjectionInfo();
-            var html = DependencyInjectionAnalyzer.GetHtml(value.ToList());
-            return this.Content(html, "text/html", Encoding.UTF8);
         }
 
         private IActionResult HightJson(object value)

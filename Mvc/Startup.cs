@@ -21,6 +21,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRouteAnalyzer();
+            services.AddDependencyInjectionAnalyzer();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -36,7 +37,7 @@
             app.UseMvc(routes =>
             {
                 routes.MapRouteAnalyzer(Router.DefaultRoute);
-                routes.MapDependencyInjectionAnalyzer(DependencyInjectionAnalyzer.DefaultRoute);
+                routes.MapDependencyInjectionAnalyzer();
                 routes.MapRoute(
                      name: "default",
                      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
