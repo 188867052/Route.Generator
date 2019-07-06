@@ -43,7 +43,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Api\Api.csproj" />
     <ProjectReference Include="..\Mvc\Mvc.csproj" />
-    <ProjectReference Include="..\Route.Generator\Route.Generator.csproj" />
+    <ProjectReference Include="..\Route.Generator.CLI\Route.Generator.CLI.csproj" />
   </ItemGroup>
 
 </Project>
