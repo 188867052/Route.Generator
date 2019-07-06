@@ -6,14 +6,6 @@ PM> Install-Package Route.Generator
 ```
 ## Screenshot
 ```
-Eg:
-input http://localhost:27634/routes.html or http://localhost:27634/routes
-```
-![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.html.png)
-
-![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.json.png)
-
-
 ### Edit Startup.cs
 Insert code ```services.AddRouteAnalyzer();``` and ```routes.MapRouteAnalyzer(Router.DefaultRoute);``` and required ```using``` directive into Startup.cs as follows.
 
@@ -39,20 +31,32 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     });
 }
 ```
+### View Routes via Browser
+Eg. input http://localhost:27634/routes.html or http://localhost:27634/routes
+```
+![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.html.png)
+
+
+![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.json.png)
+
 ### Generate Routes
+If you want more powerful features, you can install Route.Generator.CLI
 
 ```
+PM> Install-Package Route.Generator.CLI
+```
+```
 PM>routegen gen -p <Your project name> -u <The base address>
+Eg. routegen gen -p Api -u http://localhost:27634/
 ```
 ### Options
-```-p```
-Your project name
-```-u```
-The base address
-```-g```
-Whether generate async method or not, 1 or true meanings will generate, otherwise will not.
-```-o```
-The out put file name. Default name is Routes.Generated.cs.
+
+name | description   
+-|-
+-p | Your project name 
+-u | The base address 
+-o | The out put file name. Default name is Routes.Generated.cs.
+-g | Whether generate async method or not, 1 or true meanings will generate, otherwise will not.
 
 ## Technologies
 
