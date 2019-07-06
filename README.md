@@ -36,25 +36,23 @@ Eg. input http://localhost:27634/routes.html
 ```
 ![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.html.png)
 
-
-## Generate Routes and Async Methods
-
-- [NuGet Gallery | Route.Generator.CLI](https://www.nuget.org/packages/Route.Generator.CLI/)
-If you want more powerful features, you can install 
-Route.Generator.CLI to Generate Routes Generated Files
-```
-PM> Install-Package Route.Generator.CLI
-```
-```
-PM>routegen gen -p <Your project name> -u <The base address>
-Eg. routegen gen -p Api -u http://localhost:27634/
-```
 ```
 Eg. input http://localhost:27634/routes, the address is used to 
 generate async methods, please make it accessible.
 ```
 ![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.json.png)
 
+## Generate Routes and Async Methods
+
+If you want more powerful features, you can install 
+Route.Generator.CLI to Generate Routes Generated Files
+- [NuGet Gallery | Route.Generator.CLI](https://www.nuget.org/packages/Route.Generator.CLI/)
+
+```
+PM> Install-Package Route.Generator.CLI
+PM> routegen gen -p <Your project name> -u <The base address>
+Eg. routegen gen -p Api -u http://localhost:27634/
+```
 ## Options
 
 name | description   
