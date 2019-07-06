@@ -4,6 +4,11 @@
 ```
 PM> Install-Package Route.Generator
 ```
+## Screenshot
+![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.html.png)
+
+![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.json.png)
+
 
 ### Edit Startup.cs
 Insert code ```services.AddRouteAnalyzer();``` and ```routes.MapRouteAnalyzer(Router.DefaultRoute);``` and required ```using``` directive into Startup.cs as follows.
