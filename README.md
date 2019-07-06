@@ -1,12 +1,12 @@
-### Install NuGet package
+## Install NuGet package
 - [NuGet Gallery | Route.Generator](https://www.nuget.org/packages/Route.Generator/)
 
 ```
 PM> Install-Package Route.Generator
 ```
 
-### Edit Startup.cs
-Insert code ```services.AddRouteAnalyzer();``` and ```routes.MapRouteAnalyzer(Router.DefaultRoute);``` and required ```using``` directive into Startup.cs as follows.
+## Edit Startup.cs
+Insert code ```services.AddRouteAnalyzer();``` and ```routes.MapRouteAnalyzer();``` and required ```using``` directive into Startup.cs as follows.
 
 ```cs
 using Route.Generator; // Add
@@ -22,7 +22,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseMvc();
     app.UseMvc(routes =>
     {
-        routes.MapRouteAnalyzer(Router.DefaultRoute); // Add
+        routes.MapRouteAnalyzer(); // Add
         routes.MapRoute(
              name: "areaRoute",
              template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
@@ -30,18 +30,19 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     });
 }
 ```
-### View Routes via Browser
+## View Routes via Browser
 ```
-Eg. input http://localhost:27634/routes.html or http://localhost:27634/routes
+Eg. input http://localhost:27634/routes.html
 ```
 ![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.html.png)
 
-
+```
+Eg. input http://localhost:27634/routes, the address is used to generate async methods, if you want to generate code, please make it accessible.
+```
 ![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.json.png)
 
-### Generate Routes
-If you want more powerful features, you can install Route.Generator.CLI
-
+## Generate Routes and Async Methods
+If you want more powerful features, you can install Route.Generator.CLI to Generate Routes Generated Files
 ```
 PM> Install-Package Route.Generator.CLI
 ```
@@ -49,7 +50,7 @@ PM> Install-Package Route.Generator.CLI
 PM>routegen gen -p <Your project name> -u <The base address>
 Eg. routegen gen -p Api -u http://localhost:27634/
 ```
-### Options
+## Options
 
 name | description   
 -|-
