@@ -880,6 +880,20 @@ namespace Route.Generator
     public class RouteRoute
     {
         /// <summary>
+        /// <see cref="RouteController.ShowAllRoutes"/>
+        /// </summary>
+        public const string ShowAllRoutes = "/routes";
+        public static async Task<T> ShowAllRoutesAsync<T>()
+        {
+            var routeInfo = new RouteInfo
+            {
+                HttpMethods = "GET",
+                Path = ShowAllRoutes,
+            };
+            return await HttpClientAsync.Async<T>(routeInfo);
+        }
+
+        /// <summary>
         /// <see cref="RouteController.Index"/>
         /// </summary>
         public const string Index = "/routes.html";

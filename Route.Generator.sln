@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Route.Generator", "Route.Ge
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{38E8D6AF-CE7D-4AF8-A889-EBF0A89D21F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Route.Generator.CLI", "Route.Generator.CLI\Route.Generator.CLI.csproj", "{6A57E4E5-FE98-461D-8766-E4F2202E18A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{38E8D6AF-CE7D-4AF8-A889-EBF0A89D21F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E8D6AF-CE7D-4AF8-A889-EBF0A89D21F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E8D6AF-CE7D-4AF8-A889-EBF0A89D21F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A57E4E5-FE98-461D-8766-E4F2202E18A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A57E4E5-FE98-461D-8766-E4F2202E18A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A57E4E5-FE98-461D-8766-E4F2202E18A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A57E4E5-FE98-461D-8766-E4F2202E18A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

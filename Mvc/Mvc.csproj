@@ -11,12 +11,6 @@
     <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Shared\*.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="..\Shared\Check.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="DependencyInjection.Analyzer" Version="2.2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Analyzers" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="2.2.0" />
