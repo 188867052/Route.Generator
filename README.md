@@ -31,15 +31,10 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 ## View Routes via Browser
-```
 Eg. input http://localhost:27634/routes.html
-```
 ![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.html.png)
 
-```
-Eg. input http://localhost:27634/routes, the address is used to 
-generate async methods, please make it accessible.
-```
+Eg. input http://localhost:27634/routes, the address is used to generate async methods, please make it accessible.
 ![screenshot](https://github.com/188867052/Route.Generator/blob/master/Route.Generator/routes.json.png)
 
 ## Generate Routes and Async Methods
@@ -53,13 +48,13 @@ PM> Install-Package Route.Generator.CLI
 PM> routegen gen -p <Your project name> -u <The base address>
 Eg. routegen gen -p Api -u http://localhost:27634/
 ```
-## Options
+## Command-line Options
 
-name | description   
+command | description   
 -|-
 -p | Your project name 
 -u | The base address 
--o | The out put file name. Default name is Routes.Generated.cs.
+-o | The out put file name. default name is Routes.Generated.cs.
 -g | Whether generate async method or not, 1 or true meanings will generate, otherwise will not.
 
 ## Technologies
