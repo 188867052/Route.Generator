@@ -3,6 +3,11 @@
     using System;
     using System.IO;
 
+    public interface ICodeGenerator
+    {
+        bool Generate(CommondConfig config);
+    }
+
     public class CodeGenerator : ICodeGenerator
     {
         private readonly RouteGenerator modelGenerator;

@@ -108,7 +108,7 @@
                     return 1;
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 this.Console.WriteLine("Read config file error.");
                 this.Console.WriteLine(ex.Message);

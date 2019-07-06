@@ -53,6 +53,8 @@
             {
                 Uri combined = new Uri(new Uri(config.BaseAddress), Router.DefaultRoute);
                 Console.WriteLine($"Route URL: {combined}");
+                Console.WriteLine($"Exception Message: {ex.Message}");
+                Console.WriteLine($"Exception StackTrace: {ex.StackTrace}");
                 Console.WriteLine("Please provide BaseAddress, and make sure the Route URL is Right and Accessible.");
                 return string.Empty;
             }

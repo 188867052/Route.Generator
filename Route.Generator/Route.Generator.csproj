@@ -2,76 +2,33 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <ToolCommandName>routegen</ToolCommandName>
     <PackAsTool>true</PackAsTool>
-    <Authors>Route.Generator</Authors>
-    <Product>Route.Generator</Product>
-    <Copyright>Copyright © 2019 Core</Copyright>
-    <PackageProjectUrl>https://github.com/188867052/Route.Generator</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/188867052/Route.Generator</RepositoryUrl>
-    <PackageId>Route.Generator</PackageId>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <Company>Route.Generator</Company>
-    <PackageLicenseUrl />
+    <Authors>Harry Cheng</Authors>
+    <Version>2.2.0</Version>
+    <Company>Harry Cheng</Company>
+    <Product>Harry Cheng</Product>
     <Description>.Net Core Api &amp; Mvc
 .NET Core command-line (CLI) tool to generate Route source files.</Description>
-    <PackageTags>Route.Generator</PackageTags>
-    <Version>1.0.0.1</Version>
-    <RepositoryType>github</RepositoryType>
-    <PackageReleaseNotes>Generate MVC &amp;API route automatically, and you can call API like local method.</PackageReleaseNotes>
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <FileVersion>1.0.0.1</FileVersion>
-    <ApplicationIcon />
-    <Win32Resource />
+    <Copyright>Copyright © 2019 Harry Cheng</Copyright>
+    <PackageProjectUrl>https://github.com/188867052/Route.Generator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/188867052/Route.Generator</RepositoryUrl>
+    <RepositoryType>https://github.com</RepositoryType>
+    <PackageTags>Route.Generator AspNetCore Api Mvc</PackageTags>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <CodeAnalysisRuleSet>..\project.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\Shared\*.cs" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.3.4" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
     <PackageReference Include="Serilog" Version="2.8.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.4" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\license.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="..\Shared\Check.cs" Link="Shared\Check.cs" />
-    <Compile Update="..\Shared\CodeAnnotations.cs" Link="Shared\CodeAnnotations.cs" />
-    <Compile Update="..\Shared\DictionaryExtensions.cs" Link="Shared\DictionaryExtensions.cs" />
-    <Compile Update="..\Shared\MemberInfoExtensions.cs" Link="Shared\MemberInfoExtensions.cs" />
-    <Compile Update="..\Shared\PropertyInfoExtensions.cs" Link="Shared\PropertyInfoExtensions.cs" />
-    <Compile Update="..\Shared\SharedTypeExtensions.cs" Link="Shared\SharedTypeExtensions.cs" />
-    <Compile Update="..\Shared\StringBuilderExtensions.cs" Link="Shared\StringBuilderExtensions.cs" />
   </ItemGroup>
 
 </Project>

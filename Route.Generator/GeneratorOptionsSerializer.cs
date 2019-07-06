@@ -4,6 +4,11 @@
     using System.IO;
     using Microsoft.Extensions.Logging;
 
+    public interface IGeneratorOptionsSerializer
+    {
+        string Save(string directory);
+    }
+
     /// <summary>
     /// Serialization and Deserialization for the <see cref="GeneratorOptions"/> class.
     /// </summary>

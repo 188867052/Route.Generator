@@ -36,7 +36,7 @@
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
-                routes.MapRouteAnalyzer(Router.DefaultRoute);
+                routes.MapRouteAnalyzer();
                 routes.MapDependencyInjectionAnalyzer();
                 routes.MapRoute(
                      name: "default",

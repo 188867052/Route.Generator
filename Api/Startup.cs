@@ -34,6 +34,7 @@
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 options.SerializerSettings.Formatting = Formatting.Indented;
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -49,7 +50,7 @@
             app.UseMvc();
             app.UseMvc(routes =>
             {
-                routes.MapRouteAnalyzer(Router.DefaultRoute);
+                routes.MapRouteAnalyzer();
                 routes.MapDependencyInjectionAnalyzer();
                 routes.MapRoute(
                      name: "areaRoute",

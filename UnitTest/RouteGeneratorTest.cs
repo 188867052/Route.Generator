@@ -13,7 +13,7 @@ namespace UnitTest
         {
             try
             {
-                using var client = new TestSite(nameof(Mvc)).BuildClient();
+                var client = new TestSite(nameof(Mvc)).BuildClient();
                 var response = await client.GetAsync(Router.DefaultRoute);
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(content);
@@ -32,7 +32,7 @@ namespace UnitTest
         {
             try
             {
-                using var client = new TestSite(nameof(Api)).BuildClient();
+                var client = new TestSite(nameof(Api)).BuildClient();
                 var response = await client.GetAsync(Router.DefaultRoute);
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(content);

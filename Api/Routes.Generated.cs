@@ -848,3 +848,49 @@ namespace Api.Routes
         }
     }
 }
+
+namespace DependencyInjection.Analyzer
+{
+    /// <summary>
+    /// <see cref="RouteController"/>
+    /// </summary>
+    public class RouteRoute
+    {
+        /// <summary>
+        /// <see cref="RouteController.ShowAllServices"/>
+        /// </summary>
+        public const string ShowAllServices = "/services";
+        public static async Task<T> ShowAllServicesAsync<T>()
+        {
+            var routeInfo = new RouteInfo
+            {
+                HttpMethods = "GET",
+                Path = ShowAllServices,
+            };
+            return await HttpClientAsync.Async<T>(routeInfo);
+        }
+    }
+}
+
+namespace Route.Generator
+{
+    /// <summary>
+    /// <see cref="RouteController"/>
+    /// </summary>
+    public class RouteRoute
+    {
+        /// <summary>
+        /// <see cref="RouteController.Index"/>
+        /// </summary>
+        public const string Index = "/routes.html";
+        public static async Task<T> IndexAsync<T>()
+        {
+            var routeInfo = new RouteInfo
+            {
+                HttpMethods = "GET",
+                Path = Index,
+            };
+            return await HttpClientAsync.Async<T>(routeInfo);
+        }
+    }
+}
