@@ -8,29 +8,51 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Razor.TagHelpers;
     using Microsoft.AspNetCore.Routing;
+    using Microsoft.Extensions.Caching.Memory;
 
     public class RouteController : Controller
     {
         private readonly IRouteAnalyzer routeAnalyzer;
+        private readonly IMemoryCache memoryCache;
 
-        public RouteController(IRouteAnalyzer routeAnalyzer)
+        public RouteController(IRouteAnalyzer routeAnalyzer, IMemoryCache memoryCache)
         {
             this.routeAnalyzer = routeAnalyzer;
+            this.memoryCache = memoryCache;
         }
 
         [HttpGet]
         [Route(Router.DefaultRoute)]
         public IList<RouteInfo> ShowAllRoutes()
         {
-            return routeAnalyzer.GetAllRouteInfo();
+            return GetValue("Route.Generator");
         }
 
         [HttpGet]
         [Route(Router.DefaultRouteHtml)]
         public IActionResult Index()
         {
-            var value = routeAnalyzer.GetAllRouteInfo();
-            return ToHtml(value);
+            var value = GetValue("Route.Generator");
+            this.memoryCache.TryGetValue("ActionResult", out IActionResult actionResult);
+            if (actionResult == null)
+            {
+                actionResult = ToHtml(value);
+                this.memoryCache.Set("ActionResult", actionResult);
+            }
+
+            return actionResult;
+        }
+
+        private IList<RouteInfo> GetValue(string key)
+        {
+            this.memoryCache.TryGetValue(key, out IList<RouteInfo> routeInfos);
+            if (routeInfos == null)
+            {
+                routeInfos = routeAnalyzer.GetAllRouteInfo();
+                this.memoryCache.Set(key, routeInfos);
+            }
+
+            return routeInfos;
         }
 
         private IActionResult ToHtml(IList<RouteInfo> routeInfos)

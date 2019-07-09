@@ -14,7 +14,7 @@ namespace UnitTest
             try
             {
                 var client = new TestSite(nameof(Mvc)).BuildClient();
-                var response = await client.GetAsync(Router.DefaultRoute);
+                var response = await client.GetAsync("/routes");
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(content);
                 var routesGenerated = RouteGenerator.GenerateRoutes(content);
@@ -33,7 +33,7 @@ namespace UnitTest
             try
             {
                 var client = new TestSite(nameof(Api)).BuildClient();
-                var response = await client.GetAsync(Router.DefaultRoute);
+                var response = await client.GetAsync("/routes.html");
                 var content = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(content);
                 var routesGenerated = RouteGenerator.GenerateRoutes(content);

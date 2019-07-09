@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Harry Cheng</Authors>
-    <Version>2.2.0</Version>
+    <Version>2.2.0.1</Version>
     <Company>Harry Cheng</Company>
     <Product>Harry Cheng</Product>
     <Description>.Net Core Api &amp; Mvc, You can view all routing details via the browser page.
