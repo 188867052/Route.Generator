@@ -1,16 +1,12 @@
 ﻿namespace Route.Generator
 {
-    using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.DependencyInjection;
 
     public static class RouteAnalyzerExtensions
     {
-        public static IRouteBuilder MapRouteAnalyzer(this IRouteBuilder routes)
-        {
-            routes.Routes.Add(new Router(routes.DefaultHandler, Router.DefaultRoute));
-            routes.Routes.Add(new Router(routes.DefaultHandler, Router.DefaultRouteHtml));
-            return routes;
-        }
+        public const string DefaultRoute = "/routes";
+        public const string DefaultRouteHtml = DefaultRoute + ".html";
+        public const string DefaultRouteClass = DefaultRoute + ".class";
 
         public static IServiceCollection AddRouteAnalyzer(this IServiceCollection services)
         {

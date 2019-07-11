@@ -50,7 +50,6 @@
             app.UseMvc();
             app.UseMvc(routes =>
             {
-                routes.MapRouteAnalyzer();
                 routes.MapDependencyInjectionAnalyzer();
                 routes.MapRoute(
                      name: "areaRoute",

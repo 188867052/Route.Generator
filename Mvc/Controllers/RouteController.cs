@@ -13,7 +13,7 @@
         }
 
         [HttpGet]
-        [Route(Router.DefaultRoute)]
+        [Route(RouteAnalyzerExtensions.DefaultRoute)]
         public JsonResult ShowAllRoutes()
         {
             var infos = this.routeAnalyzer.GetAllRouteInfo();

@@ -10,7 +10,7 @@
     using Microsoft.AspNetCore.Routing;
     using Microsoft.Extensions.Caching.Memory;
 
-    public class RouteController : Controller
+    public partial class RouteController : Controller
     {
         private readonly IRouteAnalyzer routeAnalyzer;
         private readonly IMemoryCache memoryCache;
@@ -22,14 +22,15 @@
         }
 
         [HttpGet]
-        [Route(Router.DefaultRoute)]
+        [Route(RouteAnalyzerExtensions.DefaultRoute)]
         public IList<RouteInfo> ShowAllRoutes()
         {
             return GetValue("Route.Generator");
         }
 
+      
         [HttpGet]
-        [Route(Router.DefaultRouteHtml)]
+        [Route(RouteAnalyzerExtensions.DefaultRouteHtml)]
         public IActionResult Index()
         {
             var value = GetValue("Route.Generator");

@@ -36,8 +36,6 @@
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
-                routes.MapRouteAnalyzer();
-                routes.MapDependencyInjectionAnalyzer();
                 routes.MapRoute(
                      name: "default",
                      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

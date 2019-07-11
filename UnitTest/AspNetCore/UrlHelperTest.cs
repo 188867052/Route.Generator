@@ -10,7 +10,8 @@ namespace Microsoft.AspNetCore.Mvc.Routing
 
     public class UrlHelperTest : UrlHelperTestBase
     {
-        public UrlHelperTest(ITestOutputHelper tempOutput) : base(tempOutput)
+        public UrlHelperTest(ITestOutputHelper tempOutput)
+            : base(tempOutput)
         {
         }
 

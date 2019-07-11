@@ -42,7 +42,7 @@
                     BaseAddress = new Uri(config.BaseAddress),
                 })
                 {
-                    using (HttpResponseMessage response = await client.GetAsync(Router.DefaultRoute))
+                    using (HttpResponseMessage response = await client.GetAsync(RouteAnalyzerExtensions.DefaultRoute))
                     {
                         string content = await response.Content.ReadAsStringAsync();
                         return GenerateRoutes(content);
@@ -51,7 +51,7 @@
             }
             catch (Exception ex)
             {
-                Uri combined = new Uri(new Uri(config.BaseAddress), Router.DefaultRoute);
+                Uri combined = new Uri(new Uri(config.BaseAddress), RouteAnalyzerExtensions.DefaultRoute);
                 Console.WriteLine($"Route URL: {combined}");
                 Console.WriteLine($"Exception Message: {ex.Message}");
                 Console.WriteLine($"Exception StackTrace: {ex.StackTrace}");

@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Route.Generator
 {
-    public static class HtmlContent
+    internal static class HtmlContent
     {
-        public static string ToHtml(IHtmlContent content)
+        internal static string ToHtml(IHtmlContent content)
         {
             using (var writer = new StringWriter())
             {
@@ -17,14 +17,14 @@ namespace Route.Generator
             }
         }
 
-        public static TagHelperOutput TagHelper(string tagName, TagHelperAttributeList attributes)
+        internal static TagHelperOutput TagHelper(string tagName, TagHelperAttributeList attributes)
         {
             return new TagHelperOutput(tagName,
                                        attributes,
                                        getChildContentAsync: (useCachedResult, encoder) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
         }
 
-        public static TagHelperOutput TagHelper(string tagName, params IHtmlContent[] htmlContent)
+        internal static TagHelperOutput TagHelper(string tagName, params IHtmlContent[] htmlContent)
         {
             var tagHelperOutput = new TagHelperOutput(tagName,
                                        new TagHelperAttributeList(),
@@ -33,14 +33,14 @@ namespace Route.Generator
             return tagHelperOutput.AppendHtml(htmlContent);
         }
 
-        public static TagHelperOutput TagHelper(string tagName)
+        internal static TagHelperOutput TagHelper(string tagName)
         {
             return new TagHelperOutput(tagName,
                                        new TagHelperAttributeList(),
                                        getChildContentAsync: (useCachedResult, encoder) => Task.FromResult<TagHelperContent>(new DefaultTagHelperContent()));
         }
 
-        public static TagHelperOutput TagHelper(string tagName, TagHelperAttributeList attributes, params string[] content)
+        internal static TagHelperOutput TagHelper(string tagName, TagHelperAttributeList attributes, params string[] content)
         {
             TagHelperOutput tagHelperOutput = new TagHelperOutput(tagName,
                                                                   attributes,
@@ -48,7 +48,7 @@ namespace Route.Generator
             return tagHelperOutput.AppendHtml(content);
         }
 
-        public static TagHelperOutput TagHelper(string tagName, TagHelperAttribute attribute, string content)
+        internal static TagHelperOutput TagHelper(string tagName, TagHelperAttribute attribute, string content)
         {
             TagHelperOutput tagHelperOutput = new TagHelperOutput(tagName,
                                                                   new TagHelperAttributeList { attribute },
@@ -56,7 +56,7 @@ namespace Route.Generator
             return tagHelperOutput.AppendHtml(content);
         }
 
-        public static TagHelperOutput TagHelper(string tagName, string content)
+        internal static TagHelperOutput TagHelper(string tagName, string content)
         {
             TagHelperOutput tagHelperOutput = new TagHelperOutput(tagName,
                                                                   new TagHelperAttributeList(),
@@ -64,7 +64,7 @@ namespace Route.Generator
             return tagHelperOutput.AppendHtml(content);
         }
 
-        public static TagHelperOutput TagHelper(string tagName, TagHelperAttributeList attributes, params IHtmlContent[] htmlContent)
+        internal static TagHelperOutput TagHelper(string tagName, TagHelperAttributeList attributes, params IHtmlContent[] htmlContent)
         {
             TagHelperOutput tagHelperOutput = new TagHelperOutput(tagName,
                                                                   attributes,
@@ -72,7 +72,7 @@ namespace Route.Generator
             return tagHelperOutput.AppendHtml(htmlContent);
         }
 
-        public static TagHelperOutput TagHelper(string tagName, TagHelperAttribute attribute, params IHtmlContent[] htmlContent)
+        internal static TagHelperOutput TagHelper(string tagName, TagHelperAttribute attribute, params IHtmlContent[] htmlContent)
         {
             TagHelperOutput tagHelperOutput = new TagHelperOutput(tagName,
                                                                   new TagHelperAttributeList { attribute },
