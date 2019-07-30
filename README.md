@@ -6,7 +6,7 @@ PM> Install-Package Route.Generator
 ```
 
 ## Edit Startup.cs
-Insert code ```services.AddRouteAnalyzer();``` and ```routes.MapRouteAnalyzer();``` and required ```using``` directive into Startup.cs as follows.
+Insert code ```services.AddRouteAnalyzer();``` and required ```using``` directive into Startup.cs as follows.
 
 ```cs
 using Route.Generator; // Add
@@ -17,18 +17,6 @@ public void ConfigureServices(IServiceCollection services)
     services.AddRouteAnalyzer(); // Add
 }
 ....
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-{
-    app.UseMvc();
-    app.UseMvc(routes =>
-    {
-        routes.MapRouteAnalyzer(); // Add
-        routes.MapRoute(
-             name: "areaRoute",
-             template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-	....
-    });
-}
 ```
 ## View Routes via Browser
 ```
@@ -222,3 +210,4 @@ public class HomeRoute
 * [Route.Generator](https://github.com/188867052/Route.Generator)
 * [DapperExtension](https://github.com/188867052/DapperExtension)
 * [DependencyInjection.Analyzer](https://github.com/188867052/DependencyInjection.Analyzer)
+* [Quartz.Web](https://github.com/188867052/Quartz.Web)
