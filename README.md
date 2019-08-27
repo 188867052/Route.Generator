@@ -1,3 +1,7 @@
+| Package | NuGet Stable | Downloads |
+| ------- | ------------ | --------- |
+| [Route.Generator](https://www.nuget.org/packages/Route.Generator/) | [![Route.Generator](https://img.shields.io/nuget/v/Route.Generator.svg)](https://www.nuget.org/packages/Route.Generator/) | [![Route.Generator](https://img.shields.io/nuget/dt/Route.Generator.svg)](https://www.nuget.org/packages/Route.Generator/) | 
+
 ## Install NuGet package
 - [NuGet Gallery | Route.Generator](https://www.nuget.org/packages/Route.Generator/)
 
