@@ -42,6 +42,21 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
+- task: FtpUpload@2
+  displayName: FTP上传文件
+  inputs:
+    credentialsOption: 'inputs'
+    serverUrl: 'file://47.105.214.235/wwwroot/'
+    username: 'administrator'
+    password: '931592457czA'
+    rootDirectory: 'd:\a\1\a\'
+    filePatterns: '*.zip'
+    remoteDirectory: '/Route.Generator/$(Build.BuildId)/'
+    clean: false
+    cleanContents: false
+    preservePaths: false
+    trustSSL: false
+
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
