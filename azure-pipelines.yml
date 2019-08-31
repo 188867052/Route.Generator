@@ -32,7 +32,7 @@ steps:
   inputs:
     script: |
       dotnet publish -c Release
-      dir D:\a\1\s\Route.Generator\bin\Release\netcoreapp2.2\publish\
+      dir D:\a\1\s\Route.Generator\bin\Release\netcoreapp2.1\publish\
 - task: ArchiveFiles@2
   displayName: 压缩文件
   inputs:
