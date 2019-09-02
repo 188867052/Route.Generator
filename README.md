@@ -1,3 +1,6 @@
+[![Build Status](https://542153354-qq.visualstudio.com/Route.Generator/_apis/build/status/188867052.Route.Generator?branchName=master)](https://542153354-qq.visualstudio.com/Route.Generator/_build/latest?definitionId=12&branchName=master)
+
+
 | Package | NuGet Stable | Downloads |
 | ------- | ------------ | --------- |
 | [Route.Generator](https://www.nuget.org/packages/Route.Generator/) | [![Route.Generator](https://img.shields.io/nuget/v/Route.Generator.svg)](https://www.nuget.org/packages/Route.Generator/) | [![Route.Generator](https://img.shields.io/nuget/dt/Route.Generator.svg)](https://www.nuget.org/packages/Route.Generator/) | 

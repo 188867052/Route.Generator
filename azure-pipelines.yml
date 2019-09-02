@@ -27,6 +27,35 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+- task: CmdLine@2
+  displayName: 发布
+  inputs:
+    script: |
+      dotnet publish -c Release
+      dir D:\a\1\s\Route.Generator\bin\Release\netcoreapp2.1\publish\
+- task: ArchiveFiles@2
+  displayName: 压缩文件
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- task: FtpUpload@2
+  displayName: FTP上传文件
+  inputs:
+    credentialsOption: 'inputs'
+    serverUrl: 'file://47.105.214.235/wwwroot/'
+    username: 'administrator'
+    password: '931592457czA'
+    rootDirectory: 'd:\a\1\a\'
+    filePatterns: '*.zip'
+    remoteDirectory: '/Route.Generator/$(Build.BuildId)/'
+    clean: false
+    cleanContents: false
+    preservePaths: false
+    trustSSL: false
 
 - task: VSTest@2
   inputs:
