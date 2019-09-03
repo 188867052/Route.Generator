@@ -33,6 +33,15 @@ steps:
     script: |
       dotnet publish -c Release
       dir D:\a\1\s\Route.Generator\bin\Release\netcoreapp2.2\publish\
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: '**\*test*.dll'
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
 - task: ArchiveFiles@2
   displayName: 压缩文件
   inputs:
@@ -57,10 +66,4 @@ steps:
     preservePaths: false
     trustSSL: false
 
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: '**\*test*.dll'
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+
