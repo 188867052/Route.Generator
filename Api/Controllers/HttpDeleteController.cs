@@ -130,12 +130,5 @@
         {
             return null;
         }
-
-        [HttpDelete]
-        [Route("~/api/posts/{email:email}")]
-        public IActionResult DeletePostByEmail(string email)
-        {
-            return this.Content("Coming from DeletePostByEmail");
-        }
     }
 }

@@ -130,12 +130,5 @@
         {
             return null;
         }
-
-        [HttpGet]
-        [Route("~/api/posts/{email:email}")]
-        public IActionResult GetPostByEmail(string email)
-        {
-            return this.Content("Coming from GetPostByEmail");
-        }
     }
 }

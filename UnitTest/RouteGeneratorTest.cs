@@ -1,24 +1,18 @@
 namespace UnitTest
 {
     using System;
-    using System.Threading.Tasks;
-    using Route.Generator;
+    using Newtonsoft.Json;
     using Xunit;
 
     public class RouteGeneratorTest
     {
         [Fact]
-        public async Task TestApiRouteGenerator()
+        public void TestApiRouteGenerator()
         {
             try
             {
-                var client = new TestSite(nameof(Api)).BuildClient();
-                var response = await client.GetAsync("/routes.html");
-                var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(content);
-                var routesGenerated = RouteGenerator.GenerateRoutes(content);
-                Console.WriteLine(routesGenerated);
-                Assert.True(routesGenerated.Contains("namespace"));
+                var routeInfos = new TestSite(nameof(Api)).GetAllRouteInfo();
+                Console.WriteLine(JsonConvert.SerializeObject(routeInfos, Formatting.Indented));
             }
             catch (Exception ex)
             {

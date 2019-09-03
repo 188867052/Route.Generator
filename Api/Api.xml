@@ -101,7 +101,7 @@
         </member>
         <member name="F:Api.Routes.HttpDeleteRoute.DeletePostByEmail">
             <summary>
-            <see cref="M:Api.Controllers.HttpDeleteController.DeletePostByEmail(System.String)"/>
+            <see cref="!:Controllers.HttpDeleteController.DeletePostByEmail"/>
             </summary>
         </member>
         <member name="T:Api.Routes.HttpGetRoute">
@@ -181,7 +181,7 @@
         </member>
         <member name="F:Api.Routes.HttpGetRoute.GetPostByEmail">
             <summary>
-            <see cref="M:Api.Controllers.HttpGetController.GetPostByEmail(System.String)"/>
+            <see cref="!:Controllers.HttpGetController.GetPostByEmail"/>
             </summary>
         </member>
         <member name="T:Api.Routes.HttpPatchRoute">
