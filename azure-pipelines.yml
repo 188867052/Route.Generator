@@ -28,10 +28,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: 测试
-  inputs:
-    command: 'test'
+
 
 - task: CmdLine@2
   displayName: 发布
@@ -63,5 +60,10 @@ steps:
     cleanContents: false
     preservePaths: false
     trustSSL: false
+
+- task: DotNetCoreCLI@2
+  displayName: 测试
+  inputs:
+    command: 'test'
 
 
