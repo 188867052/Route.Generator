@@ -11,10 +11,10 @@ namespace Api.Routes
     public class ExampleRoute
     {
         /// <summary>
-        /// <see cref="Controllers.ExampleController.GetVlues"/>
+        /// <see cref="Controllers.ExampleController.GetValues"/>
         /// </summary>
-        public const string GetVlues = "/api/Example/GetVlues/{key}";
-        public static async Task<T> GetVluesAsync<T>(string key, string value)
+        public const string GetVlues = "/api/Example/GetValues/{key}";
+        public static async Task<T> GetValuesAsync<T>(string key, string value)
         {
             var routeInfo = new RouteInfo
             {

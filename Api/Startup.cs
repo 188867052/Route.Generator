@@ -1,7 +1,7 @@
 ﻿namespace Api
 {
-    using Api.RouteConstraint;
-    using DependencyInjection.Analyzer;
+    using System;
+    using System.IO;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
@@ -11,6 +11,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using Route.Generator;
+    using Swashbuckle.AspNetCore.Swagger;
 
     public class Startup
     {
@@ -24,10 +25,20 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<RouteOptions>(routeOptions =>
+            services.AddSwaggerGen(options =>
             {
-                routeOptions.ConstraintMap.Add("email", typeof(EmailConstraint));
-                routeOptions.LowercaseUrls = true;
+                options.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "API",
+                    Description = "api文档",
+                    TermsOfService = "None",
+                });
+                var basePath = AppContext.BaseDirectory;
+                var xmlPath = Path.Combine(basePath, "api.xml");
+                var xmlPathByModel = Path.Combine(basePath, "api.xml");
+                options.IncludeXmlComments(xmlPathByModel);
+                options.IncludeXmlComments(xmlPath, true);
             });
 
             services.AddMvc().AddJsonOptions((options) =>
@@ -39,7 +50,6 @@
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddRouteAnalyzer();
-            services.AddDependencyInjectionAnalyzer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,10 +57,16 @@
         {
             app.UseStaticFiles();
             app.UseFileServer();
+            app.UseSwagger();
+            app.UseSwaggerUI(action =>
+            {
+                action.ShowExtensions();
+                action.SwaggerEndpoint("/swagger/v1/swagger.json", "V1 Docs");
+            });
+
             app.UseMvc();
             app.UseMvc(routes =>
             {
-                routes.MapDependencyInjectionAnalyzer();
                 routes.MapRoute(
                      name: "areaRoute",
                      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

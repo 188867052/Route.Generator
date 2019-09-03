@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api</name>
+    </assembly>
+    <members>
+        <member name="T:Api.Routes.ExampleRoute">
+            <summary>
+            <see cref="T:Api.Controllers.ExampleController"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.ExampleRoute.GetVlues">
+            <summary>
+            <see cref="M:Api.Controllers.ExampleController.GetValues(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.ExampleRoute.Edit">
+            <summary>
+            <see cref="M:Api.Controllers.ExampleController.Edit(Api.Models.PointModel)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.ExampleRoute.Delete">
+            <summary>
+            <see cref="M:Api.Controllers.ExampleController.Delete(System.String)"/>
+            </summary>
+        </member>
+        <member name="T:Api.Routes.HttpDeleteRoute">
+            <summary>
+            <see cref="T:Api.Controllers.HttpDeleteController"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_5_Constraint_5_Parameter_None_Order">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_5_Constraint_5_Parameter_None_Order(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_1_Constraint_1_Parameter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_1_Constraint_1_Parameter(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_1_Constraint_1_Parameter_Desc">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_1_Constraint_1_Parameter_Desc(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete4">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete4(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_2_Constraints_0_Parameter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_2_Constraints_0_Parameter(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_0_Constraint_0_Paramerter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_0_Constraint_0_Paramerter"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_0_Constraint_2_Paramerter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_0_Constraint_2_Paramerter(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_1_Nullable_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_1_Nullable_Constraint(System.Nullable{System.Int32})"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete_1_Nullable_Parameter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete_1_Nullable_Parameter(System.Nullable{System.Int32})"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.DeleteName">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.DeleteName(System.Int32,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Put">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Put(System.Int32,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.DeleteById">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.DeleteById(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.Delete7">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.Delete7(System.Boolean,System.Nullable{System.DateTime})"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpDeleteRoute.DeletePostByEmail">
+            <summary>
+            <see cref="M:Api.Controllers.HttpDeleteController.DeletePostByEmail(System.String)"/>
+            </summary>
+        </member>
+        <member name="T:Api.Routes.HttpGetRoute">
+            <summary>
+            <see cref="T:Api.Controllers.HttpGetController"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_1_Constraint_1_Parameter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_1_Constraint_1_Parameter(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_5_Constraint_5_Parameter_None_Order">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_5_Constraint_5_Parameter_None_Order(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_1_Constraint_1_Parameter_Desc">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_1_Constraint_1_Parameter_Desc(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get4">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get4(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_2_Constraints_0_Parameter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_2_Constraints_0_Parameter(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_0_Constraint_0_Paramerter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_0_Constraint_0_Paramerter"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_0_Constraint_2_Paramerter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_0_Constraint_2_Paramerter(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_1_Nullable_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_1_Nullable_Constraint(System.Nullable{System.Int32})"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get_1_Nullable_Parameter">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get_1_Nullable_Parameter(System.Nullable{System.Int32})"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.GetName">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.GetName(System.Int32,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Put">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Put(System.Int32,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Delete">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Delete(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.GetById">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.GetById(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.Get7">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.Get7(System.Boolean,System.Nullable{System.DateTime})"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpGetRoute.GetPostByEmail">
+            <summary>
+            <see cref="M:Api.Controllers.HttpGetController.GetPostByEmail(System.String)"/>
+            </summary>
+        </member>
+        <member name="T:Api.Routes.HttpPatchRoute">
+            <summary>
+            <see cref="T:Api.Controllers.HttpPatchController"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPatchRoute.Patch_1_FromBody_1_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPatchController.Patch_1_FromBody_1_Constraint(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPatchRoute.Patch_2_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPatchController.Patch_2_Constraint(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPatchRoute.Patch_1_FromBody">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPatchController.Patch_1_FromBody(System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPatchRoute.Patch_Model">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPatchController.Patch_Model(Api.Models.PointModel)"/>
+            </summary>
+        </member>
+        <member name="T:Api.Routes.HttpPostRoute">
+            <summary>
+            <see cref="T:Api.Controllers.HttpPostController"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPostRoute.Post_1_FromBody_1_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPostController.Post_1_FromBody_1_Constraint(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPostRoute.Post_2_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPostController.Post_2_Constraint(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPostRoute.Post_1_FromBody">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPostController.Post_1_FromBody(System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPostRoute.Post_Model">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPostController.Post_Model(Api.Models.PointModel)"/>
+            </summary>
+        </member>
+        <member name="T:Api.Routes.HttpPutRoute">
+            <summary>
+            <see cref="T:Api.Controllers.HttpPutController"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPutRoute.Put_1_FromBody_1_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPutController.Put_1_FromBody_1_Constraint(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="F:Api.Routes.HttpPutRoute.Put_2_Constraint">
+            <summary>
+            <see cref="M:Api.Controllers.HttpPutController.Put_2_Constraint(System.String,System.String)"/>
+            </summary>
+        </member>
+        <member name="T:DependencyInjection.Analyzer.RouteRoute">
+            <summary>
+            <see cref="T:DependencyInjection.Analyzer.RouteController"/>
+            </summary>
+        </member>
+        <member name="F:DependencyInjection.Analyzer.RouteRoute.ShowAllServices">
+            <summary>
+            <see cref="M:DependencyInjection.Analyzer.RouteController.ShowAllServices"/>
+            </summary>
+        </member>
+        <member name="T:Route.Generator.RouteRoute">
+            <summary>
+            <see cref="T:Route.Generator.RouteController"/>
+            </summary>
+        </member>
+        <member name="F:Route.Generator.RouteRoute.ShowAllRoutes">
+            <summary>
+            <see cref="M:Route.Generator.RouteController.ShowAllRoutes"/>
+            </summary>
+        </member>
+        <member name="F:Route.Generator.RouteRoute.Index">
+            <summary>
+            <see cref="M:Route.Generator.RouteController.Index"/>
+            </summary>
+        </member>
+    </members>
+</doc>

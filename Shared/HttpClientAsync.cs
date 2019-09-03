@@ -26,7 +26,7 @@
 
         static HttpClientAsync()
         {
-            BaseAddress = "http://localhost:27634/";
+            BaseAddress = "http://47.105.214.235:82/";
         }
 
         public static HttpClient CreateInstance()

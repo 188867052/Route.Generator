@@ -9,9 +9,9 @@
     public class ExampleController : StandardController
     {
         [HttpGet("{key}")]
-        public Dictionary<string, string> GetVlues(string key, string value)
+        public Dictionary<string, string> GetValues(string key, string value)
         {
-            return this.ResponseDictionary(key, value, nameof(this.GetVlues));
+            return this.ResponseDictionary(key, value, nameof(this.GetValues));
         }
 
         [HttpPost]
