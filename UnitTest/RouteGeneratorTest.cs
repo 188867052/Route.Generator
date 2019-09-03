@@ -9,25 +9,6 @@ namespace UnitTest
     public class RouteGeneratorTest
     {
         [Test]
-        public async Task TestMvcRouteGenerator()
-        {
-            try
-            {
-                var client = new TestSite(nameof(Mvc)).BuildClient();
-                var response = await client.GetAsync("/routes");
-                var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(content);
-                var routesGenerated = RouteGenerator.GenerateRoutes(content);
-                Console.WriteLine(routesGenerated);
-                Assert.True(routesGenerated.Contains("namespace"));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        [Test]
         public async Task TestApiRouteGenerator()
         {
             try

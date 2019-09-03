@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29006.145
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mvc", "Mvc\Mvc.csproj", "{4C119814-786C-4A82-9230-CADC71AB74CD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{6231EDE1-BBCC-4E3F-840D-9E42EB7D0EE6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Route.Generator", "Route.Generator\Route.Generator.csproj", "{F70B90AC-E816-4878-924B-3CC4F87FDF8F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{38E8D6AF-CE7D-4AF8-A889-EBF0A89D21F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Route.Generator.CLI", "Route.Generator.CLI\Route.Generator.CLI.csproj", "{6A57E4E5-FE98-461D-8766-E4F2202E18A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Route.Generator.CLI", "Route.Generator.CLI\Route.Generator.CLI.csproj", "{6A57E4E5-FE98-461D-8766-E4F2202E18A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4C119814-786C-4A82-9230-CADC71AB74CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C119814-786C-4A82-9230-CADC71AB74CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C119814-786C-4A82-9230-CADC71AB74CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C119814-786C-4A82-9230-CADC71AB74CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6231EDE1-BBCC-4E3F-840D-9E42EB7D0EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6231EDE1-BBCC-4E3F-840D-9E42EB7D0EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6231EDE1-BBCC-4E3F-840D-9E42EB7D0EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
