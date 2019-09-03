@@ -2,13 +2,12 @@ namespace UnitTest
 {
     using System;
     using System.Threading.Tasks;
-    using NUnit.Framework;
     using Route.Generator;
+    using Xunit;
 
-    [TestFixture]
     public class RouteGeneratorTest
     {
-        [Test]
+        [Fact]
         public async Task TestApiRouteGenerator()
         {
             try
