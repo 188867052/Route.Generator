@@ -31,21 +31,9 @@
 
         public async Task<string> GenerateCodeAsync(CommondConfig config)
         {
-            try
-            {
-                RouteGenerator.config = config;
-                var routeInfos = new TestSite("Api").GetAllRouteInfo();
-                return GenerateRoutes(routeInfos);
-            }
-            catch (Exception ex)
-            {
-                Uri combined = new Uri(new Uri(config.BaseAddress), RouteAnalyzerExtensions.DefaultRoute);
-                Console.WriteLine($"Route URL: {combined}");
-                Console.WriteLine($"Exception Message: {ex.Message}");
-                Console.WriteLine($"Exception StackTrace: {ex.StackTrace}");
-                Console.WriteLine("Please provide BaseAddress, and make sure the Route URL is Right and Accessible.");
-                return string.Empty;
-            }
+            RouteGenerator.config = config;
+            var routeInfos = new TestSite("Api").GetAllRouteInfo();
+            return GenerateRoutes(routeInfos);
         }
 
         private static StringBuilder GenerateNamespace(IGrouping<string, RouteInfo> namespaceGroup, bool isLast)

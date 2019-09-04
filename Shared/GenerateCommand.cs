@@ -46,13 +46,6 @@
                         return 1;
                     }
 
-                    if (string.IsNullOrEmpty(this.BaseAddress))
-                    {
-                        System.Console.Write($"base address cant not be null.");
-                        return 1;
-                    }
-
-                    config.BaseAddress = this.BaseAddress;
                     config.ProjectPath = new FileInfo(fileFullPath).DirectoryName;
                     config.ProjectName = this.ProjectName;
                     config.GenerateMethod = this.GenerateMethod == "1" || this.GenerateMethod.Equals("true", StringComparison.InvariantCultureIgnoreCase);
@@ -86,11 +79,6 @@
 
                 this.Config = config;
                 this.Console.WriteLine(JsonConvert.SerializeObject(config, Formatting.Indented));
-                if (string.IsNullOrEmpty(this.Config.BaseAddress))
-                {
-                    this.Console.WriteLine($"base address cant not be null.");
-                    return 1;
-                }
 
                 if (string.IsNullOrEmpty(this.Config.OutPutFile))
                 {

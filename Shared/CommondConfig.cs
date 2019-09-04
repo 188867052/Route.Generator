@@ -4,8 +4,6 @@
     {
         public string ProjectName { get; set; }
 
-        public string BaseAddress { get; set; }
-
         public string OptionsFile { get; set; }
 
         public string OutPutFile { get; set; }
