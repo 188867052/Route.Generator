@@ -27,12 +27,16 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+
+
 - task: CmdLine@2
   displayName: 发布
   inputs:
     script: |
       dotnet publish -c Release
       dir D:\a\1\s\Route.Generator\bin\Release\netcoreapp2.2\publish\
+
 - task: ArchiveFiles@2
   displayName: 压缩文件
   inputs:
@@ -57,7 +61,9 @@ steps:
     preservePaths: false
     trustSSL: false
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
+  displayName: 测试
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    command: 'test'
+
+
