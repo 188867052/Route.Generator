@@ -3,19 +3,16 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
+    using UnitTest;
 
     public class RouteGenerator
     {
         private static CommondConfig config;
 
-        public static string GenerateRoutes(string content)
+        public static string GenerateRoutes(IList<RouteInfo> infos)
         {
-            IEnumerable<RouteInfo> infos = JsonConvert.DeserializeObject<IEnumerable<RouteInfo>>(content);
-
             StringBuilder sb = new StringBuilder();
             var group = infos.GroupBy(o => o.Namespace);
             sb.AppendLine($"using {typeof(object).Namespace};");
@@ -37,17 +34,8 @@
             try
             {
                 RouteGenerator.config = config;
-                using (var client = new HttpClient
-                {
-                    BaseAddress = new Uri(config.BaseAddress),
-                })
-                {
-                    using (HttpResponseMessage response = await client.GetAsync(RouteAnalyzerExtensions.DefaultRoute))
-                    {
-                        string content = await response.Content.ReadAsStringAsync();
-                        return GenerateRoutes(content);
-                    }
-                }
+                var routeInfos = new TestSite("Api").GetAllRouteInfo();
+                return GenerateRoutes(routeInfos);
             }
             catch (Exception ex)
             {

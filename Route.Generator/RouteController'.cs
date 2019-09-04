@@ -11,7 +11,7 @@ namespace Route.Generator
         [Route(RouteAnalyzerExtensions.DefaultRouteClass)]
         public IActionResult ShowClass()
         {
-            var text = GeneratorClass.GenerateCodeAsync("http://localhost:27634/").Result;
+            var text = GeneratorClass.GenerateCodeAsync().Result;
             string html2 = this.Html(HttpUtility.HtmlEncode(text), "cs");
             return this.Content(html2, "text/html", Encoding.UTF8);
         }

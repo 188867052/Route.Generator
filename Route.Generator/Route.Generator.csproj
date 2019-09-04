@@ -43,6 +43,7 @@ Microsoft.AspNetCore.Mvc (&gt;= 2.1.0)</PackageReleaseNotes>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\license.txt">

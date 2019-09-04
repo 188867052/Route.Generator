@@ -1,19 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using UnitTest;
 
 namespace Route.Generator
 {
     public static class GeneratorClass
     {
-        public static string GenerateRoutes(string content)
+        public static string GenerateRoutes(IEnumerable<RouteInfo> infos)
         {
-            IEnumerable<RouteInfo> infos = JsonConvert.DeserializeObject<IEnumerable<RouteInfo>>(content);
-
             StringBuilder sb = new StringBuilder();
             var group = infos.GroupBy(o => o.Namespace);
             sb.AppendLine($"using {typeof(object).Namespace};");
@@ -28,31 +25,11 @@ namespace Route.Generator
             return sb.ToString();
         }
 
-        public static async Task<string> GenerateCodeAsync(string baseAddress)
+        public static async Task<string> GenerateCodeAsync()
         {
-            try
-            {
-                using (var client = new HttpClient
-                {
-                    BaseAddress = new Uri(baseAddress),
-                })
-                {
-                    using (HttpResponseMessage response = await client.GetAsync(RouteAnalyzerExtensions.DefaultRoute))
-                    {
-                        string content = await response.Content.ReadAsStringAsync();
-                        return GenerateRoutes(content);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Uri combined = new Uri(new Uri(baseAddress), RouteAnalyzerExtensions.DefaultRoute);
-                Console.WriteLine($"Route URL: {combined}");
-                Console.WriteLine($"Exception Message: {ex.Message}");
-                Console.WriteLine($"Exception StackTrace: {ex.StackTrace}");
-                Console.WriteLine("Please provide BaseAddress, and make sure the Route URL is Right and Accessible.");
-                return string.Empty;
-            }
+            TestSite TestSite = new TestSite("API");
+            var RouteInfo = TestSite.GetAllRouteInfo();
+            return GenerateRoutes(RouteInfo);
         }
 
         private static StringBuilder GenerateNamespace(IGrouping<string, RouteInfo> namespaceGroup, bool isLast)
