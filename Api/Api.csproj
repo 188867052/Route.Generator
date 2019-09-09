@@ -14,12 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="RouteTest.text" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Include="..\Shared\HttpClientAsync.cs" Link="HttpClientAsync.cs" />
-    <Compile Include="RouteTest.text" />
   </ItemGroup>
 
   <ItemGroup>

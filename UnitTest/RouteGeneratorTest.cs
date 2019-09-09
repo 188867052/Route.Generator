@@ -18,7 +18,7 @@ namespace UnitTest
                 Console.WriteLine(json);
                 DirectoryInfo di = new DirectoryInfo(Environment.CurrentDirectory);
 
-                var file = Directory.GetFiles(di.Parent.Parent.Parent.Parent.FullName, "RouteTest.text", SearchOption.AllDirectories).FirstOrDefault();
+                var file = Directory.GetFiles(di.Parent.Parent.Parent.Parent.FullName, "json.json", SearchOption.AllDirectories).FirstOrDefault();
                 File.WriteAllText(file, json);
             }
             catch (Exception ex)
