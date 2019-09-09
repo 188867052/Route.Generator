@@ -21,10 +21,10 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-# - task: DotNetCoreCLI@2
-#   displayName: 测试
-#   inputs:
-#     command: 'test'
+- task: DotNetCoreCLI@2
+  displayName: 测试
+  inputs:
+    command: 'test'
 
 - task: CmdLine@2
   displayName: dir
@@ -42,6 +42,11 @@ steps:
   displayName: git diff
   inputs:
     script: 'git diff'
+    workingDirectory: 'd:/a/1/s/'
+- task: CmdLine@2
+  displayName: git push
+  inputs:
+    script: 'git push'
     workingDirectory: 'd:/a/1/s/'
 
 
