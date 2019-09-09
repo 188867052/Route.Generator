@@ -71,5 +71,5 @@ steps:
   inputs:
     script: |
       cd D:\a\1\s\Route.Generator
+      dir
       git push
-
