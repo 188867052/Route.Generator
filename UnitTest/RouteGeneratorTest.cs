@@ -1,6 +1,8 @@
 namespace UnitTest
 {
     using System;
+    using System.IO;
+    using System.Linq;
     using Newtonsoft.Json;
     using Xunit;
 
@@ -12,7 +14,12 @@ namespace UnitTest
             try
             {
                 var routeInfos = new TestSite(nameof(Api)).GetAllRouteInfo();
-                Console.WriteLine(JsonConvert.SerializeObject(routeInfos, Formatting.Indented));
+                var json = JsonConvert.SerializeObject(routeInfos, Formatting.Indented);
+                Console.WriteLine(json);
+                DirectoryInfo di = new DirectoryInfo(Environment.CurrentDirectory);
+
+                var file = Directory.GetFiles(di.Parent.Parent.Parent.Parent.FullName, "RouteTest.text", SearchOption.AllDirectories).FirstOrDefault();
+                File.WriteAllText(file, json);
             }
             catch (Exception ex)
             {

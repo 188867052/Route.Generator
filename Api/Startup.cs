@@ -1,7 +1,9 @@
 ﻿namespace Api
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
@@ -47,7 +49,7 @@
                 options.SerializerSettings.Formatting = Formatting.Indented;
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(option => option.EnableEndpointRouting = true).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddRouteAnalyzer();
         }
@@ -71,14 +73,16 @@
                      name: "areaRoute",
                      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
-                    name: "apiDefault",
-                    template: "api/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "apiDefault",
+                //    template: "api/{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            var mvcEndpointDataSource = app.ApplicationServices.GetRequiredService<IEnumerable<EndpointDataSource>>();
         }
     }
 }
