@@ -1,0 +1,55 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: 测试
+  inputs:
+    command: 'test'
+
+- task: CmdLine@2
+  displayName: dir
+  inputs:
+    script: 
+      dir
+
+# - task: CmdLine@2
+#   displayName: git clone
+#   inputs:
+#     script: 
+#       git clone https://github.com/188867052/Route.Generator
+
+- task: CmdLine@2
+  displayName: git diff
+  inputs:
+    script: 'git diff'
+    workingDirectory: 'd:/a/1/s/'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      git config --global user.email "188867052@qq.com"
+       git config --global user.name "188867052"
+      
+      git commit -am "Api/json.json"
+      git push origin master
+    workingDirectory: 'd:/a/1/s/'
