@@ -70,6 +70,6 @@ steps:
   displayName: 提交生成代码
   inputs:
     script: |
-      cd D:\a\1\s\Route.Generator
+      cd D:\a\1\s\
       dir
       git push
