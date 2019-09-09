@@ -54,6 +54,6 @@ steps:
       git add .
       git commit -am "Api/json.json"
       git pull origin master
-      git remote add origin
+      git remote add origin https://github.com/188867052/Route.Generator
       git push -u origin master
     workingDirectory: 'd:/a/1/s/'
