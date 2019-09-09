@@ -50,6 +50,7 @@ steps:
       git config --global user.email "188867052@qq.com"
        git config --global user.name "188867052"
       
+      git status
       git init
       git add .
       git pull origin master
