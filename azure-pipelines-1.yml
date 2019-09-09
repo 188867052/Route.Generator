@@ -46,7 +46,7 @@ steps:
 - task: CmdLine@2
   displayName: git push
   inputs:
-    script: 'git push'
+    script: 'git push origin master'
     workingDirectory: 'd:/a/1/s/'
 
 
