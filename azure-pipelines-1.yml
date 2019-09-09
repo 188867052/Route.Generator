@@ -51,5 +51,5 @@ steps:
        git config --global user.name "188867052"
       
       git commit -am "Api/json.json"
-      git push
+      git push origin master
     workingDirectory: 'd:/a/1/s/'
