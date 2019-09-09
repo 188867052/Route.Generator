@@ -1,0 +1,890 @@
+[
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "Example",
+    "ActionName": "GetValues",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Example/GetValues/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "POST",
+    "Area": null,
+    "ControllerName": "Example",
+    "ActionName": "Edit",
+    "Parameters": [
+      {
+        "Name": "model",
+        "Value": null,
+        "Type": "Api.Models.PointModel",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Example/Edit",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "Example",
+    "ActionName": "Delete",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Example/Delete",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_5_Constraint_5_Parameter_None_Order",
+    "Parameters": [
+      {
+        "Name": "constraint4",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter5",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter3",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint1",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint5",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint2",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter1",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter2",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint3",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter4",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Delete_5_Constraint_5_Parameter_None_Order/{constraint2}/{constraint1}/{constraint3}/{constraint5}/{constraint4}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_1_Constraint_1_Parameter",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Delete_1_Constraint_1_Parameter/option/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_1_Constraint_1_Parameter_Desc",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Delete_1_Constraint_1_Parameter_Desc/{value}/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete4",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values/option/{key}/{value?}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_2_Constraints_0_Parameter",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Delete_2_Constraints_0_Parameter/{key}/{value=test}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_0_Constraint_0_Paramerter",
+    "Parameters": [],
+    "Path": "/api/HttpDelete/Delete_0_Constraint_0_Paramerter",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_0_Constraint_2_Paramerter",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_1_Nullable_Constraint",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int?",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpDelete/Delete_1_Nullable_Constraint/{id?}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete_1_Nullable_Parameter",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int?",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpDelete/Delete_1_Nullable_Parameter",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "DeleteName",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      },
+      {
+        "Name": "name",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpDelete/DeleteName",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PUT",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Put",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpDelete/Put/{id}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpDelete/Delete/{id}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "DeleteById",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values/constraint/{id:range(1,10)}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpDelete",
+    "ActionName": "Delete7",
+    "Parameters": [
+      {
+        "Name": "isOk",
+        "Value": null,
+        "Type": "bool",
+        "BinderType": null
+      },
+      {
+        "Name": "deleteDate",
+        "Value": null,
+        "Type": "DateTime?",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values/many/{isOk:bool}/{*DeleteDate:datetime}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_1_Constraint_1_Parameter",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Get_1_Constraint_1_Parameter/option/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_5_Constraint_5_Parameter_None_Order",
+    "Parameters": [
+      {
+        "Name": "constraint4",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter5",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter3",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint1",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint5",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint2",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter1",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter2",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "constraint3",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "parameter4",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Get_5_Constraint_5_Parameter_None_Order/{constraint2}/{constraint1}/{constraint3}/{constraint5}/{constraint4}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_1_Constraint_1_Parameter_Desc",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Get_1_Constraint_1_Parameter_Desc/{value}/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get4",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values/option/{key}/{value?}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_2_Constraints_0_Parameter",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/Get_2_Constraints_0_Parameter/{key}/{value=test}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_0_Constraint_0_Paramerter",
+    "Parameters": [],
+    "Path": "/api/HttpGet/Get_0_Constraint_0_Paramerter",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_0_Constraint_2_Paramerter",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_1_Nullable_Constraint",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int?",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpGet/Get_1_Nullable_Constraint/{id?}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get_1_Nullable_Parameter",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int?",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpGet/Get_1_Nullable_Parameter",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "GetName",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      },
+      {
+        "Name": "name",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpGet/GetName",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PUT",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Put",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpGet/Put/{id}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Delete",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpGet/Delete/{id}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "GetById",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values/constraint/{id:range(1,10)}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "GET",
+    "Area": null,
+    "ControllerName": "HttpGet",
+    "ActionName": "Get7",
+    "Parameters": [
+      {
+        "Name": "isOk",
+        "Value": null,
+        "Type": "bool",
+        "BinderType": null
+      },
+      {
+        "Name": "getDate",
+        "Value": null,
+        "Type": "DateTime?",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Values/many/{isOk:bool}/{*getDate:datetime}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PATCH",
+    "Area": null,
+    "ControllerName": "HttpPatch",
+    "ActionName": "Patch_1_FromBody_1_Constraint",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPatch/Patch_1_FromBody_1_Constraint/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PATCH",
+    "Area": null,
+    "ControllerName": "HttpPatch",
+    "ActionName": "Patch_2_Constraint",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPatch/Patch_2_Constraint/{key}/{value}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PATCH",
+    "Area": null,
+    "ControllerName": "HttpPatch",
+    "ActionName": "Patch_1_FromBody",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPatch/Patch_1_FromBody",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PATCH",
+    "Area": null,
+    "ControllerName": "HttpPatch",
+    "ActionName": "Patch_Model",
+    "Parameters": [
+      {
+        "Name": "point",
+        "Value": null,
+        "Type": "Api.Models.PointModel",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPatch/Patch_Model",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "POST",
+    "Area": null,
+    "ControllerName": "HttpPost",
+    "ActionName": "Post_1_FromBody_1_Constraint",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPost/Post_1_FromBody_1_Constraint/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "POST",
+    "Area": null,
+    "ControllerName": "HttpPost",
+    "ActionName": "Post_2_Constraint",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPost/Post_2_Constraint/{key}/{value}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "POST",
+    "Area": null,
+    "ControllerName": "HttpPost",
+    "ActionName": "Post_1_FromBody",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPost/Post_1_FromBody",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "POST",
+    "Area": null,
+    "ControllerName": "HttpPost",
+    "ActionName": "Post_Model",
+    "Parameters": [
+      {
+        "Name": "point",
+        "Value": null,
+        "Type": "Api.Models.PointModel",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/HttpPost/Post_Model",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PUT",
+    "Area": null,
+    "ControllerName": "HttpPut",
+    "ActionName": "Put_1_FromBody_1_Constraint",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/{key}",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "PUT",
+    "Area": null,
+    "ControllerName": "HttpPut",
+    "ActionName": "Put_2_Constraint",
+    "Parameters": [
+      {
+        "Name": "key",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      },
+      {
+        "Name": "value",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/{key}/{value}",
+    "Namespace": "Api.Controllers"
+  }
+]
