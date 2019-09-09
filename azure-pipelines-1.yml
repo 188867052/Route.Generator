@@ -46,7 +46,9 @@ steps:
 - task: CmdLine@2
   displayName: git push
   inputs:
-    script: 'git push origin master'
+    script: |
+      git commit -m "提交说明"
+      git push origin master
     workingDirectory: 'd:/a/1/s/'
 
 
