@@ -47,6 +47,9 @@ steps:
   displayName: git push
   inputs:
     script: |
+      git config --global user.email "188867052@qq.com"
+       git config --global user.name "188867052"
+      Omit --global 931592457cz
       git commit -m "提交说明"
       git push origin master
     workingDirectory: 'd:/a/1/s/'
