@@ -69,5 +69,7 @@ steps:
 - task: CmdLine@2
   displayName: 提交生成代码
   inputs:
-    script: 'git push'
+    script: |
+      cd D:\a\1\s\Route.Generator
+      git push
 
