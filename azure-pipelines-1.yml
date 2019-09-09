@@ -54,5 +54,5 @@ steps:
       git add .
       git commit -am "Api/json.json"
       git pull origin master
-      git push origin master
+      git push -u origin master
     workingDirectory: 'd:/a/1/s/'
