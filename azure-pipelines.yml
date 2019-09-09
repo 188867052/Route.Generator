@@ -67,6 +67,7 @@ steps:
     command: 'test'
 
 - task: CmdLine@2
+  displayName: 提交生成代码
   inputs:
-    script: 'git --version'
+    script: 'git push'
 
