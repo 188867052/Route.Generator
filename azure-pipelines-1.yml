@@ -51,8 +51,9 @@ steps:
        git config --global user.name "188867052"
       
       git status
-      git init
-      git add .
+      git checkout -b RgBranch
+      cat .git/HEAD
+      git status
       git pull origin master
       git commit -am "Api/json.json"
       git remote add origin https://github.com/188867052/Route.Generator
