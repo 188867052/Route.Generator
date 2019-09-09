@@ -50,6 +50,8 @@ steps:
       git config --global user.email "188867052@qq.com"
        git config --global user.name "188867052"
       
+      git init
+      git add .
       git commit -am "Api/json.json"
       git pull origin master
       git push origin master
