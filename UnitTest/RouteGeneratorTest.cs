@@ -21,6 +21,7 @@ namespace UnitTest
                 var file = Directory.GetFiles(di.Parent.Parent.Parent.Parent.FullName, "json.json", SearchOption.AllDirectories).FirstOrDefault();
                 File.WriteAllText(file, json);
             }
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
