@@ -27,15 +27,21 @@ steps:
 #     command: 'test'
 
 - task: CmdLine@2
-  displayName: git clone
+  displayName: dir
   inputs:
     script: 
-      git clone https://github.com/188867052/Route.Generator
+      dir
+
+# - task: CmdLine@2
+#   displayName: git clone
+#   inputs:
+#     script: 
+#       git clone https://github.com/188867052/Route.Generator
 
 - task: CmdLine@2
   displayName: git diff
   inputs:
-    script: 
-      git diff
+    script: 'git diff'
+    workingDirectory: 'd:/a/1/s/'
 
 
