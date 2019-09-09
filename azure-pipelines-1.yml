@@ -50,6 +50,6 @@ steps:
       git config --global user.email "188867052@qq.com"
        git config --global user.name "188867052"
       
-      git commit -m "提交说明"
+      git commit -m "Api/json.json"
       git push origin master
     workingDirectory: 'd:/a/1/s/'
