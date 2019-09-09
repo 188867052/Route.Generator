@@ -66,4 +66,7 @@ steps:
   inputs:
     command: 'test'
 
+- task: CmdLine@2
+  inputs:
+    script: 'git --version'
 
