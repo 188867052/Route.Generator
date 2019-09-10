@@ -21,11 +21,8 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-
-
-
 - task: CmdLine@2
-  displayName: dir
+  displayName: github
   inputs:
     script: |
       mkdir temp
@@ -33,11 +30,14 @@ steps:
       git config --global user.email "188867052@qq.com"
       git config --global user.name "188867052"
       git init
+      dir
       git remote add origin https://github.com/188867052/Route.Generator
+      dir
       git pull --rebase origin master
       git add --all
       git commit -m 'test'
       git push -u origin master
+
 - task: CmdLine@2
   displayName: dir
   inputs:
