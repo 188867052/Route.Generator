@@ -40,15 +40,17 @@ steps:
 
 
 - task: DotNetCoreCLI@2
-  displayName: dotnet test
+  displayName: dotnet test & code generator
   inputs:
     command: 'test'
-    testRunTitle: 'd:/a/1/s/temp'
+    testRunTitle: '单元测试并代码生成'
+    workingDirectory: 'd:/a/1/s/temp'
 
 - task: CmdLine@2
   displayName: cmd dir
   inputs:
     script: 'dir'
+    workingDirectory: 'd:/a/1/s/temp'
 
 - task: CmdLine@2
   displayName: git diff
