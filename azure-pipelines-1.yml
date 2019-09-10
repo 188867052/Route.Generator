@@ -38,7 +38,6 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-
 - task: DotNetCoreCLI@2
   displayName: dotnet test & code generator
   inputs:
@@ -47,19 +46,19 @@ steps:
     workingDirectory: 'd:/a/1/s/temp'
 
 - task: CmdLine@2
-  displayName: cmd dir
+  displayName: debug cmd dir
   inputs:
     script: 'dir'
     workingDirectory: 'd:/a/1/s/temp'
 
 - task: CmdLine@2
-  displayName: git diff
+  displayName:debug git diff
   inputs:
     script: 'git diff'
     workingDirectory: 'd:/a/1/s/temp'
 
 - task: CmdLine@2
-  displayName: type config
+  displayName:debug type config
   inputs:
     script: 'type config'
     workingDirectory: 'd:/a/1/s/temp/.git'
