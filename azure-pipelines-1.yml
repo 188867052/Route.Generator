@@ -33,14 +33,14 @@ steps:
     script: |
       mkdir temp
       cd temp
+      git config --global user.email "188867052@qq.com"
+      git config --global user.name "188867052"
       git init
       git remote add origin https://github.com/188867052/Route.Generator
       git pull --rebase origin master
       git add --all
       git commit -m 'test'
       git push -u origin master
-
-
 - task: CmdLine@2
   displayName: dir
   inputs:
