@@ -72,6 +72,28 @@
   {
     "HttpMethods": "DELETE",
     "Area": null,
+    "ControllerName": "Example",
+    "ActionName": "Just_for_test2",
+    "Parameters": [
+      {
+        "Name": "id",
+        "Value": null,
+        "Type": "int?",
+        "BinderType": null
+      },
+      {
+        "Name": "name",
+        "Value": null,
+        "Type": "string",
+        "BinderType": null
+      }
+    ],
+    "Path": "/api/Example/Just_for_test2",
+    "Namespace": "Api.Controllers"
+  },
+  {
+    "HttpMethods": "DELETE",
+    "Area": null,
     "ControllerName": "HttpDelete",
     "ActionName": "Delete_5_Constraint_5_Parameter_None_Order",
     "Parameters": [
