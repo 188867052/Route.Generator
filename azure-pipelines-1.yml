@@ -52,13 +52,13 @@ steps:
     workingDirectory: 'd:/a/1/s/temp'
 
 - task: CmdLine@2
-  displayName:debug git diff
+  displayName: debug git diff
   inputs:
     script: 'git diff'
     workingDirectory: 'd:/a/1/s/temp'
 
 - task: CmdLine@2
-  displayName:debug type config
+  displayName: debug type config
   inputs:
     script: 'type config'
     workingDirectory: 'd:/a/1/s/temp/.git'
