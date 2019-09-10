@@ -25,5 +25,11 @@
         {
             return this.ResponseDictionary(null, null, nameof(this.Delete));
         }
+
+        [HttpDelete]
+        public Dictionary<string, string> Just_for_test(string id)
+        {
+            return this.ResponseDictionary(null, null, nameof(this.Delete));
+        }
     }
 }
