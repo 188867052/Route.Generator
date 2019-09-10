@@ -17,10 +17,6 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution)'
-
 - task: CmdLine@2
   displayName: github
   inputs:
@@ -36,14 +32,11 @@ steps:
       git pull --rebase origin master
       dir
       git add --all
-      git commit -m 'test'
-      git push -u origin master
 
-- task: CmdLine@2
-  displayName: dir
+
+- task: NuGetCommand@2
   inputs:
-    script: 
-      dir
+    restoreSolution: '$(solution)'
 
 - task: DotNetCoreCLI@2
   displayName: 测试
@@ -66,15 +59,6 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      git config --global user.email "188867052@qq.com"
-       git config --global user.name "188867052"
-      
-      git status
-      git checkout -b RgBranch
-      cat .git/HEAD
-      git status
-      git pull origin master
-      git commit -am "Api/json.json"
-      git remote add origin https://github.com/188867052/Route.Generator
-      git push origin master
+      git commit -m 'test'
+            git push -u origin master
     workingDirectory: 'd:/a/1/s/'
