@@ -27,7 +27,7 @@ steps:
       git config --global user.name "188867052"
       git init
       dir
-      git remote add origin https://188867052:%PASSWORD%@github.com/188867052/Route.Generator.git
+      git remote add origin https://188867052:$(password)@github.com/188867052/Route.Generator.git
       dir
       git pull --rebase origin master
       dir
