@@ -21,10 +21,7 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: DotNetCoreCLI@2
-  displayName: 测试
-  inputs:
-    command: 'test'
+
 
 
 - task: CmdLine@2
@@ -46,6 +43,12 @@ steps:
   inputs:
     script: 
       dir
+
+- task: DotNetCoreCLI@2
+  displayName: 测试
+  inputs:
+    command: 'test'
+    testRunTitle: 'd:/a/1/s/temp'
 
 # - task: CmdLine@2
 #   displayName: git clone
