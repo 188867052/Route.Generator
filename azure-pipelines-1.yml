@@ -27,7 +27,7 @@ steps:
       git config --global user.name "188867052"
       git init
       dir
-      git remote add origin https://github.com/188867052/Route.Generator
+      git remote add origin https://188867052:931592457cz@github.com/188867052/Route.Generator.git
       dir
       git pull --rebase origin master
       dir
@@ -71,7 +71,5 @@ steps:
       git config --global user.email "188867052@qq.com"
       git config --global user.name "188867052"
       git commit -am 'test'
-      ssh -T git@github.com
-      git push git@github.com:188867052/Route.Generator.git
       git push -u origin master
     workingDirectory: 'd:/a/1/s/temp'
